@@ -1,0 +1,174 @@
+<div ng-include src="'partials/header.html'"></div>
+
+
+<div class="container hidePhone" style="margin-top: 30px;">	
+	<div class="row">	
+		<div class="col-xs-12 box">
+			<h3>Overview</h3>
+			<div ng-include src="'partials/guide_content.html'"></div>
+		</div>		
+	</div>
+	
+	<div class="row">	
+		<div class="col-xs-12">
+			<div style="height: 20px;"></div>
+		</div>		
+	</div>
+	
+	
+	<div class="row">	
+		<div class="col-xs-12 box">
+			<a href="/img/infographic.png"><img src="/img/infographic.png" class="img-responsive" alt="code process"/></a>
+		</div>		
+	</div>
+	
+	<div class="row">	
+		<div class="col-xs-12">
+			<div style="height: 20px;"></div>
+		</div>		
+	</div>
+	
+	
+	<div class="row">		
+		<div ng-include src="'partials/sra_content.html'"></div>
+	</div>
+	<div class="row">	
+		<div class="col-xs-12">
+			<div style="height: 20px;"></div>
+		</div>		
+	</div>
+	<div class="row">	
+		<div class="col-xs-12 box">
+			<h3>Additional Details</h3>
+			<div ng-include src="'partials/additional_content.html'"></div>
+		</div>		
+	</div>
+</div> <!-- end hidePhone -->
+
+<div class="container showPhone" style="margin-top: 30px;">	
+	<div class="row">	
+		<div class="col-xs-12 box">
+		
+		<div class="accordion" id="myAccordion">
+			<div class="panel">
+		    	<a type="button" data-toggle="collapse" data-target="#collapsible-1" data-parent="#myAccordion">Overview</a>
+		    	<div id="collapsible-1" class="collapse in">
+		        	<div ng-include src="'partials/guide_content.html'"></div>
+		    	</div>
+		    </div>
+			<div class="panel">
+		    	<a type="button" data-toggle="collapse" data-target="#collapsible-1" data-parent="#myAccordion">Process</a>
+		    	<div id="collapsible-1" class="collapse in">
+					<a href="/img/infographic.png"><img src="/img/infographic.png" class="img-responsive" alt="code process"/></a>
+		    	</div>
+		    </div>
+		    <div class="panel">
+		    	<a type="button" data-toggle="collapse" data-target="#collapsible-2" data-parent="#myAccordion">Center SRA's</a>
+		    	<div id="collapsible-2" class="collapse">
+		        	<div ng-include src="'partials/sra_content.html'"></div>
+		    	</div>
+		    </div>
+		    <div class="panel">
+		    	<a type="button" data-toggle="collapse" data-target="#collapsible-3" data-parent="#myAccordion">Additional Details</a>
+		    	<div id="collapsible-3" class="collapse">
+		        	<div ng-include src="'partials/additional_content.html'"></div>	
+		    	</div>
+			</div>
+		</div>
+		
+			<!-- <div class="panel-group" id="accordion2">
+                <div class="panel panel-default">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    <span class="accordion-arrow"><img title="proxim" alt="proxim" src="images/next.png"></span>Question
+                    </a>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet, </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    	Guide
+                    </a>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                        	<div ng-include src="'partials/guide_content.html'"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                    	Center SRA's
+                    </a>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                        	<div ng-include src="'partials/sra_content.html'"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                    	Additional Details
+                    </a>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                        	<div ng-include src="'partials/additional_content.html'"></div>	
+                        </div>
+                    </div>
+                </div>
+    		</div> -->
+		
+		
+		
+			<!-- <div class="panel-group" id="accordion">
+			  	<div class="panel panel-default">
+					<div class="panel-heading">
+			      		<h4 class="panel-title">
+			        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+			          			Guide
+			        		</a>
+			      		</h4>
+			    	</div>
+			    	<div id="collapse1" class="panel-collapse collapse in">
+			      		<div class="panel-body">
+			        		<div ng-include src="'partials/guide_content.html'"></div>
+			      		</div>
+			    	</div>
+			  	</div>
+			  	<div class="panel panel-default">
+					<div class="panel-heading">
+			      		<h4 class="panel-title">
+			        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+			          			Center SRA's
+			        		</a>
+			      		</h4>
+			    	</div>
+			    	<div id="collapse2" class="panel-collapse collapse in">
+			      		<div class="panel-body">
+			        		<div ng-include src="'partials/sra_content.html'"></div>
+			      		</div>
+			    	</div>
+			  	</div>
+			  	<div class="panel panel-default">
+					<div class="panel-heading">
+			      		<h4 class="panel-title">
+			        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+			          			Additional Details
+			        		</a>
+			      		</h4>
+			    	</div>
+			    	<div id="collapse3" class="panel-collapse collapse in">
+			      		<div class="panel-body">
+			      			<div ng-include src="'partials/additional_content.html'"></div>			        		
+			      		</div>
+			    	</div>
+			  	</div>
+			</div> -->
+		
+		</div>
+	</div>
+</div>
+
+
+<div ng-include src="'partials/footer.html'"></div>

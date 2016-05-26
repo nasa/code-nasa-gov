@@ -1,0 +1,21 @@
+DirectoryIndex index.php
+
+
+#Order Deny,Allow
+#Deny from all
+#Allow from nasa.gov
+
+RewriteEngine On
+
+RewriteRule .*\.svn/.* - [F]
+
+RewriteCond %{REQUEST_METHOD} ^TRACE$
+RewriteRule .* - [F]
+
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
