@@ -59,22 +59,6 @@ function CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout) {
     $scope.displayInfoString = "Showing " + $scope.catalog.length + " NASA Open Source Software Projects";
   }
 
-  //make forks
-  var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
-  for(var i=0;i<$scope.catalog.length; i++) {
-    var item = $scope.catalog[i];
-    if(item.host == "github.com") {
-      var f = '//ghbtns.com/github-btn.html?user=' + item.user + '&repo=' + item.repo + '&type=fork';
-      if(iOS) {
-        f += "&count=false";
-      }
-      else {
-        f += "&count=true";
-      }
-      $scope.catalog[i].forkurl = $sce.trustAsResourceUrl(f);
-    }
-  }
-
   function showAll() {
     for(var i=0; i<$scope.catalog.length; i++) {
       var catalogItem = $scope.catalog[i];
