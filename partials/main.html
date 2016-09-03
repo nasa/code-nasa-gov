@@ -1,123 +1,123 @@
 <div ng-include src="'partials/header.html'"></div>
 
-<div class="container docstart">		
-	<div class="row">	
-		<div class="col-xs-12">
-			<div class="inner-addon right-addon">
-			    <i class="glyphicon glyphicon-remove-circle" ng-click="clearSearch()"></i>
-			    <input id="search" type="text" class="form-control" ng-model="search" placeholder="Search code.nasa.gov">
-			</div>
-		</div>
-	</div>
-	<div class="row">	
-		<div class="col-xs-12"><a style="color: #428bca; text-decoration: underline;" href="/#/guide">Click here for guide to publishing open source!</a></div>
-	</div>
-</div>	
+<div class="container docstart">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="inner-addon right-addon">
+        <i class="glyphicon glyphicon-remove-circle" ng-click="clearSearch()"></i>
+        <input id="search" type="text" class="form-control" ng-model="search" placeholder="Search code.nasa.gov">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12"><a style="color: #428bca; text-decoration: underline;" href="/#/guide">Click here for guide to publishing open source!</a></div>
+  </div>
+</div>
 <div class="container docstart2" ng-show="isLoading">
-	<div class="row">
-		<div class="col-xs-12">
-			<div id="waitingArea" style="min-height: 100px; text-align: center;">
-				<img src="/img/progress_bar.gif" alt="Loading Projects ..." style="margin: 0 auto;"/>
-			</div>
-		</div>
-	</div>	
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="waitingArea" style="min-height: 100px; text-align: center;">
+        <img src="/img/progress_bar.gif" alt="Loading Projects ..." style="margin: 0 auto;"/>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container docstart2" ng-hide="isLoading">	
-	<div class="row">	
-		<div class="col-xs-12 infoBlock">
-			<div style="padding-left: 10px;">
-				<div ng-hide="isTagfiltering">
-					<h4 style="float: right">Showing <b>{{filtered.length}}</b> NASA Open Source Software Projects</h4>
-					<div style="clear: both;"></div>
-				</div>
-				<div ng-show="isTagfiltering">
-					<a style="float: left; margin-top: 14px;" href ng-click="showAll()">
-						<span class="glyphicon glyphicon-chevron-left" style="font-size: 12px;"></span>&nbsp;
-						<b>Back to all projects</b></a>
-					<h4 style="float: right">{{numTagged}} NASA Open Source Software <span ng-show="numTagged > 1">Projects are</span><span ng-hide="numTagged > 1">Project is</span> tagged with <span class="badge">{{currentTag}}</span></h4>
-					<div style="clear: both;"></div>
-				</div>			
-			</div>
-		</div>
-		<div class="col-xs-12">
-			<div class="box" ng-hide="filtered.length" style="min-height: 100px; text-align: center;">
-				<h3>Sorry, no matches found for keyword "{{search}}", <a href ng-click="clearSearch()">please try again</a>.</h3>
-			</div>
-			<div ng-repeat="project in filtered = (catalog | orderBy:'Update_Date':true | filter:search)" class="box" ng-show="project.tagFilter">
-				<div class="title">				
-					<div class="title1">
-						<h2>{{project.Software}}</h2>
-					</div>
-				</div>
-				<div class="socialIcons hidden-xs">
-					<div ng-include src="'partials/sociallinks.html'"></div>
-				</div>
-				<div style="clear: both;"></div>
-				<div class="repoLink hidePhone">
-					<a href="{{project['Public Code Repo']}}" target="_blank">{{project['Public Code Repo']}}</a>
-				</div>
-				<div class="repoLink showPhone">
-					<a style="text-decoration: underline;" href="{{project['Public Code Repo']}}" target="_blank">{{project['Public Code Repo']}}</a>
-				</div>
-				<div style="clear: both;"></div>
+<div class="container docstart2" ng-hide="isLoading">
+  <div class="row">
+    <div class="col-xs-12 infoBlock">
+      <div style="padding-left: 10px;">
+        <div ng-hide="isTagfiltering">
+          <h4 style="float: right">Showing <b>{{filtered.length}}</b> NASA Open Source Software Projects</h4>
+          <div style="clear: both;"></div>
+        </div>
+        <div ng-show="isTagfiltering">
+          <a style="float: left; margin-top: 14px;" href ng-click="showAll()">
+            <span class="glyphicon glyphicon-chevron-left" style="font-size: 12px;"></span>&nbsp;
+            <b>Back to all projects</b></a>
+          <h4 style="float: right">{{numTagged}} NASA Open Source Software <span ng-show="numTagged > 1">Projects are</span><span ng-hide="numTagged > 1">Project is</span> tagged with <span class="badge">{{currentTag}}</span></h4>
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="box" ng-hide="filtered.length" style="min-height: 100px; text-align: center;">
+        <h3>Sorry, no matches found for keyword "{{search}}", <a href ng-click="clearSearch()">please try again</a>.</h3>
+      </div>
+      <div ng-repeat="project in filtered = (catalog | orderBy:'Update_Date':true | filter:search)" class="box" ng-show="project.tagFilter">
+        <div class="title">
+          <div class="title1">
+            <h2>{{project.Software}}</h2>
+          </div>
+        </div>
+        <div class="socialIcons hidden-xs">
+          <div ng-include src="'partials/sociallinks.html'"></div>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="repoLink hidePhone">
+          <a href="{{project['Public Code Repo']}}" target="_blank">{{project['Public Code Repo']}}</a>
+        </div>
+        <div class="repoLink showPhone">
+          <a style="text-decoration: underline;" href="{{project['Public Code Repo']}}" target="_blank">{{project['Public Code Repo']}}</a>
+        </div>
+        <div style="clear: both;"></div>
 
-				<div class="horizontalDivider"></div>
-				
-				<div class="row" style="margin-top: 10px;">	
-					<div class="col-xs-12 col-sm-9" style="">
-						<p class="description">{{project.Description}}</p>
-						
-						<div class="visible-xs">					
-							<div class="socialIcons-xs">
-								<div ng-include src="'partials/sociallinks.html'"></div>
-							</div>
-							<div style="clear: both;"></div>
-						</div>
-						
-						<div class="visible-xs expandLinks">
-							<a href ng-click="showMore = !showMore" ng-hide="showMore">
-								<div style="float: left;">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</div>
-								<div style="margin-top: -1px; float: left; margin-left: 3px;">
-									<span>Details</span>
-								</div>	
-								<div style="clear: both;"></div>							
-							</a>
-							<a href ng-click="showMore = !showMore" ng-show="showMore">
-								<div style="float: left;">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</div>
-								<div style="margin-top: -1px; float: left; margin-left: 3px;">
-									<span>Details</span>
-								</div>
-								<div style="clear: both;"></div>
-							</a>							
-						</div>
-						<div ng-show="showMore">
-							<div class="details" style="margin-top:10px;">
-								<div ng-include src="'partials/tags.html'"></div>
-							</div>
-							<div ng-include src="'partials/licenses.html'"></div>
-						</div>
-					</div>
-					<div class="hidden-xs col-sm-3" style="">
-						<div class="details">
-							<div ng-include src="'partials/tags.html'"></div>
-						</div>					
-					</div>
-					<div style="clear: both;"></div>
-				</div>
-				<div class="row">	
-					<div class="col-sm-8 hidden-xs">
-						<div ng-include src="'partials/licenses.html'"></div>
-					</div>
-					<div style="clear:both;"></div>
-				</div>			
-			</div> <!-- end repeat block -->
-		</div>
-	</div>
+        <div class="horizontalDivider"></div>
+
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-xs-12 col-sm-9" style="">
+            <p class="description">{{project.Description}}</p>
+
+            <div class="visible-xs">
+              <div class="socialIcons-xs">
+                <div ng-include src="'partials/sociallinks.html'"></div>
+              </div>
+              <div style="clear: both;"></div>
+            </div>
+
+            <div class="visible-xs expandLinks">
+              <a href ng-click="showMore = !showMore" ng-hide="showMore">
+                <div style="float: left;">
+                  <span class="glyphicon glyphicon-plus-sign"></span>
+                </div>
+                <div style="margin-top: -1px; float: left; margin-left: 3px;">
+                  <span>Details</span>
+                </div>
+                <div style="clear: both;"></div>
+              </a>
+              <a href ng-click="showMore = !showMore" ng-show="showMore">
+                <div style="float: left;">
+                  <span class="glyphicon glyphicon-minus-sign"></span>
+                </div>
+                <div style="margin-top: -1px; float: left; margin-left: 3px;">
+                  <span>Details</span>
+                </div>
+                <div style="clear: both;"></div>
+              </a>
+            </div>
+            <div ng-show="showMore">
+              <div class="details" style="margin-top:10px;">
+                <div ng-include src="'partials/tags.html'"></div>
+              </div>
+              <div ng-include src="'partials/licenses.html'"></div>
+            </div>
+          </div>
+          <div class="hidden-xs col-sm-3" style="">
+            <div class="details">
+              <div ng-include src="'partials/tags.html'"></div>
+            </div>
+          </div>
+          <div style="clear: both;"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 hidden-xs">
+            <div ng-include src="'partials/licenses.html'"></div>
+          </div>
+          <div style="clear:both;"></div>
+        </div>
+      </div> <!-- end repeat block -->
+    </div>
+  </div>
 </div>
 
 <div ng-include src="'partials/footer.html'"></div>
