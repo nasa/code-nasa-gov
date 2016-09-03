@@ -47,7 +47,7 @@
       <div ng-repeat="project in filtered = (catalog | orderBy:'Update_Date':true | filter:search)" class="box" ng-show="project.tagFilter">
         <div class="title">
           <div class="title1">
-            <h2>{{project.Software}}</h2>
+            <h2>{{:: project.Software}}</h2>
           </div>
         </div>
         <div class="socialIcons hidden-xs">
@@ -55,10 +55,10 @@
         </div>
         <div style="clear: both;"></div>
         <div class="repoLink hidePhone">
-          <a href="{{project['Public Code Repo']}}" target="_blank">{{project['Public Code Repo']}}</a>
+          <a href="{{:: project['Public Code Repo']}}" target="_blank">{{:: project['Public Code Repo']}}</a>
         </div>
         <div class="repoLink showPhone">
-          <a style="text-decoration: underline;" href="{{project['Public Code Repo']}}" target="_blank">{{project['Public Code Repo']}}</a>
+          <a style="text-decoration: underline;" href="{{:: project['Public Code Repo']}}" target="_blank">{{:: project['Public Code Repo']}}</a>
         </div>
         <div style="clear: both;"></div>
 
@@ -66,7 +66,7 @@
 
         <div class="row" style="margin-top: 10px;">
           <div class="col-xs-12 col-sm-9" style="">
-            <p class="description">{{project.Description}}</p>
+            <p class="description">{{:: project.Description}}</p>
 
             <div class="visible-xs">
               <div class="socialIcons-xs">
