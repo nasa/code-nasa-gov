@@ -34,7 +34,6 @@ function CodeCtrl($scope, $http, $location, $window, $sce, $timeout) {
                 console.log("error occured pulling catalog data in get ajax call.");
             });
     }
-
 } //end CodeCtrl
 
 function CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout) {
@@ -127,12 +126,11 @@ function CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout) {
 
 function GuideCtrl($scope, $http) {
     $http.get("/data/SRA.json", {})
-        .success(function(result, status, headers, config) {
-            $scope.sras = result;
+        .then(function(response) {
+            $scope.sras = response.data;
+        }, function(response) {
+            console.log("error occured pulling sra data")
         })
-        .error(function(serviceData, status, headers, config) {
-            console.log("error occured pulling sra data");
-        });
 }
 
 var license_content = [{
