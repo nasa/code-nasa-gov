@@ -1,32 +1,32 @@
 <div class="col-xs-12 showPhone box">
-	<h3>Center SRAs</h3>
-	<div ng-repeat="sra in sras | orderBy:'Center':false" class="mobileSRA">
-		<div>Center: {{sra.Center}}</div>
-		<div>Name: {{sra.Name}}</div>
-		<div>Title: {{sra.Title}}</div>
-		<div>Phone: <a href="tel:{{sra.Phone}}">{{sra.Phone}}</div>
-		<div><a href="mailto:{{sra.Email}}">{{sra.Email}}</a></div>
-	</div> 
+  <h3>Center SRAs</h3>
+  <div ng-repeat="sra in sras | orderBy:'Center':false" class="mobileSRA">
+    <div>Center: {{sra.Center}}</div>
+    <div>Name: {{sra.Name}}</div>
+    <div>Title: {{sra.Title}}</div>
+    <div>Phone: <a href="tel:{{sra.Phone}}">{{sra.Phone}}</div>
+    <div><a href="mailto:{{sra.Email}}">{{sra.Email}}</a></div>
+  </div>
 </div>
 <div class="col-xs-12 hidePhone box">
-	<h3>Center SRAs</h3>
-	<table class="table table-bordered">
-		<thead>
-			<tr><th class="header">Center</th>
-			<th class="header">Name</th>
-			<th class="header">Title</th>
-			<th class="header">Phone</th>
-			<th class="header">Email</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="sra in sras | orderBy:'Center':false">
-				<td>{{sra.Center}}</td>
-				<td>{{sra.Name}}</td>
-				<td>{{sra.Title}}</td>
-				<td>{{sra.Phone}}</td>
-				<td><a href="mailto:{{sra.Email}}">{{sra.Email}}</a></td>
-			</tr>
-		</tbody>
-	</table>
+  <h3>Center SRAs</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr><th class="header">Center</th>
+        <th class="header">Name</th>
+        <th class="header">Title</th>
+        <th class="header">Phone</th>
+        <th class="header">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="sra in sras | orderBy:'Center':false">
+        <td>{{sra.Center}}</td>
+        <td>{{sra.Name}}</td>
+        <td>{{sra.Title}}</td>
+        <td>{{sra.Phone}}</td>
+        <td><a href="mailto:{{sra.Email}}">{{sra.Email}}</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

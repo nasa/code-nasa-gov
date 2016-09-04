@@ -1,3 +1,5 @@
 <p>
-	<a ng-repeat="tag in project.Categories track by $index | limitTo:10 | orderBy:tag" href ng-click="applyTagFilter(tag)"><span class="badge">{{tag | limitTo : 24}}</span></a>&nbsp;								
+  <a ng-repeat="tag in project.Categories track by $index | limitTo:10" href ng-click="applyTagFilter(tag)">
+    <span class="badge">{{:: tag | limitTo : 24}}</span>
+  </a>&nbsp;
 </p>
