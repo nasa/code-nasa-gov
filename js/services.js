@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('services', [])
+  angular.module('services', ['ngResource'])
 
   .factory('CatalogService', ['$resource', function($resource) {
     var baseURL = '/data/catalog.json',
