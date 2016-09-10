@@ -1,0 +1,28 @@
+{
+  "name": "code-nasa-gov",
+  "version": "1.0.0",
+  "description": "code.nasa.gov site",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nasa/code-nasa-gov.git"
+  },
+  "keywords": [
+    "nasa"
+  ],
+  "author": "code.nasa.gov",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nasa/code-nasa-gov/issues"
+  },
+  "homepage": "https://github.com/nasa/code-nasa-gov#readme",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-merge": "^0.1.1",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-ng-html2js": "^0.2.2",
+    "gulp-uglify": "^2.0.0"
+  }
+}
