@@ -58,6 +58,8 @@ function vendorSource() {
 gulp.task('default', ['clean'], function() {
     return merge(vendorSource(), cacheTemplates(), appSource())
         .pipe(concat("bundle.min.js"))
-        // .pipe(uglify()) currently breaks
+        .pipe(uglify({
+            mangle: false
+        }))
         .pipe(gulp.dest("./public"));
 });
