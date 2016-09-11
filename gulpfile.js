@@ -35,14 +35,28 @@ function cacheTemplates() {
  * Get the source for the main app as a stream
  */
 function appSource() {
-    return gulp.src(["./js/app.js", "./js/controllers.js"])
+    return gulp.src([
+        "./js/app.js", 
+        "./js/controllers.js"])
+}
+
+/**
+ * Get the resource for the vendor libs as a stream
+ */
+function vendorSource() {
+    return gulp.src([
+        "./js/vendor/jquery.min.js",
+        "./js/vendor/angular.min.js", 
+        "./js/vendor/angular-resource.min.js",
+        "./js/vendor/angular-route.min.js",
+        "./js/vendor/bootstrap.min.js"])
 }
 
 /**
  * Bundle everything together into /public
  */
 gulp.task('default', ['clean'], function() {
-    return merge(cacheTemplates(), appSource())
+    return merge(vendorSource(), cacheTemplates(), appSource())
         .pipe(concat("bundle.min.js"))
         // .pipe(uglify()) currently breaks
         .pipe(gulp.dest("./public"));
