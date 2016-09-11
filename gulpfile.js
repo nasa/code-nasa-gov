@@ -26,7 +26,7 @@ function cacheTemplates() {
             quotes: true
         }))
         .pipe(ngHtml2Js({
-            moduleName: "MyAwesomePartials",
+            moduleName: "appPartials",
             prefix: "partials/"
         }))
 }
