@@ -1,5 +1,5 @@
 'use strict';
-angular.module('code', ['ngRoute']).
+angular.module('code', ['appPartials','ngRoute']).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
   when('/', {templateUrl: 'partials/main.html',   controller: CodeCtrl}).
@@ -9,4 +9,3 @@ config(['$routeProvider', function($routeProvider) {
   otherwise({redirectTo: '/'});
 }]
 );
-

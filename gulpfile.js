@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var ngHtml2Js = require('gulp-ng-html2js');
 var minifyHtml = require('gulp-minify-html');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var merge = require('gulp-merge');
 var del = require('del');
 
@@ -28,3 +30,36 @@ function cacheTemplates() {
             prefix: 'partials/'
         }))
 }
+
+/**
+ * Get the source for the main app as a stream
+ */
+function appSource() {
+    return gulp.src([
+        './js/app.js', 
+        './js/controllers.js'])
+}
+
+/**
+ * Get the resource for the vendor libs as a stream
+ */
+function vendorSource() {
+    return gulp.src([
+        './js/vendor/jquery.min.js',
+        './js/vendor/angular.min.js', 
+        './js/vendor/angular-resource.min.js',
+        './js/vendor/angular-route.min.js',
+        './js/vendor/bootstrap.min.js'])
+}
+
+/**
+ * Bundle everything together into /public
+ */
+gulp.task('default', ['clean'], function() {
+    return merge(vendorSource(), cacheTemplates(), appSource())
+        .pipe(concat('bundle.min.js'))
+        .pipe(uglify({
+            mangle: false
+        }))
+        .pipe(gulp.dest('./public'));
+});
