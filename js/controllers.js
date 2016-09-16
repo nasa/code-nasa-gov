@@ -1,5 +1,5 @@
-
 var currentTag = "";
+
 function CodeCtrl($scope, $http, $location, $window, $sce, $timeout) {
   $scope.isLoading = true;
 
