@@ -1,38 +1,50 @@
+'use strict';
 
-var currentTag = "";
-function CodeCtrl($scope, $http, $location, $window, $sce, $timeout) {
+angular.module('controllers', [])
+
+.controller('CodeCtrl', ['$scope', 'CatalogService', '$location', '$window', '$sce', '$timeout', function($scope, CatalogService, $location, $window, $sce, $timeout) {
   $scope.isLoading = true;
 
   if($scope.catalog) {
     CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout);
     $scope.isLoading = false;
-  }
-  else {
-    $http.get("/data/catalog.json", {})
-      .success(function(result, status, headers, config) {
-        for(var i=0; i<result.length; i++) {
-          result[i].tagFilter = true;
-          var repourl = result[i]["Public Code Repo"];
-          result[i]["repourl"] = result[i]["Public Code Repo"];
-          var parts = repourl.split('/');
-          var host = parts[2];
-          if(host == "github.com") {
-            result[i].protocol = parts[0];
-            result[i].host = host;
-            result[i].user = parts[3];
-            result[i].repo = parts[4];
-          }
-        }
-        $scope.catalog = result;
-        CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout);
-        $scope.isLoading = false;
-      })
-      .error(function(serviceData, status, headers, config) {
-        console.log("error occured pulling catalog data in get ajax call.");
-      });
-  }
+  } else {
+    CatalogService.get.query().$promise.then(function(results) {
+      angular.forEach(results, function(result) {
+        var repourl, parts, host;
 
-} //end CodeCtrl
+        result.tagFilter = true;
+        repourl = result["Public Code Repo"];
+        result["repourl"] = result["Public Code Repo"];
+        parts = repourl.split('/');
+        host = parts[2];
+
+        if(host == "github.com") {
+          result.protocol = parts[0];
+          result.host = host;
+          result.user = parts[3];
+          result.repo = parts[4];
+        }
+      });
+
+      $scope.catalog = results;
+      CodeCtrlImpl($scope, CatalogService, $location, $window, $sce, $timeout);
+      $scope.isLoading = false;
+    }, function(error) {
+      console.log("Error occured pulling catalog data in get ajax call. error: " + error);
+    });
+  }
+}]) //end CodeCtrl
+
+.controller('GuideCtrl', ['$scope', 'SraService', function($scope, SraService) {
+  SraService.get.query().$promise.then(function(results) {
+    $scope.sras = results;
+  }, function(error) {
+    console.log("Error occured pulling sra data. Error: " + error);
+  });
+}]); //end GuideCtrl
+
+var currentTag = "";
 
 function CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout) {
   $scope.maxTags = 10;
@@ -121,17 +133,7 @@ function CodeCtrlImpl($scope, $http, $location, $window, $sce, $timeout) {
       }
     }
   }
-}
-
-function GuideCtrl($scope, $http) {
-  $http.get("/data/SRA.json", {})
-    .success(function(result, status, headers, config) {
-      $scope.sras = result;
-    })
-      .error(function(serviceData, status, headers, config) {
-        console.log("error occured pulling sra data");
-      });
-}
+} //end CodeCtrlImpl
 
 var license_content = [
   {
