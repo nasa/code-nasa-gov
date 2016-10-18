@@ -1,0 +1,44 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view3">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">3</div>
+      <h1>Share</h1>
+      <p>
+      Thanks for your interest in sharing your code! If you are a developer employed by NASA or a
+      NASA contractor and have open source code you wish to host on the NASA GitHub repository,
+      email us at <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a>.
+      If you aren't affiliated with NASA, we encourage
+      your to clone, fork, modify, break, and improve the code that we've released thus far.
+      We're still working out the proper methods to take user contributions to our code and
+      will provide information on how to do so as it develops.
+      </p>    
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view3'
+    });
+  </script>
+</dom-module>
