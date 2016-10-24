@@ -22,7 +22,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <div class="circle">2</div>
       <h1>Overview</h1>
       <p>
       Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>.
@@ -35,11 +34,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       See the infographic below for a summary of the steps necessary to go from innovation to open source:
       </p>
     </div>
+
+    <div class="card">
+      <h2>Center SRAs</h2>
+      <table>
+        <tr>
+          <th>Center</th>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Phone</th>
+          <th>Email</th>
+        </tr>
+
+        <template is="dom-repeat" items="[[sras]]">
+          <tr>
+            <td>[[item.Center]]</td>
+            <td>[[item.Name]]</td>
+            <td>[[item.Title]]</td>
+            <td>[[item.Phone]]</td>
+            <td>[[item.Email]]</td>
+          </tr>
+        </template>
+      </table>
+    </div>
   </template>
 
   <script>
     Polymer({
-      is: 'my-view2'
+      is: 'my-view2',
+
+      properties: {
+        sras: Object
+      },
+
+      created: function() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', this._loadSras.bind(this));
+        xhr.open('GET', '/data/SRA.json');
+        xhr.send();
+      },
+
+      _loadSras: function(e) {
+        this.sras = JSON.parse(e.target.responseText);
+      },
     });
   </script>
 </dom-module>
