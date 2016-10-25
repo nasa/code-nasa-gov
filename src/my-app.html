@@ -21,7 +21,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       :host {
         --app-primary-color: #555555;
-        --app-secondary-color: black;
 
         display: block;
       }
@@ -36,57 +35,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path></app-location>
     <app-route
         route="{{route}}"
         pattern="/:page"
         data="{{routeData}}"
         query-params="{{queryParams}}"></app-route>
 
-    <!-- <app-drawer-layout fullbleed> -->
-      <!-- Drawer content -->
-      <!-- TODO: Only show the drawer on mobile -->
-      <!--<app-drawer>
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="projects" href="/projects">Projects</a>
-          <a name="guide" href="/guide">Guide</a>
-          <a name="share" href="/share">Share</a>
-        </iron-selector>
-      </app-drawer>-->
+    <app-header-layout>
+      <app-header reveals shadow>
+        <app-toolbar class="tabs">
+          <a href="/#/">code.NASA</a>
+          <a href="/#/guide">Guide</a>
+          <a href="/#/share">Share</a>
+        </app-toolbar>
+        <app-toolbar>
+          <label for="query">Search Projects:</label>
+          <input id="query" type="text" value="{{queryParams.q::input}}">
+        </app-toolbar>
+      </app-header>
 
-      <!-- Main content -->
-      <app-header-layout>
+      <iron-pages
+          selected="[[page]]"
+          attr-for-selected="name"
+          fallback-selection="view404"
+          role="main">
+        <my-view1 name="projects" query-params="{{queryParams}}"></my-view1>
+        <my-view2 name="guide"></my-view2>
+        <my-view3 name="share"></my-view3>
+        <my-view404 name="view404"></my-view404>
+      </iron-pages>
 
-        <app-header reveals shadow>
-          <app-toolbar class="tabs">
-            <a href="/#/">code.NASA</a>
-            <a href="/#/guide">Guide</a>
-            <a href="/#/share">Share</a>
-          </app-toolbar>
-          <app-toolbar>
-            <label for="query">Search Projects:</label>
-            <input id="query" type="text" value="{{queryParams.q::input}}">
-          </app-toolbar>
-        </app-header>
-
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-          <my-view1 name="projects" query-params="{{queryParams}}"></my-view1>
-          <my-view2 name="guide"></my-view2>
-          <my-view3 name="share"></my-view3>
-          <my-view404 name="view404"></my-view404>
-        </iron-pages>
-
-        <footer>
-          <div>NASA Officials: <a href="mailto:beth.beck@nasa.gov">Beth Beck</a> and <a href="mailto:jason.duley@nasa.gov">Jason Duley</a></div>
-          <div><a href="http://open.nasa.gov/">A NASA Open Government Initiative Website</a></div>
-        </footer>
-      </app-header-layout>
-    <!-- </app-drawer-layout> -->
+      <footer>
+        <div>NASA Officials: <a href="mailto:beth.beck@nasa.gov">Beth Beck</a> and <a href="mailto:jason.duley@nasa.gov">Jason Duley</a></div>
+        <div><a href="http://open.nasa.gov/">A NASA Open Government Initiative Website</a></div>
+      </footer>
+    </app-header-layout>
   </template>
 
   <script>
