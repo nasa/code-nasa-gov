@@ -16,8 +16,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
+      }
 
-        padding: 10px;
+      .horizontal-scroll {
+        overflow-y: auto;
       }
     </style>
 
@@ -37,25 +39,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <h2>Center SRAs</h2>
-      <table>
-        <tr>
-          <th>Center</th>
-          <th>Name</th>
-          <th>Title</th>
-          <th>Phone</th>
-          <th>Email</th>
-        </tr>
-
-        <template is="dom-repeat" items="[[sras]]">
+      <div class="horizontal-scroll">
+        <table>
           <tr>
-            <td>[[item.Center]]</td>
-            <td>[[item.Name]]</td>
-            <td>[[item.Title]]</td>
-            <td>[[item.Phone]]</td>
-            <td>[[item.Email]]</td>
+            <th>Center</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Phone</th>
+            <th>Email</th>
           </tr>
-        </template>
-      </table>
+
+          <template is="dom-repeat" items="[[sras]]">
+            <tr>
+              <td>[[item.Center]]</td>
+              <td>[[item.Name]]</td>
+              <td>[[item.Title]]</td>
+              <td>[[item.Phone]]</td>
+              <td>[[item.Email]]</td>
+            </tr>
+          </template>
+        </table>
+      </div>
     </div>
   </template>
 

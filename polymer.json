@@ -2,12 +2,13 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.html",
   "fragments": [
-    "src/project.html",
+    "src/projects.html",
     "src/guide.html",
     "src/share.html",
     "src/my-view404.html"
   ],
   "sourceGlobs": [
+   "data/**/*",
    "src/**/*",
    "images/**/*",
    "bower.json"
