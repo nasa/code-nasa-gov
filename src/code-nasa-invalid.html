@@ -9,23 +9,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view404">
+<dom-module id="code-nasa-invalid">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
-
-        padding: 10px 20px;
       }
     </style>
 
-    Oops you hit a 404. <a href="/">Head back to home.</a>
+    <div class="card">
+      Invalid page. <a href="/#/">Go to homepage</a>
+    </div>
   </template>
 
   <script>
     Polymer({
-      is: 'my-view404'
+      is: 'code-nasa-invalid'
     });
   </script>
 </dom-module>

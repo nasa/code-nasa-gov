@@ -1,7 +1,7 @@
 {
   "name": "My App",
   "short_name": "My App",
-  "start_url": "/?homescreen=1",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#555555",
   "background_color": "#555555",

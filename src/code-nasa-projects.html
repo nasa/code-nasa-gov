@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view1">
+<dom-module id="code-nasa-projects">
   <template>
     <style include="shared-styles">
       :host {
@@ -25,19 +25,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <!-- <input type="text" value="{{query::input}}">
-
-      <p>
-        <a href="/guide">Click here for guide to publishing open source!</a>
-      </p> -->
-    <!-- <template is="dom-if" if="[[queryParams.tag]]"> -->
       [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
       <template is="dom-if" if="[[queryParams.q]]">matching "[[queryParams.q]]"</template>
       <template is="dom-if" if="[[queryParams.tag]]">tagged with <span class="tag">[[queryParams.tag]]</span></template>
       <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"><a href="/#/">Show all projects</a></template>
-    <!-- </template> -->
     </div>
-
 
     <iron-list items="[[matchedProjects]]" scroll-target="document">
       <template>
@@ -54,7 +46,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <br>
             Tags:
             <template is="dom-repeat" items="[[item.Categories]]" as="tag">
-              <a href="#" class="tag" on-click="_setTag">[[tag]]</a>
+              <a href$="/?tag=[[tag]]" class="tag">[[tag]]</a>
             </template>
           </div>
         </div>
@@ -64,17 +56,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     Polymer({
-      is: 'my-view1',
+      is: 'code-nasa-projects',
 
       properties: {
         projects: Object,
 
         matchedProjects: Object,
 
-        queryParams: {
-          type: Object,
-          notify: true
-        }
+        queryParams: Object
       },
 
       observers: [
@@ -89,8 +78,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _loadProjects: function(e) {
-        this.projects = JSON.parse(e.target.responseText);
+        this.projects = this._addSearchContent(JSON.parse(e.target.responseText));
         this._setMatchedProjects();
+      },
+
+      _addSearchContent: function(projects) {
+        for (var i = 0; i < projects.length; ++i) {
+          var p = projects[i];
+          p._search = [
+            p.Categories.join('*'),
+            p.Contributors.join('*'),
+            p.Description,
+            p['External Link'],
+            p.License.join('*'),
+            p['NASA Center'],
+            p['Public Code Repo'],
+            p.Software,
+            p.Update_Date].join('*');
+        }
+        return projects;
       },
 
       _getProperty: function(item, prop) {
@@ -104,27 +110,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             var tag = this.queryParams.tag || '';
             var regex = new RegExp(q, 'i');
             this.matchedProjects = this.projects.filter(function(p) {
-              var content = [
-                p.Categories.join(''),
-                p.Contributors.join(''),
-                p.Description,
-                p['External Link'],
-                p.License.join(''),
-                p['NASA Center'],
-                p['Public Code Repo'],
-                p.Software,
-                p.Update_Date].join('')
-              return (!q || regex.exec(content)) && (!tag || p.Categories.indexOf(tag) !== -1);
+              return (!q || regex.exec(p._search)) && (!tag || p.Categories.indexOf(tag) !== -1);
             });
           } else {
             this.matchedProjects = this.projects;
           }
         }
-      },
-
-      _setTag: function(event) {
-        event.preventDefault();
-        this.set('queryParams.tag', event.target.textContent);
       },
 
       _pluralize: function(word, count) {

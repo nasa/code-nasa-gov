@@ -15,10 +15,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="shared-styles.html">
 
-<dom-module id="my-app">
+<dom-module id="code-nasa-app">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         --app-primary-color: #555555;
 
@@ -36,11 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        query-params="{{queryParams}}"></app-route>
+    <app-route route="[[route]]" pattern="/:page" data="{{routeData}}"></app-route>
 
     <app-header-layout>
       <app-header reveals shadow>
@@ -58,12 +55,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <iron-pages
           selected="[[page]]"
           attr-for-selected="name"
-          fallback-selection="view404"
+          fallback-selection="invalid"
           role="main">
-        <my-view1 name="projects" query-params="{{queryParams}}"></my-view1>
-        <my-view2 name="guide"></my-view2>
-        <my-view3 name="share"></my-view3>
-        <my-view404 name="view404"></my-view404>
+        <code-nasa-projects name="projects" query-params="[[queryParams]]"></code-nasa-projects>
+        <code-nasa-guide name="guide"></code-nasa-guide>
+        <code-nasa-share name="share"></code-nasa-share>
+        <code-nasa-invalid name="invalid"></code-nasa-invalid>
       </iron-pages>
 
       <footer>
@@ -75,7 +72,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     Polymer({
-      is: 'my-app',
+      is: 'code-nasa-app',
 
       properties: {
         queryParams: Object,
@@ -85,24 +82,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       observers: [
         '_routePageChanged(routeData.page)',
+        '_pageChanged(page)',
         '_queryChanged(queryParams.q)'
       ],
 
       _routePageChanged: function(page) {
         Polymer.AppLayout.scroll({ top: 0 });
         this.page = page || 'projects';
+      },
 
+      _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl(this.page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        var resolvedPageUrl = this.resolveUrl('code-nasa-' + this.page + '.html');
+        this.importHref(resolvedPageUrl, null, this._handleInvalidPage, true);
       },
 
       _queryChanged: function(query) {
-        if (query) this.set('routeData.page', '');
+        if (query) this.set('route.path', '/');
       },
 
-      _showPage404: function() {
-        this.page = 'my-view404';
+      _handleInvalidPage: function() {
+        this.page = 'invalid';
       }
     });
   </script>
