@@ -1,11 +1,11 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/my-app.html",
+  "shell": "src/code-nasa-app.html",
   "fragments": [
-    "src/projects.html",
-    "src/guide.html",
-    "src/share.html",
-    "src/my-view404.html"
+    "src/code-nasa-projects.html",
+    "src/code-nasa-guide.html",
+    "src/code-nasa-share.html",
+    "src/code-nasa-invalid.html"
   ],
   "sourceGlobs": [
    "data/**/*",
