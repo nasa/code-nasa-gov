@@ -1,10 +1,10 @@
 {
-  "name": "My App",
-  "short_name": "My App",
+  "name": "NASA Open Source Software",
+  "short_name": "NASA OSS",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#555555",
-  "background_color": "#555555",
+  "theme_color": "#050D1A",
+  "background_color": "#050D1A",
   "icons": [
     {
       "src": "images/manifest/icon-192x192.png",

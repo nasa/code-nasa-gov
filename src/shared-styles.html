@@ -14,14 +14,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="shared-styles">
   <template>
     <style>
-      .card {
-        margin: 12px;
-        padding: 16px;
+      h1, h2 {
+        font-weight: normal;
+        letter-spacing: 0.1em;
+      }
 
-        color: #757575;
-        border-radius: 5px;
-        background-color: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      a {
+        color: #FFF;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .section {
+        position: relative;
+        margin: 0 24px;
+        border-bottom: 1px solid #6A6E75;
+      }
+
+      .section p {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     </style>
   </template>

@@ -15,24 +15,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="code-nasa-app">
   <template>
     <style include="shared-styles">
       :host {
-        --app-primary-color: #555555;
-
         display: block;
       }
 
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
+      app-header[threshold-triggered] {
+        background-color: #050D1A;
       }
       
-      .tabs > a {
-        margin: 12px;
+      .tabs a {
+        display: inline-block;
+        padding: 12px 0;
+        margin: 24px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+      }
+      
+      .tabs a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid #6A6E75;
+      }
+
+      .tabs a.iron-selected {
+        border-bottom: 1px solid #DCDCDC;
+      }
+
+      footer {
+        margin-top: 48px;
+        background: #252C32;
+        padding: 24px;
+        text-align: center;
       }
     </style>
 
@@ -40,16 +59,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-route route="[[route]]" pattern="/:page" data="{{routeData}}"></app-route>
 
     <app-header-layout>
-      <app-header reveals shadow>
-        <app-toolbar class="tabs">
-          <a href="/#/">code.NASA</a>
-          <a href="/#/guide">Guide</a>
-          <a href="/#/share">Share</a>
-        </app-toolbar>
-        <app-toolbar>
+      <app-header reveals threshold="1">
+        <div class="tabs">
+          <iron-selector selected="[[page]]" attr-for-selected="name">
+            <a href="/#/" name="projects">Projects</a>
+            <a href="/#/guide" name="guide">Guide</a>
+            <a href="/#/share" name="share">Share</a>
+          </iron-selector>
+        </div>
+        <!-- <app-toolbar>
           <label for="query">Search Projects:</label>
           <input id="query" type="text" value="{{queryParams.q::input}}">
-        </app-toolbar>
+        </app-toolbar> -->
       </app-header>
 
       <iron-pages
@@ -57,15 +78,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           attr-for-selected="name"
           fallback-selection="invalid"
           role="main">
-        <code-nasa-projects name="projects" query-params="[[queryParams]]"></code-nasa-projects>
+        <code-nasa-projects name="projects" query-params="{{queryParams}}"></code-nasa-projects>
         <code-nasa-guide name="guide"></code-nasa-guide>
         <code-nasa-share name="share"></code-nasa-share>
         <code-nasa-invalid name="invalid"></code-nasa-invalid>
       </iron-pages>
 
       <footer>
-        <div>NASA Officials: <a href="mailto:beth.beck@nasa.gov">Beth Beck</a> and <a href="mailto:jason.duley@nasa.gov">Jason Duley</a></div>
-        <div><a href="http://open.nasa.gov/">A NASA Open Government Initiative Website</a></div>
+        <p>
+          NASA Officials:
+          <a href="mailto:beth.beck@nasa.gov">Beth Beck</a>
+          and
+          <a href="mailto:jason.duley@nasa.gov">Jason Duley</a>
+        </p>
+        <p>
+          <a href="http://open.nasa.gov/">A NASA Open Government Initiative Website</a>
+        </p>
       </footer>
     </app-header-layout>
   </template>
@@ -83,7 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       observers: [
         '_routePageChanged(routeData.page)',
         '_pageChanged(page)',
-        '_queryChanged(queryParams.q)'
+        // '_queryChanged(queryParams.q)'
       ],
 
       _routePageChanged: function(page) {
@@ -97,9 +125,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.importHref(resolvedPageUrl, null, this._handleInvalidPage, true);
       },
 
-      _queryChanged: function(query) {
-        if (query) this.set('route.path', '/');
-      },
+      // _queryChanged: function(query) {
+      //   if (query) this.set('route.path', '/');
+      // },
 
       _handleInvalidPage: function() {
         this.page = 'invalid';
