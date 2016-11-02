@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
@@ -29,6 +30,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #050D1A;
       }
       
+      .tabs {
+        display: none;
+      }
+
       .tabs a {
         display: inline-block;
         padding: 12px 0;
@@ -47,11 +52,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-bottom: 1px solid #DCDCDC;
       }
 
+      iron-pages {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
       footer {
         margin-top: 48px;
         background: #252C32;
         padding: 24px;
         text-align: center;
+      }
+
+      app-drawer {
+        --app-drawer-content-container: {
+          background-color: #000;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .tabs {
+          display: block;
+        }
+
+        .drawer-toggle,
+        app-drawer {
+          display: none;
+        }
       }
     </style>
 
@@ -60,13 +88,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-header-layout>
       <app-header reveals threshold="1">
-        <div class="tabs">
-          <iron-selector selected="[[page]]" attr-for-selected="name">
-            <a href="/#/" name="projects">Projects</a>
-            <a href="/#/guide" name="guide">Guide</a>
-            <a href="/#/share" name="share">Share</a>
-          </iron-selector>
-        </div>
+        <button class="drawer-toggle" on-click="_toggleDrawer">==</button>
+        <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
+          <a href="/#/" name="projects">Projects</a>
+          <a href="/#/guide" name="guide">Guide</a>
+          <a href="/#/share" name="share">Share</a>
+        </iron-selector>
         <!-- <app-toolbar>
           <label for="query">Search Projects:</label>
           <input id="query" type="text" value="{{queryParams.q::input}}">
@@ -96,6 +123,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </p>
       </footer>
     </app-header-layout>
+
+    <app-drawer id="drawer" swipe-open>
+      <button on-click="_toggleDrawer">X</button>
+      <iron-selector selected="[[page]]" attr-for-selected="name">
+        <a href="/#/" name="projects">Projects</a>
+        <a href="/#/guide" name="guide">Guide</a>
+        <a href="/#/share" name="share">Share</a>
+      </iron-selector>
+    </app-drawer>
   </template>
 
   <script>
@@ -120,6 +156,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pageChanged: function(page) {
+        this.$.drawer.close();
+
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('code-nasa-' + this.page + '.html');
         this.importHref(resolvedPageUrl, null, this._handleInvalidPage, true);
@@ -131,6 +169,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _handleInvalidPage: function() {
         this.page = 'invalid';
+      },
+
+      _toggleDrawer: function() {
+        this.$.drawer.toggle();
       }
     });
   </script>

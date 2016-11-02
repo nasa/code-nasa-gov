@@ -19,11 +19,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
-      .splash {
-        margin: 20vh 0;
-        text-align: center;
-      }
-
       #query {
         padding-left: 30px;
         background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
@@ -36,6 +31,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #query:focus {
         border-bottom: 1px solid #DCDCDC;
+      }
+
+      .project {
+        position: relative;
+        border-bottom: 1px solid #6A6E75;
+      }
+
+      .project p {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .meta {
@@ -55,11 +61,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="splash">
-      <h1>CODE.NASA.GOV</h1>
+      <h1>code.nasa.gov</h1>
       <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
     </div>
 
-    <div class="section">
+    <div class="project">
       <p class="meta">
         [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
         <template is="dom-if" if="[[queryParams.q]]">
@@ -77,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-list items="[[matchedProjects]]" scroll-target="document">
       <template>
         <div>
-          <div class="section">
+          <div class="project">
             <h2>
               <span>[[_getProperty(item, 'Software')]]</span>
             </h2>
