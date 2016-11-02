@@ -18,28 +18,91 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
+      .step {
+        text-align: center;
+      }
+
+      .step > .step-image {
+        height: 50px;
+        background: #CCC;
+      }
+
       .horizontal-scroll {
         overflow-y: auto;
       }
+
+      @media (min-width: 768px) {
+        .step {
+          position: relative;
+          margin: 24px 0;
+          text-align: left;
+        }
+
+        .step > .step-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100px;
+          height: 100%;
+        }
+
+        .step > h2 {
+          position: absolute;
+          margin: 0;
+          top: 0;
+          left: 100px;
+          width: 200px;
+          text-align: right;
+        }
+
+        .step > p {
+          margin-left: 348px;
+          border-left: 1px solid #6A6E75;
+          padding-left: 48px;
+        }
+      }
     </style>
 
-    <div class="section">
-      <h1>Overview</h1>
+    <div class="splash">
+      <h1>How to Publish</h1>
+    </div>
+
+    <div class="step">
+      <div class="step-image"></div>
+      <h2>1</h2>
+      <p>Lorem ipsum</p>
+    </div>
+
+    <div class="step">
+      <div class="step-image"></div>
+      <h2>2</h2>
+      <p>Lorem ipsum</p>
+    </div>
+
+    <div class="step">
+      <div class="step-image"></div>
+      <h2>3</h2>
+      <p>Lorem ipsum</p>
+    </div>
+
+    <div class="step">
+      <div class="step-image"></div>
+      <h2>Overview</h2>
       <p>
-      Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>.
-      NPR 2210.1C establishes the roles, responsibilities, and
-      procedures for reporting, reviewing, and releasing software under various conditions, including open source.
-      Every center has a Software Release Authority (SRA). The SRA processes requests for software release and
-      coordinates legal, export control, IT security, 508 compliance, and software engineering standards
-      compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals
-      and begin the reporting, review, and release process.<br><br>
-      See the infographic below for a summary of the steps necessary to go from innovation to open source:
+        Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>.
+        NPR 2210.1C establishes the roles, responsibilities, and
+        procedures for reporting, reviewing, and releasing software under various conditions, including open source.
+        Every center has a Software Release Authority (SRA). The SRA processes requests for software release and
+        coordinates legal, export control, IT security, 508 compliance, and software engineering standards
+        compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals
+        and begin the reporting, review, and release process.
       </p>
     </div>
 
-    <div class="section">
-      <h2>Center SRAs</h2>
-      <div class="horizontal-scroll">
+    <div class="step">
+      <div class="step-image"></div>
+      <h2>SRAs</h2>
+      <p class="horizontal-scroll">
         <table>
           <tr>
             <th>Center</th>
@@ -59,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </tr>
           </template>
         </table>
-      </div>
+      </p>
     </div>
   </template>
 

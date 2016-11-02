@@ -12,23 +12,60 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="code-nasa-share">
-  <template>
+  <template strip-whitespace>
     <style include="shared-styles">
       :host {
         display: block;
       }
+
+      .section {
+        text-align: center;
+      }
+
+      .section::before {
+        display: block;
+        margin: 0 auto;
+        content: '';
+        width: 100px;
+        border-top: 1px solid #6A6E75;
+      }
+
+      @media (min-width: 768px) {
+        .section {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 40%;
+          margin: 0 5%;
+          text-align: left;
+          border-left: 1px solid #6A6E75;
+          padding-left: 48px;
+        }
+
+        .section::before {
+          border-top: none;
+        }
+      }
     </style>
 
+    <div class="splash">
+      <h1>Share your Code</h1>
+    </div>
+
     <div class="section">
-      <h1>Share</h1>
+      <h2>NASA developers:</h2>
       <p>
-      Thanks for your interest in sharing your code! If you are a developer employed by NASA or a
-      NASA contractor and have open source code you wish to host on the NASA GitHub repository,
-      email us at <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a>.
-      If you aren't affiliated with NASA, we encourage
-      your to clone, fork, modify, break, and improve the code that we've released thus far.
-      We're still working out the proper methods to take user contributions to our code and
-      will provide information on how to do so as it develops.
+        Thanks for your interest in sharing your code! If you are a developer employed by NASA or a
+        NASA contractor and have open source code you wish to host on the NASA GitHub repository,
+        email us at <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a>.
+      </p>
+    </div>
+    <div class="section">
+      <h2>Non-NASA affiliates:</h2>
+      <p>
+        We encourage
+        your to clone, fork, modify, break, and improve the code that we've released thus far.
+        We're still working out the proper methods to take user contributions to our code and
+        will provide information on how to do so as it develops.
       </p>    
     </div>
   </template>
