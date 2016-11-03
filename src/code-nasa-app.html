@@ -26,15 +26,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
-      app-header[threshold-triggered] {
-        background-color: #050D1A;
+      app-header::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #252C32;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+
+      app-header[threshold-triggered]::before {
+        opacity: 1;
+      }
+
+      .menu-button {
+        width: 24px;
+        height: 24px;
+        margin: 24px;
+        border: none;
+        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
       }
       
       .tabs {
         display: none;
       }
 
-      .tabs a {
+      .tabs > a {
         display: inline-block;
         padding: 12px 0;
         margin: 24px;
@@ -43,12 +63,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         letter-spacing: 0.3em;
       }
       
-      .tabs a:hover {
+      .tabs > a:hover {
         text-decoration: none;
         border-bottom: 1px solid #6A6E75;
       }
 
-      .tabs a.iron-selected {
+      .tabs > a.iron-selected {
         border-bottom: 1px solid #DCDCDC;
       }
 
@@ -67,8 +87,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       app-drawer {
         --app-drawer-content-container: {
-          background-color: #000;
+          background-color: #252C32;
         }
+      }
+
+      .close-button {
+        width: 24px;
+        height: 24px;
+        margin: 24px;
+        border: none;
+        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
+      }
+
+      .drawer-links > a {
+        display: block;
+        padding: 12px;
+        margin: 12px 24px;
+      }
+      
+      .drawer-links > a:hover {
+        text-decoration: none;
+      }
+
+      .drawer-links > a.iron-selected {
+        padding-left: 11px;
+        border-left: 1px solid #DCDCDC;
       }
 
       @media (min-width: 768px) {
@@ -76,7 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           display: block;
         }
 
-        .drawer-toggle,
+        .menu-button,
         app-drawer {
           display: none;
         }
@@ -88,16 +131,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-header-layout>
       <app-header reveals threshold="1">
-        <button class="drawer-toggle" on-click="_toggleDrawer">==</button>
+        <button class="menu-button" on-click="_toggleDrawer"></button>
         <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
           <a href="/#/" name="projects">Projects</a>
           <a href="/#/guide" name="guide">Guide</a>
           <a href="/#/share" name="share">Share</a>
         </iron-selector>
-        <!-- <app-toolbar>
-          <label for="query">Search Projects:</label>
-          <input id="query" type="text" value="{{queryParams.q::input}}">
-        </app-toolbar> -->
       </app-header>
 
       <iron-pages
@@ -124,9 +163,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </footer>
     </app-header-layout>
 
-    <app-drawer id="drawer" swipe-open>
-      <button on-click="_toggleDrawer">X</button>
-      <iron-selector selected="[[page]]" attr-for-selected="name">
+    <app-drawer id="drawer" tabindex="0" swipe-open>
+      <button class="close-button" on-click="_toggleDrawer"></button>
+      <iron-selector class="drawer-links" selected="[[page]]" attr-for-selected="name" on-click="_toggleDrawer">
         <a href="/#/" name="projects">Projects</a>
         <a href="/#/guide" name="guide">Guide</a>
         <a href="/#/share" name="share">Share</a>
@@ -146,9 +185,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       observers: [
         '_routePageChanged(routeData.page)',
-        '_pageChanged(page)',
-        // '_queryChanged(queryParams.q)'
+        '_pageChanged(page)'
       ],
+
+      listeners: {
+        down: '_down'
+      },
 
       _routePageChanged: function(page) {
         Polymer.AppLayout.scroll({ top: 0 });
@@ -156,16 +198,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pageChanged: function(page) {
-        this.$.drawer.close();
-
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('code-nasa-' + this.page + '.html');
         this.importHref(resolvedPageUrl, null, this._handleInvalidPage, true);
       },
-
-      // _queryChanged: function(query) {
-      //   if (query) this.set('route.path', '/');
-      // },
 
       _handleInvalidPage: function() {
         this.page = 'invalid';
@@ -173,6 +209,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _toggleDrawer: function() {
         this.$.drawer.toggle();
+      },
+
+      _down: function() {
+        // HACK(keanulee): Need to add some gesture listener so clicks work correctly on touch devices.
+        // See Polymer/polymer#4128.
       }
     });
   </script>
