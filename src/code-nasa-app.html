@@ -43,11 +43,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .menu-button {
-        width: 24px;
-        height: 24px;
-        margin: 24px;
+        width: 28px;
+        height: 28px;
+        margin: 32px;
         border: none;
         background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
+      }
+
+      .logo {
+        width: 52px;
+        height: 52px;
+        margin: 20px;
+        vertical-align: top;
+        float: right;
       }
       
       .tabs {
@@ -57,7 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .tabs > a {
         display: inline-block;
         padding: 12px 0;
-        margin: 24px;
+        margin: 44px 24px;
         font-weight: normal;
         text-transform: uppercase;
         letter-spacing: 0.3em;
@@ -115,6 +123,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       @media (min-width: 768px) {
+        .logo {
+          margin: 40px;
+          float: left;
+        }
+
         .tabs {
           display: block;
         }
@@ -132,6 +145,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-header-layout>
       <app-header reveals threshold="1">
         <button class="menu-button" on-click="_toggleDrawer"></button>
+        <!-- TODO(keanulee): Change image URL. -->
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA Logo">
         <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
           <a href="/#/" name="projects">Projects</a>
           <a href="/#/guide" name="guide">Guide</a>
@@ -194,6 +209,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _routePageChanged: function(page) {
         Polymer.AppLayout.scroll({ top: 0 });
+
+        // https://code.nasa.gov/#/SRA is a permalink that should show the guide page.
+        if (page === 'SRA') {
+          page = 'guide';
+        }
+
         this.page = page || 'projects';
       },
 
