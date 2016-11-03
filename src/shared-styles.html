@@ -14,9 +14,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="shared-styles">
   <template>
     <style>
-      h1, h2 {
+      h1 {
+        font-size: 1.5em;
+        font-weight: normal;
+        letter-spacing: 0.25em;
+      }
+
+      h2 {
+        font-size: 1em;
         font-weight: normal;
         letter-spacing: 0.1em;
+      }
+
+      h1, h2, p {
+        margin: 2em 0;
       }
 
       a {
@@ -33,6 +44,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 20vw 0;
         text-align: center;
         text-transform: uppercase;
+      }
+
+      @media (min-width: 768px) {
+        h1 {
+          font-size: 2em;
+        }
       }
     </style>
   </template>
