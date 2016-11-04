@@ -17,6 +17,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
+        background-color: #050D1A;
+        background-image: url('/images/backgrounds/projects.png'),
+                          linear-gradient(0deg, #323D44, transparent 1300px);
+        background-repeat: no-repeat;
+        background-position: center top, center bottom;
+        background-size: 120%;
       }
 
       #query {
@@ -24,21 +30,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 100%;
         box-sizing: border-box;
         padding-left: 30px;
-        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
+        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22%23DDDDDD%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
         border: none;
-        border-bottom: 1px solid #6A6E75;
+        border-bottom: 1px solid var(--app-accent-color);
         outline: none;
         font-size: 24px;
-        color: #DCDCDC;
+        color: var(--app-highlight-color);
       }
 
       #query:focus {
-        border-bottom: 1px solid #DCDCDC;
+        border-bottom: 1px solid var(--app-highlight-color);
       }
 
       .project {
         position: relative;
-        border-bottom: 1px solid #6A6E75;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--app-accent-color);
+      }
+
+      .project > h2 {
+        font-weight: normal;
+        letter-spacing: 2px;
       }
 
       .project > p {
@@ -48,66 +60,74 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .project > p.meta {
-        color: #6A6E75;
+        color: var(--app-accent-color);
         font-style: italic;
       }
 
       .project > h2 > span {
         display: inline-block;
-        border: 1px solid #6A6E75;
+        border: 1px solid var(--app-accent-color);
         padding: 12px;
       }
 
       .tag {
         margin-right: 0.5em;
       }
+
+      @media (min-width: 768px) {
+        :host {
+          background-size: 100%;
+        }
+      }
     </style>
 
-    <div class="splash">
-      <h1>code.nasa.gov</h1>
-      <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
-    </div>
+    <div class="container">
+      <div class="splash">
+        <h1>code.nasa.gov</h1>
+        <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
+      </div>
 
-    <div class="project">
-      <p class="meta">
-        [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
-        <template is="dom-if" if="[[queryParams.q]]">
-          matching "[[queryParams.q]]"
-        </template>
-        <template is="dom-if" if="[[queryParams.tag]]">
-          tagged with #[[queryParams.tag]]
-        </template>
-        <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]">
-          <a href="/#/">Show all projects</a>
-        </template>
-      </p>
-    </div>
+      <div class="project">
+        <p class="meta">
+          [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
+          <template is="dom-if" if="[[queryParams.q]]">
+            matching "[[queryParams.q]]"
+          </template>
+          <template is="dom-if" if="[[queryParams.tag]]">
+            tagged with #[[queryParams.tag]]
+          </template>
+          <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]">
+            <a href="/#/">Show all projects</a>
+          </template>
+        </p>
+      </div>
 
-    <iron-list items="[[matchedProjects]]" scroll-target="document">
-      <template>
-        <div>
-          <div class="project">
-            <h2>
-              <span>[[_getProperty(item, 'Software')]]</span>
-            </h2>
-            <p>
-              <a href$="[[_getProperty(item, 'Public Code Repo')]]">[[_getProperty(item, 'Public Code Repo')]]</a>
-            </p>
-            <p>[[item.Description]]</p>
-            <p>
-              <template is="dom-repeat" items="[[item.Categories]]" as="tag">
-                <a href$="/?tag=[[tag]]" class="tag">#[[tag]]</a>
-              </template>
-            </p>
-            <p>
-              <template is="dom-repeat" items="[[item.License]]" as="license">
-                <span>[[license]]</span>
-              </template>
-            </p>
+      <iron-list items="[[matchedProjects]]" scroll-target="document">
+        <template>
+          <div>
+            <div class="project">
+              <h2>
+                <span>[[_getProperty(item, 'Software')]]</span>
+              </h2>
+              <p>
+                <a href$="[[_getProperty(item, 'Public Code Repo')]]">[[_getProperty(item, 'Public Code Repo')]]</a>
+              </p>
+              <p>[[item.Description]]</p>
+              <p>
+                <template is="dom-repeat" items="[[item.Categories]]" as="tag">
+                  <a href$="/?tag=[[tag]]" class="tag">#[[tag]]</a>
+                </template>
+              </p>
+              <p>
+                <template is="dom-repeat" items="[[item.License]]" as="license">
+                  <span>[[license]]</span>
+                </template>
+              </p>
+            </div>
           </div>
-        </div>
-      </template>
-    </iron-list>
+        </template>
+      </iron-list>
+    </div>
   </template>
 
   <script>

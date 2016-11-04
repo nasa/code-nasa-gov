@@ -24,6 +24,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
+
+        --app-accent-color: #979ca5;
+        --app-highlight-color: #ddd;
+      }
+
+      app-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 11;
       }
 
       app-header::before {
@@ -33,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: #252C32;
+        background-color: #21292E;
         opacity: 0;
         transition: opacity 0.5s;
       }
@@ -47,13 +58,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 28px;
         margin: 32px;
         border: none;
-        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
+        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z%22 fill=%22%23DDDDDD%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
       }
 
       .logo {
         width: 52px;
         height: 52px;
-        margin: 20px;
+        margin: 22px;
         vertical-align: top;
         float: right;
       }
@@ -64,38 +75,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .tabs > a {
         display: inline-block;
-        padding: 12px 0;
-        margin: 44px 24px;
+        padding: 14px 0;
+        margin: 44px 20px;
         font-weight: normal;
         text-transform: uppercase;
-        letter-spacing: 0.3em;
+        letter-spacing: 6px;
       }
       
       .tabs > a:hover {
         text-decoration: none;
-        border-bottom: 1px solid #6A6E75;
+        border-bottom: 1px solid var(--app-accent-color);
       }
 
       .tabs > a.iron-selected {
-        border-bottom: 1px solid #DCDCDC;
+        border-bottom: 1px solid var(--app-highlight-color);
       }
 
       iron-pages {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 24px;
+        min-height: 100px;
       }
 
       footer {
-        margin-top: 48px;
-        background: #252C32;
         padding: 24px;
         text-align: center;
       }
 
       app-drawer {
+        z-index: 12;
+
         --app-drawer-content-container: {
-          background-color: #252C32;
+          background-color: #21292E;
         }
       }
 
@@ -104,7 +113,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 24px;
         margin: 24px;
         border: none;
-        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z%22 fill=%22#DCDCDC%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
+        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z%22 fill=%22%23DDDDDD%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
       }
 
       .drawer-links > a {
@@ -119,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .drawer-links > a.iron-selected {
         padding-left: 11px;
-        border-left: 1px solid #DCDCDC;
+        border-left: 1px solid var(--app-highlight-color);
       }
 
       @media (min-width: 768px) {
@@ -142,41 +151,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path></app-location>
     <app-route route="[[route]]" pattern="/:page" data="{{routeData}}"></app-route>
 
-    <app-header-layout>
-      <app-header reveals threshold="1">
-        <button class="menu-button" on-click="_toggleDrawer"></button>
-        <!-- TODO(keanulee): Change image URL. -->
-        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA Logo">
-        <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
-          <a href="/#/" name="projects">Projects</a>
-          <a href="/#/guide" name="guide">Guide</a>
-          <a href="/#/share" name="share">Share</a>
-        </iron-selector>
-      </app-header>
+    <app-header reveals threshold="1">
+      <button class="menu-button" on-click="_toggleDrawer"></button>
+      <!-- TODO(keanulee): Change image URL. -->
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA Logo">
+      <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
+        <a href="/#/" name="projects">Projects</a>
+        <a href="/#/guide" name="guide">Guide</a>
+        <a href="/#/share" name="share">Share</a>
+      </iron-selector>
+    </app-header>
 
-      <iron-pages
-          selected="[[page]]"
-          attr-for-selected="name"
-          fallback-selection="invalid"
-          role="main">
-        <code-nasa-projects name="projects" query-params="{{queryParams}}"></code-nasa-projects>
-        <code-nasa-guide name="guide"></code-nasa-guide>
-        <code-nasa-share name="share"></code-nasa-share>
-        <code-nasa-invalid name="invalid"></code-nasa-invalid>
-      </iron-pages>
+    <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="invalid"
+        role="main">
+      <code-nasa-projects name="projects" query-params="{{queryParams}}"></code-nasa-projects>
+      <code-nasa-guide name="guide"></code-nasa-guide>
+      <code-nasa-share name="share"></code-nasa-share>
+      <code-nasa-invalid name="invalid"></code-nasa-invalid>
+    </iron-pages>
 
-      <footer>
-        <p>
-          NASA Officials:
-          <a href="mailto:beth.beck@nasa.gov">Beth Beck</a>
-          and
-          <a href="mailto:jason.duley@nasa.gov">Jason Duley</a>
-        </p>
-        <p>
-          <a href="http://open.nasa.gov/">A NASA Open Government Initiative Website</a>
-        </p>
-      </footer>
-    </app-header-layout>
+    <footer>
+      <p>
+        NASA Officials:
+        <a href="mailto:beth.beck@nasa.gov">Beth Beck</a>
+        and
+        <a href="mailto:jason.duley@nasa.gov">Jason Duley</a>
+      </p>
+      <p>
+        <a href="http://open.nasa.gov/">A NASA Open Government Initiative Website</a>
+      </p>
+    </footer>
 
     <app-drawer id="drawer" tabindex="0" swipe-open>
       <button class="close-button" on-click="_toggleDrawer"></button>
