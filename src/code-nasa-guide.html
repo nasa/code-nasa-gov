@@ -16,6 +16,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
+        background-color: #0B1011;
+        background-image: url('/images/backgrounds/guide.png'),
+                          linear-gradient(0deg, #323D44, transparent 1300px);
+        background-repeat: no-repeat;
+        background-position: center top, center bottom;
+        background-size: 100%;
       }
 
       .step {
@@ -23,17 +29,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .step > .step-image {
-        height: 50px;
-        background: #CCC;
+        height: 60px;
+        background-repeat: no-repeat;
+        background-position: center bottom;
       }
 
-      .step > h2::before {
+      .step > .step-image.step-1 {
+        background-image: url('/images/guide-steps/1.png');
+      }
+
+      .step > .step-image.step-2 {
+        background-image: url('/images/guide-steps/2.png');
+      }
+
+      .step > .step-image.step-3 {
+        background-image: url('/images/guide-steps/3.png');
+      }
+
+      .step > .step-image.step-4 {
+        background-image: url('/images/guide-steps/4.png');
+      }
+
+      .step > .step-image.step-5 {
+        background-image: url('/images/guide-steps/5.png');
+      }
+
+      .step > .step-image.step-6 {
+        background-image: url('/images/guide-steps/6.png');
+      }
+
+      .step > .step-image.step-7 {
+        background-image: url('/images/guide-steps/7.png');
+      }
+
+      .step > .step-image.step-8 {
+        background-image: url('/images/guide-steps/8.png');
+      }
+
+      .step > .step-image.step-9 {
+        background-image: url('/images/guide-steps/10.png');
+        background-image: url('/images/guide-steps/9.png'), url('/images/guide-steps/10.png');
+        background-position: center top, center 100px;
+      }
+
+      .step > .step-image.step-10 {
+        background-image: url('/images/guide-steps/11.png'), url('/images/guide-steps/12.png'), url('/images/guide-steps/13.png');
+        background-position: center top, left 280px, right 280px;
+      }
+
+      .step > .step-image.step-11 {
+        background-image: url('/images/guide-steps/14.png');
+      }
+
+      .step > .step-image::after {
+        position: relative;
+        top: 76px;
         display: block;
         margin: 0 auto;
         content: '';
         width: 80px;
-        height: 2em;
-        border-top: 1px solid #6A6E75;
+        border-top: 1px solid var(--app-accent-color);
       }
 
       .horizontal-scroll {
@@ -43,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       @media (min-width: 768px) {
         .step {
           position: relative;
-          margin: 24px 0;
+          margin: 42px 0;
           text-align: left;
         }
 
@@ -51,165 +106,169 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           position: absolute;
           top: 0;
           left: 0;
-          width: 100px;
+          width: 180px;
           height: 100%;
+          background-position: center top;
+        }
+
+        .step > .step-image::after {
+          content: none;
         }
 
         .step > h2 {
           position: absolute;
           margin: 0;
           top: 0;
-          left: 100px;
+          left: 120px;
           width: 100px;
           text-align: right;
         }
 
-        .step > h2::before {
-          content: none;
-        }
-
         .step > .description {
-          margin-left: 224px;
-          border-left: 1px solid #6A6E75;
+          margin-left: 244px;
+          border-left: 1px solid var(--app-accent-color);
           padding-left: 24px;
         }
       }
     </style>
 
-    <div class="splash">
-      <h1>How to Publish</h1>
-    </div>
-
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>1</h2>
-      <div class="description">
-        <p>
-          Submit a request to release your project as Open Source to your center SRA (Software Release Authority) at <a href="https://code.nasa.gov/#/SRA">code.nasa.gov/#/SRA</a>.
-        </p>
+    <div class="container">
+      <div class="splash">
+        <h1>How to Publish</h1>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>2</h2>
-      <div class="description">
-        <p>
-          Receive approval from your center SRA to release as Open Source.
-        </p>
+      <div class="step">
+        <div class="step-image step-1"></div>
+        <h2>1</h2>
+        <div class="description">
+          <p>
+            Submit a request to release your project as Open Source to your center SRA (Software Release Authority) at <a href="https://code.nasa.gov/#/SRA">code.nasa.gov/#/SRA</a>.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>3</h2>
-      <div class="description">
-        <p>
-          Register on <a href="https://github.com/join">github.com/join</a> using your NASA email address.
-        </p>
+      <div class="step">
+        <div class="step-image step-2"></div>
+        <h2>2</h2>
+        <div class="description">
+          <p>
+            Receive approval from your center SRA to release as Open Source.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>4</h2>
-      <div class="description">
-        <p>
-          <!-- TODO(keanulee): Fix link -->
-        Submit a NAMS request by filling out the <a href="/#/guide">github.com/join</a> using your NASA email address.
-        </p>
+      <div class="step">
+        <div class="step-image step-3"></div>
+        <h2>3</h2>
+        <div class="description">
+          <p>
+            Register on <a href="https://github.com/join">github.com/join</a> using your NASA email address.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>5</h2>
-      <div class="description">
-        <p>
-          Meet with us. We can help you join NASA Org, build your team, or answer any questions.
-        </p>
+      <div class="step">
+        <div class="step-image step-4"></div>
+        <h2>4</h2>
+        <div class="description">
+          <p>
+            <!-- TODO(keanulee): Fix link -->
+            Submit a NAMS request by filling out the <a href="/#/guide">github.com/join</a> using your NASA email address.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>6</h2>
-      <div class="description">
-        <p>
-          Transfer or import your source code into the NASA Org on GitHub.
-        </p>
+      <div class="step">
+        <div class="step-image step-5"></div>
+        <h2>5</h2>
+        <div class="description">
+          <p>
+            Meet with us. We can help you join NASA Org, build your team, or answer any questions.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>7</h2>
-      <div class="description">
-        <p>
-          Update the NASA Open Source Catalog via a pull request to register your project's meta-data at <a href="https://github.com/nasa/open-source-catalog">github.com/nasa/open-source-catalog</a>.
-        </p>
+      <div class="step">
+        <div class="step-image step-6"></div>
+        <h2>6</h2>
+        <div class="description">
+          <p>
+            Transfer or import your source code into the NASA Org on GitHub.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>8</h2>
-      <div class="description">
-        <p>
-          View your project on <a href="https://code.nasa.gov/">code.nasa.gov</a> and socialize! Email <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a> or view <a href="https://help.github.com/articles/be-social">help.github.com/articles/be-social</a>.
-        </p>
+      <div class="step">
+        <div class="step-image step-7"></div>
+        <h2>7</h2>
+        <div class="description">
+          <p>
+            Update the NASA Open Source Catalog via a pull request to register your project's meta-data at <a href="https://github.com/nasa/open-source-catalog">github.com/nasa/open-source-catalog</a>.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>Overview</h2>
-      <div class="description">
-        <p>
-          Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
-        </p>
+      <div class="step">
+        <div class="step-image step-8"></div>
+        <h2>8</h2>
+        <div class="description">
+          <p>
+            View your project on <a href="https://code.nasa.gov/">code.nasa.gov</a> and socialize! Email <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a> or view <a href="https://help.github.com/articles/be-social">help.github.com/articles/be-social</a>.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>SRAs</h2>
-      <div class="description horizontal-scroll">
-        <table>
-          <tr>
-            <th>Center</th>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Phone</th>
-            <th>Email</th>
-          </tr>
+      <div class="step">
+        <div class="step-image step-9"></div>
+        <h2>Overview</h2>
+        <div class="description">
+          <p>
+            Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
+          </p>
+        </div>
+      </div>
 
-          <template is="dom-repeat" items="[[sras]]">
+      <div class="step">
+        <div class="step-image step-10"></div>
+        <h2>SRAs</h2>
+        <div class="description horizontal-scroll">
+          <table>
             <tr>
-              <td>[[item.Center]]</td>
-              <td>[[item.Name]]</td>
-              <td>[[item.Title]]</td>
-              <td>[[item.Phone]]</td>
-              <td>[[item.Email]]</td>
+              <th>Center</th>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Phone</th>
+              <th>Email</th>
             </tr>
-          </template>
-        </table>
-      </div>
-    </div>
 
-    <div class="step">
-      <div class="step-image"></div>
-      <h2>Details</h2>
-      <div class="description">
-        <p>
-          Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
-        </p>
-        <p>
-          Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
-        </p>
-        <p>
-          Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
-        </p>
+            <template is="dom-repeat" items="[[sras]]">
+              <tr>
+                <td>[[item.Center]]</td>
+                <td>[[item.Name]]</td>
+                <td>[[item.Title]]</td>
+                <td>[[item.Phone]]</td>
+                <td>[[item.Email]]</td>
+              </tr>
+            </template>
+          </table>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-image step-11"></div>
+        <h2>Details</h2>
+        <div class="description">
+          <p>
+            <!-- TODO(keanulee): Update text -->
+            Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
+          </p>
+          <p>
+            Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
+          </p>
+          <p>
+            Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
+          </p>
+        </div>
       </div>
     </div>
   </template>
