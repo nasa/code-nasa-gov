@@ -1,40 +1,18 @@
-# Polymer App Toolbox - Starter Kit
+# CODE.NASA.GOV
 
-[![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)
+Catalog of Open Source Software from NASA. Built using [Polymer](https://www.polymer-project.org).
 
-This template is a starting point for building apps using a drawer-based
-layout. The layout is provided by `app-layout` elements.
+## Setup
 
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
+### Prerequisites
 
-The PRPL pattern, in a nutshell:
+Install bower and [polymer-cli](https://github.com/Polymer/polymer-cli):
 
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
+    npm install -g bower polymer-cli
 
-### Migrating from Polymer Starter Kit v1?
+### Install dependencies
 
-[Check out our blog post that covers what's changed in PSK2 and how to migrate!](https://www.polymer-project.org/1.0/blog/2016-08-18-polymer-starter-kit-or-polymer-cli.html)
-
-### Setup
-
-##### Prerequisites
-
-Install [polymer-cli](https://github.com/Polymer/polymer-cli):
-
-    npm install -g polymer-cli
-
-##### Initialize project from template
-
-    mkdir my-app
-    cd my-app
-    polymer init starter-kit
+    bower i
 
 ### Start the development server
 
@@ -69,14 +47,12 @@ This command serves the minified version of the app at `http://localhost:8080`
 generated using fragment bundling:
 
     polymer serve build/bundled
+    
+### Deploying
 
-### Run tests
-
-This command will run
-[Web Component Tester](https://github.com/Polymer/web-component-tester) against the
-browsers currently installed on your machine.
-
-    polymer test
+When deploying to a static web server (with no HTTP/2+Push), be sure to copy
+the files from `build/bundled` (**NOT** the project directory) which
+contains a functional service worker and minified files.
 
 ### Adding a new view
 
