@@ -19,10 +19,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
         background-color: #050D1A;
         background-image: url('/images/backgrounds/projects.jpg'),
+                          url('/images/backgrounds/projects-bottom.jpg'),
                           linear-gradient(0deg, #323D44, transparent 1300px);
         background-repeat: no-repeat;
-        background-position: center top, center bottom;
-        background-size: 120%;
+        background-position: center top, center 212vw, center bottom;
+        background-size: 200%;
       }
 
       #query {
@@ -42,6 +43,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-bottom: 1px solid var(--app-highlight-color);
       }
 
+      .splash,
+      .project {
+        /* HACK(keanulee): Create stacking context so it is above iron-list and clickable. */
+        position: relative;
+        z-index: 1;
+      }
+
+      iron-list {
+        /**
+         * HACK(keanulee): iron-list needs to have padding-top so that it occupies the entire height of the
+         * scroll area.
+         */
+        margin-top: -100vw;
+        padding-top: 100vw;
+      }
+
       .project {
         position: relative;
         padding: 12px 0;
@@ -50,7 +67,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .project > h2 {
         font-weight: normal;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
       }
 
       .project > p {
@@ -64,10 +81,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-style: italic;
       }
 
-      .project > h2 > span {
+      .project > h2 > a {
         display: inline-block;
         border: 1px solid var(--app-accent-color);
         padding: 12px;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
       }
 
       .tag {
@@ -76,6 +96,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       @media (min-width: 768px) {
         :host {
+          background-position: center top, center 106vw, center bottom;
           background-size: 100%;
         }
       }
@@ -107,10 +128,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div>
             <div class="project">
               <h2>
-                <span>[[_getProperty(item, 'Software')]]</span>
+                <a href$="[[_getProperty(item, 'External Link')]]" target="_blank">
+                  [[_getProperty(item, 'Software')]]
+                </a>
               </h2>
               <p>
-                <a href$="[[_getProperty(item, 'Public Code Repo')]]">[[_getProperty(item, 'Public Code Repo')]]</a>
+                <a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">
+                  [[_getProperty(item, 'Public Code Repo')]]
+                </a>
               </p>
               <p>[[item.Description]]</p>
               <p>
