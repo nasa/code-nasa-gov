@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-image: url('/images/backgrounds/share.jpg');
         background-repeat: no-repeat;
         background-position: center top;
-        background-size: 100%;
+        background-size: 200%;
       }
 
       .section {
@@ -36,6 +36,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       @media (min-width: 768px) {
+        :host {
+          background-size: 100%;
+        }
+
         .section {
           display: inline-block;
           box-sizing: border-box;
@@ -62,7 +66,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <p>
           Thanks for your interest in sharing your code! If you are a developer employed by NASA or a
           NASA contractor and have open source code you wish to host on the NASA GitHub repository,
-          email us at <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a>.
+          email us at <a href="mailto:opensource@lists.nasa.gov" target="_blank">opensource@lists.nasa.gov</a>.
         </p>
       </div>
 

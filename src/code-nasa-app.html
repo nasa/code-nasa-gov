@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .tabs > a {
         display: inline-block;
         padding: 14px 0;
-        margin: 44px 20px;
+        margin: 36px 20px;
         font-weight: normal;
         text-transform: uppercase;
         letter-spacing: 6px;
@@ -91,8 +91,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-bottom: 1px solid var(--app-highlight-color);
       }
 
-      iron-pages {
-        min-height: 100px;
+      iron-pages > * {
+        min-height: 100vh;
       }
 
       app-drawer {
@@ -148,7 +148,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-header reveals threshold="1">
       <button class="menu-button" on-click="_toggleDrawer"></button>
-      <img class="logo" src="/images/logos/nasa-144.png" alt="NASA Logo">
+      <a href="/#/">
+        <img class="logo" src="/images/logos/nasa-144.png" alt="NASA Logo">
+      </a>
       <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
         <a href="/#/" name="projects">Projects</a>
         <a href="/#/guide" name="guide">Guide</a>

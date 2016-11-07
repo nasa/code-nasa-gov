@@ -21,7 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                           linear-gradient(0deg, #323D44, transparent 1300px);
         background-repeat: no-repeat;
         background-position: center top, center bottom;
-        background-size: 100%;
+        background-size: 200%;
       }
 
       .step > .step-image {
@@ -96,6 +96,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       @media (min-width: 768px) {
+        :host {
+          background-size: 100%;
+        }
+
         .step {
           position: relative;
           margin: 42px 0;
@@ -161,7 +165,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h2>3</h2>
         <div class="description">
           <p>
-            Register on <a href="https://github.com/join">github.com/join</a> using your NASA email address.
+            Register on <a href="https://github.com/join" target="_blank">github.com/join</a> using your NASA email address.
           </p>
         </div>
       </div>
@@ -172,7 +176,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="description">
           <p>
             <!-- TODO(keanulee): Broken link from old infographic -->
-            Submit a NAMS request by filling out the <a href="http://nams.nasa.gov/nams/asset/227756">HQ AGCY NASA GitHub Collaborator Form</a>.
+            Submit a NAMS request by filling out the <a href="http://nams.nasa.gov/nams/asset/227756" target="_blank">HQ AGCY NASA GitHub Collaborator Form</a>.
           </p>
         </div>
       </div>
@@ -202,7 +206,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h2>7</h2>
         <div class="description">
           <p>
-            Update the NASA Open Source Catalog via a pull request to register your project's meta-data at <a href="https://github.com/nasa/open-source-catalog">github.com/nasa/open-source-catalog</a>.
+            Update the NASA Open Source Catalog via a pull request to register your project's meta-data at <a href="https://github.com/nasa/open-source-catalog" target="_blank">github.com/nasa/open-source-catalog</a>.
           </p>
         </div>
       </div>
@@ -212,7 +216,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h2>8</h2>
         <div class="description">
           <p>
-            View your project on <a href="https://code.nasa.gov/">code.nasa.gov</a> and socialize! Email <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a> or view <a href="https://help.github.com/articles/be-social">help.github.com/articles/be-social</a>.
+            View your project on <a href="https://code.nasa.gov/">code.nasa.gov</a> and socialize! Email <a href="mailto:opensource@lists.nasa.gov">opensource@lists.nasa.gov</a> or view <a href="https://help.github.com/articles/be-social" target="_blank">help.github.com/articles/be-social</a>.
           </p>
         </div>
       </div>
@@ -222,7 +226,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h2>Overview</h2>
         <div class="description">
           <p>
-            Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
+            Software release at NASA is governed by <a href="http://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&amp;c=2210&amp;s=1C" target="_blank">NPR 2210.1C</a>. NPR 2210.1C establishes the roles, responsibilities, and procedures for reporting, reviewing, and releasing software under various conditions, including open source. Every center has a Software Release Authority (SRA). The SRA processes requests for software release and coordinates legal, export control, IT security, 508 compliance, and software engineering standards compliance reviews. Projects hoping to release software should contact their SRA early to discuss their goals and begin the reporting, review, and release process.
           </p>
         </div>
       </div>
@@ -246,7 +250,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <td>[[item.Name]]</td>
                 <td>[[item.Title]]</td>
                 <td>[[item.Phone]]</td>
-                <td>[[item.Email]]</td>
+                <td>
+                  <a href$="[[_getMailtoHref(item.Email)]]" target="_blank">[[item.Email]]</a>
+                </td>
               </tr>
             </template>
           </table>
@@ -258,7 +264,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h2>Details</h2>
         <div class="description">
           <p>
-            One initiates the software review process by reporting the software as described in NPR 2210.1C (e.g., submitting a description of the software to be released, the individuals involved in its creation, development timeline, available documentation, and related topics). Depending on center procedures, this information may be captured through the <a href="https://ntr.ndc.nasa.gov/">NASA Technology Reporting System</a> or standard form NF1679. Contact your SRA for the specific procedure used at your center.
+            One initiates the software review process by reporting the software as described in NPR 2210.1C (e.g., submitting a description of the software to be released, the individuals involved in its creation, development timeline, available documentation, and related topics). Depending on center procedures, this information may be captured through the <a href="https://ntr.ndc.nasa.gov/" target="_blank">NASA Technology Reporting System</a> or standard form NF1679. Contact your SRA for the specific procedure used at your center.
           </p>
           <p>
             Each piece of software is unique, and must be reviewed on a case-by-case basis. Generally speaking, however, the review process will address the following considerations:
@@ -312,6 +318,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _loadSras: function(e) {
         this.sras = JSON.parse(e.target.responseText);
       },
+
+      _getMailtoHref: function(email) {
+        return 'mailto:' + email;
+      }
     });
   </script>
 </dom-module>
