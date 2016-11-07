@@ -13,7 +13,8 @@ module.exports = {
     '/manifest.json',
     '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
     '/images/**/*',
-    '/data/*'
+    '/data/*',
+    '/fonts/*'
   ],
   navigateFallback: '/index.html'
 };
