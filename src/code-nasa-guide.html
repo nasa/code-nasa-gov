@@ -22,6 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-repeat: no-repeat;
         background-position: center top, center bottom;
         background-size: 200%;
+        font-size: 16px;
+        line-height: 24px;
       }
 
       .step > .step-image {
@@ -91,8 +93,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align: center;
       }
 
-      .horizontal-scroll {
+      .table-container {
         overflow-y: auto;
+        font-size: 13px;
       }
 
       @media (min-width: 768px) {
@@ -102,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         .step {
           position: relative;
-          margin: 42px 0;
+          margin-bottom: 42px;
         }
 
         .step > .step-image {
@@ -122,7 +125,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           position: absolute;
           margin: 0;
           top: 0;
-          left: 120px;
+          left: 110px;
           width: 100px;
           text-align: right;
         }
@@ -130,7 +133,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         .step > .description {
           margin-left: 244px;
           border-left: 1px solid var(--app-accent-color);
-          padding-left: 24px;
+          padding-left: 40px;
         }
       }
     </style>
@@ -234,7 +237,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="step">
         <div class="step-image step-10"></div>
         <h2>SRAs</h2>
-        <div class="description horizontal-scroll">
+        <div class="description table-container">
           <table>
             <tr>
               <th>Center</th>
@@ -267,30 +270,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             One initiates the software review process by reporting the software as described in NPR 2210.1C (e.g., submitting a description of the software to be released, the individuals involved in its creation, development timeline, available documentation, and related topics). Depending on center procedures, this information may be captured through the <a href="https://ntr.ndc.nasa.gov/" target="_blank">NASA Technology Reporting System</a> or standard form NF1679. Contact your SRA for the specific procedure used at your center.
           </p>
           <p>
-            Each piece of software is unique, and must be reviewed on a case-by-case basis. Generally speaking, however, the review process will address the following considerations:
+           Each piece of software is unique, and must be reviewed on a case-by-case basis. Generally speaking, however, the review process will address the following considerations:
           </p>
-          <ul>
-            <li>
-              <b>Legal.</b>
-              It is important to ensure that NASA has appropriate rights in software, including subcomponents, before NASA releases that material outside the agency. Software is rarely developed in isolation. If your project uses external dependencies, you must provide details about such packages or sources when you report your software. (See NPR 2210.1C, Chapter 2 for details on reporting software.) The terms and conditions governing external software impact NASA's right to use and release software, and must be thoroughly analyzed before NASA can release software incorporating that external software. NASA attorneys will also help identify the set of terms and conditions that should govern a particular piece of software when NASA releases it. Per current NASA policy, NASA releases open source software under the NASA Open Source Agreement (NOSA) unless external Open Source Software incorporated into the NASA Open Source Software requires use of a different open source license or unless approved by Center Patent or IP Counsel. Such determinations must be made by your center intellectual property counsel before NASA may release the software in question.
-            </li>
-            <li>
-              <b>Export Control.</b>
-              The Export Administration Regulations (EAR) and the International Traffic in Arms Regulations (ITAR), among other laws and policies, restrict which NASA technology may be publicly disclosed. Software falling within the scope of these laws or policies cannot be released open source, and may be subject to release restrictions. Your local export control staff can help you determine whether export control laws apply to your technology.
-            </li>
-            <li>
-              <b>IT Security.</b>
-              Generally speaking, released software should not contain any information peculiar to NASA, such as user names, passwords, database credentials, IP addresses, host names, firewall and network information, or any other data which would expose or create vulnerabilities. Your SRA and IT Security staff will help you understand the types of risks occasioned by software release, and will work with you to remove elements of your software which may give rise to a vulnerability prior to release.
-            </li>
-            <li>
-              <b>508 Compliance.</b>
-              When developing, procuring, maintaining, or using Electronic and Information Technology (EIT), Federal agencies must ensure that Federal employees with disabilities have access to and use of information and data that is comparable to that for other employees.
-            </li>
-            <li>
-              <b>Software Engineering Requirements.</b>
-              NASA has established formal software engineering requirements in NPR 7150.2A. These requirements govern all software development activities and must be followed throughout a project's development life cycle. As part of the software release process, your center SRA and Engineering Technical Authority for software will work with you to verify (or establish) your software classification and ensure compliance with the corresponding engineering requirements prior to release. For this area of inquiry in particular it is best to front-load compliance by adhering to the software engineering requirements with a documented compliance matrix from the outset. Otherwise, you may incur significant delay and expense in obtaining compliance prior to release.
-            </li>
-          </ul>
+          </p>
+          <p>
+            <strong>Legal.</strong><br>
+            It is important to ensure that NASA has appropriate rights in software, including subcomponents, before NASA releases that material outside the agency. Software is rarely developed in isolation. If your project uses external dependencies, you must provide details about such packages or sources when you report your software. (See NPR 2210.1C, Chapter 2 for details on reporting software.) The terms and conditions governing external software impact NASA's right to use and release software, and must be thoroughly analyzed before NASA can release software incorporating that external software. NASA attorneys will also help identify the set of terms and conditions that should govern a particular piece of software when NASA releases it. Per current NASA policy, NASA releases open source software under the NASA Open Source Agreement (NOSA) unless external Open Source Software incorporated into the NASA Open Source Software requires use of a different open source license or unless approved by Center Patent or IP Counsel. Such determinations must be made by your center intellectual property counsel before NASA may release the software in question.
+          </p>
+          <p>
+            <strong>Export Control.</strong><br>
+            The Export Administration Regulations (EAR) and the International Traffic in Arms Regulations (ITAR), among other laws and policies, restrict which NASA technology may be publicly disclosed. Software falling within the scope of these laws or policies cannot be released open source, and may be subject to release restrictions. Your local export control staff can help you determine whether export control laws apply to your technology.
+          </p>
+          <p>
+            <strong>IT Security.</strong><br>
+            Generally speaking, released software should not contain any information peculiar to NASA, such as user names, passwords, database credentials, IP addresses, host names, firewall and network  information, or any other data which would expose or create vulnerabilities. Your SRA and IT Security staff will help you understand the types of risks occasioned by software release, and will work with you to remove elements of your software which may give rise to a vulnerability prior to release.
+          </p>
+          <p>
+            <strong>508 Compliance.</strong><br>
+            When developing, procuring, maintaining, or using Electronic and Information Technology (EIT), Federal agencies must ensure that Federal employees with disabilities have access to and use of information and data that is comparable to that for other employees.
+          </p>
+          <p>
+            <strong>Software Engineering Requirements.</strong><br>
+            NASA has established formal software engineering requirements in NPR 7150.2A. These requirements govern all software development activities and must be followed throughout a project's development life cycle. As part of the software release process, your center SRA and Engineering Technical Authority for software will work with you to verify (or establish) your software classification and ensure compliance with the corresponding engineering requirements prior to release. For this area of inquiry in particular it is best to front-load compliance by adhering to the software engineering requirements with a documented compliance matrix from the outset. Otherwise, you may incur significant delay and expense in obtaining compliance prior to release.
+          </p>
           <p>
             Depending on the number of projects being assessed for release at any given time general workloads and backlogs, traversing the release process can take anywhere from 3 to 6 months. The process may take longer for complex or novel release requests. Be sure to factor these time tables (with consultation with your SRA) into your project schedules.
           </p>
