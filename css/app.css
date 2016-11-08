@@ -1,12 +1,12 @@
-html body { 
+html body {
 	overflow-x: auto;
-	padding-top: 50px; 
+	padding-top: 50px;
 	font-family: Inconsolata;
 	background: #f6f6f6 url(../img/background/corner1.png) no-repeat top left fixed;
 	background-position: 1px 72px;
 }
-.inner-addon { 
-    position: relative; 
+.inner-addon {
+    position: relative;
 }
 .inner-addon .glyphicon {
   position: absolute;
@@ -34,7 +34,7 @@ ul, ol {
 .box {
 	background-color: #FFFFFF;
 	border: 1px solid #E5E6E5;
-	padding: 20px;	
+	padding: 20px;
 	margin-bottom: 15px;
 	min-height: 100px;
 	border-radius: 4px;
@@ -70,7 +70,7 @@ ul, ol {
 	width: 36px;
 	opacity: 0.80;
 }
-.socialIcons img:hover {	
+.socialIcons img:hover {
 	opacity: 1.0;
 }
 .socialIcons-xs img {
@@ -93,17 +93,17 @@ ul, ol {
 		float: left;
 		margin-top: 4px;
 		margin-left: 10px;
-	}	
+	}
 	.box h2 {
 		font-size: 18px;
-		
+
 	}
 }
 
 .horizontalDivider {
 	margin-top: 10px;
 	border-top: 1px solid #E5E6E5;
-	width: 100%;	
+	width: 100%;
 }
 .repoLink {
 	float: left;
@@ -152,12 +152,12 @@ ul, ol {
 .footer1 {
 	width: 100%;
 	text-align: left;
-	font-size: 14px;	
+	font-size: 14px;
 	padding: 0 10px 0 10px;
-		
+
 }
-.footer1 a, .footer2 a{ 
-	color: #00628B;	
+.footer1 a, .footer2 a{
+	color: #00628B;
 }
 .headerContainer a:hover {
 	color: #333333;
@@ -166,22 +166,22 @@ ul, ol {
 .footer2 {
 	width: 100%;
 	text-align: right;
-	font-size: 14px;		
+	font-size: 14px;
 	padding: 0 10px 0 10px;
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
 	.footer1 {
-		font-size: 12px;	
+		font-size: 12px;
 	}
 	.footer2 {
 		text-align: left;
-		font-size: 12px;		
+		font-size: 12px;
 	}
 }
 
 .headerContainer {
-	width: 100%; 
+	width: 100%;
 	background-color: #FFFFFF;
 	/* background: url(../img/background/flow4.png) repeat-x top left fixed; */
 	background-size: stretch;
@@ -189,8 +189,8 @@ ul, ol {
 }
 
 .sectionDivider {
-	background-color: #E2E4E3;	
-	padding: 10px;	
+	background-color: #E2E4E3;
+	padding: 10px;
 }
 .docstart {
 	margin-top: 50px;
@@ -204,7 +204,7 @@ ul, ol {
 	}
 	.docstart2 {
 		margin-top: 20px;
-	}	
+	}
 }
 
 .expandLinks {
@@ -221,11 +221,11 @@ ul, ol {
 .navRight {
 	float: right;
 }
-.headerBarCommon {	
-	background-color: #FFFFFF;	
+.headerBarCommon {
+	background-color: #FFFFFF;
 }
 .searchInput {
-	border-radius: 15px;	
+	border-radius: 15px;
 	border: 1px solid #CCCCCC;
 	width: 200px;
 	background-color: #E2E4E3;
@@ -245,14 +245,14 @@ ul, ol {
 }
 
 ul.nav li a:hover, ul.nav li a:focus {
-    background: #f6f6f6;     
+    background: #f6f6f6;
 }
 ul.nav li a.nohigh:hover, ul.nav li a.nohigh:focus {
-    background: none;    
+    background: none;
 }
 
 ul.nav li a, ul.nav li a {
-    height: 71px;      
+    height: 71px;
 }
 .repoLink a, h4, .licenses a {
 	color: #4179BA;
@@ -276,22 +276,22 @@ h2 {
 }
 h4{
 	font-size: 14px;
-	font-style: italic;	
+	font-style: italic;
 }
 
-.badge {	
+.badge {
 	font-weight: normal;
 	color: #E8E8E8;
-	background: -moz-linear-gradient(-45deg,  rgba(23,96,178,0.9) 0%, rgba(25,94,175,0.9) 100%); 
+	background: -moz-linear-gradient(-45deg,  rgba(23,96,178,0.9) 0%, rgba(25,94,175,0.9) 100%);
 	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(23,96,178,0.9)), color-stop(100%,rgba(25,94,175,0.9)));
 	background: -webkit-linear-gradient(-45deg,  rgba(23,96,178,0.9) 0%,rgba(25,94,175,0.9) 100%);
 	background: -o-linear-gradient(-45deg,  rgba(23,96,178,0.9) 0%,rgba(25,94,175,0.9) 100%);
 	background: -ms-linear-gradient(-45deg,  rgba(23,96,178,0.9) 0%,rgba(25,94,175,0.9) 100%);
 	background: linear-gradient(135deg,  rgba(23,96,178,0.9) 0%,rgba(25,94,175,0.9) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e61760b2', endColorstr='#e6195eaf',GradientType=1 );	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e61760b2', endColorstr='#e6195eaf',GradientType=1 );
 	border: 1px solid #4e4e4e;
 	border-radius: 3px;
-	font-family: 'Special Elite', cursive;	
+	font-family: 'Special Elite', cursive;
 	font-size: 12px;
 }
 .nav, .navmenu {
@@ -309,6 +309,6 @@ h4{
 	.mobileMenuContainer {
 		margin-top: -28px;
 		font-family: 'Exo 2', sans-serif !important;
-		text-transform: uppercase;	
+		text-transform: uppercase;
 	}
 }

@@ -36,7 +36,7 @@ function cacheTemplates() {
  */
 function appSource() {
     return gulp.src([
-        './js/app.js', 
+        './js/app.js',
         './js/controllers.js'])
 }
 
@@ -46,7 +46,7 @@ function appSource() {
 function vendorSource() {
     return gulp.src([
         './js/vendor/jquery.min.js',
-        './js/vendor/angular.min.js', 
+        './js/vendor/angular.min.js',
         './js/vendor/angular-resource.min.js',
         './js/vendor/angular-route.min.js',
         './js/vendor/bootstrap.min.js'])

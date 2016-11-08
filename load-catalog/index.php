@@ -21,7 +21,7 @@ if ($data) {
 
   //print "OLD MD5: " . $old_md5 . '<br />';
   //print "NEW MD5: " . $new_md5 . '<br />';
-  
+
   if ($old_md5 != $new_md5) {
 
     $saved = file_put_contents($write_to, $json);
