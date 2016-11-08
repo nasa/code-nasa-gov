@@ -24,10 +24,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-repeat: no-repeat;
         background-position: center top, center 212vw, center bottom;
         background-size: 200%;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      a {
+        font-size: 12px;
       }
 
       #query {
-        width: 300px;
+        width: 400px;
         max-width: 100%;
         box-sizing: border-box;
         padding-left: 30px;
@@ -44,10 +50,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .splash,
-      .project {
+      .meta {
         /* HACK(keanulee): Create stacking context so it is above iron-list and clickable. */
         position: relative;
         z-index: 1;
+      }
+
+      .meta {
+        margin: 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--app-accent-color);
+        color: var(--app-accent-color);
+        font-style: italic;
       }
 
       iron-list {
@@ -67,7 +81,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .project > h2 {
         font-family: 'ArcaMajora3-Heavy', sans-serif;
-        font-weight: normal;
         letter-spacing: 2px;
       }
 
@@ -77,18 +90,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-overflow: ellipsis;
       }
 
-      .project > p.meta {
-        color: var(--app-accent-color);
-        font-style: italic;
-      }
-
       .project > h2 > a {
         display: inline-block;
         border: 1px solid var(--app-accent-color);
         padding: 12px;
         color: inherit;
-        font-size: inherit;
-        font-weight: inherit;
+        font-size: 18px;
       }
 
       .tag {
@@ -112,20 +119,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
       </div>
 
-      <div class="project">
-        <p class="meta">
-          [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
-          <template is="dom-if" if="[[queryParams.q]]">
-            matching "[[queryParams.q]]"
-          </template>
-          <template is="dom-if" if="[[queryParams.tag]]">
-            tagged with #[[queryParams.tag]]
-          </template>
-          <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]">
-            <a href="/#/">Show all projects</a>
-          </template>
-        </p>
-      </div>
+      <p class="meta">
+        [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
+        <template is="dom-if" if="[[queryParams.q]]">
+          matching "[[queryParams.q]]"
+        </template>
+        <template is="dom-if" if="[[queryParams.tag]]">
+          tagged with #[[queryParams.tag]]
+        </template>
+        <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]">
+          <a href="/#/">Show all projects</a>
+        </template>
+      </p>
 
       <iron-list items="[[matchedProjects]]" scroll-target="document">
         <template>
@@ -313,7 +318,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             p.Contributors.join('*'),
             p.Description,
             p['External Link'],
-            typeof p.License === 'string' ? p.License : p.License.join('*'),
+            p.License.join('*'),
             p['NASA Center'],
             p['Public Code Repo'],
             p.Software,

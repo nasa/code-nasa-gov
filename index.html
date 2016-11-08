@@ -112,7 +112,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-family: sans-serif;
         background: #21292E;
         color: #DDD;
-        line-height: 28px;
       }
 
       code-nasa-app {
@@ -121,8 +120,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       footer {
-        padding: 24px;
+        padding: 24px 36px;
         text-align: center;
+        font-size: 12px;
       }
 
       a {
@@ -134,6 +134,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       a:hover {
         text-decoration: underline;
+      }
+
+      @media (min-width: 768px) {
+        footer {
+          position: relative;
+          text-align: left;
+        }
+
+        .last {
+          position: absolute;
+          top: 24px;
+          right: 36px;
+        }
       }
     </style>
   </head>
@@ -147,7 +160,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         and
         <a href="mailto:jason.duley@nasa.gov" target="_blank">Jason Duley</a>
       </p>
-      <p>
+      <p class="last">
         <a href="http://open.nasa.gov/" target="_blank">
           A NASA Open Government Initiative Website
         </a>

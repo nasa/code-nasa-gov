@@ -61,34 +61,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .logo {
+        position: absolute;
+        top: 0;
+        right: 0;
         width: 52px;
         height: 52px;
         margin: 22px;
-        vertical-align: top;
-        float: right;
       }
       
       .tabs {
         display: none;
-      }
-
-      .tabs > a {
-        display: inline-block;
-        padding: 14px 0;
-        margin: 36px 20px;
-        font-family: 'ArcaMajora3-Bold', sans-serif;
-        font-weight: normal;
-        text-transform: uppercase;
-        letter-spacing: 6px;
-      }
-      
-      .tabs > a:hover {
-        text-decoration: none;
-        border-bottom: 1px solid var(--app-accent-color);
-      }
-
-      .tabs > a.iron-selected {
-        border-bottom: 1px solid #FFF;
       }
 
       iron-pages > * {
@@ -133,11 +115,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       @media (min-width: 768px) {
         .logo {
           margin: 40px;
-          float: left;
         }
 
         .tabs {
           display: block;
+          text-align: center;
+        }
+
+        .tabs > a {
+          position: relative;
+          display: inline-block;
+          padding: 14px 0;
+          margin: 36px 20px;
+          font-family: 'ArcaMajora3-Bold', sans-serif;
+          font-weight: normal;
+          text-transform: uppercase;
+          letter-spacing: 6px;
+        }
+
+        .tabs > a::after {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 6px;
+          content: '';
+        }
+        
+        .tabs > a:hover {
+          text-decoration: none;
+        }
+
+        .tabs > a:hover::after {
+          border-bottom: 1px solid var(--app-accent-color);
+        }
+
+        .tabs > a.iron-selected::after {
+          border-bottom: 1px solid #FFF;
         }
 
         .menu-button,

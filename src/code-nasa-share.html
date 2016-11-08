@@ -21,6 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-repeat: no-repeat;
         background-position: center top;
         background-size: 200%;
+        font-size: 16px;
+        line-height: 24px;
       }
 
       .section {
@@ -43,11 +45,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         .section {
           display: inline-block;
           box-sizing: border-box;
-          width: 40%;
-          margin: 0 5%;
+          vertical-align: top;
+          width: 45%;
           text-align: left;
           border-left: 1px solid var(--app-accent-color);
-          padding-left: 48px;
+          padding-left: 40px;
+        }
+
+        .section.first {
+          margin-right: 10%;
+        }
+
+        .section > h2 {
+          margin-top: 0;
+        }
+
+        .section > p {
+          margin-bottom: 0;
         }
 
         .section::before {
@@ -61,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h1>Share your Code</h1>
       </div>
 
-      <div class="section">
+      <div class="section first">
         <h2>NASA developers:</h2>
         <p>
           Thanks for your interest in sharing your code! If you are a developer employed by NASA or a
