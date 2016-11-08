@@ -97,6 +97,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       @media (min-width: 768px) {
         :host {
+          background-image: url('/images/backgrounds/projects.jpg'),
+                            url('/images/backgrounds/projects-bottom.jpg'),
+                            linear-gradient(0deg, #323D44, transparent 1300px);
           background-position: center top, center 106vw, center bottom;
           background-size: 100%;
         }
@@ -146,7 +149,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </p>
               <p>
                 <template is="dom-repeat" items="[[item.License]]" as="license">
-                  <span>[[license]]</span>
+                  <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
                 </template>
               </p>
             </div>
@@ -165,7 +168,125 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         matchedProjects: Object,
 
-        queryParams: Object
+        queryParams: Object,
+
+        licenses: {
+          type: Object,
+          value: {
+           "NASA Open Source": {
+            "License Long Name": "NASA Open Source 3.0",
+            "License Link": "http://opensource.org/licenses/NASA-1.3"
+           },
+           "ALv2": {
+            "License Long Name": "Apache License 2.0",
+            "License Link": "https://www.apache.org/licenses/LICENSE-2.0"
+           },
+           "ASL": {
+            "License Long Name": "Apache Software License",
+            "License Link": "https://www.apache.org/licenses/"
+           },
+           "BSDv3": {
+            "License Long Name": "BSD 3-Clause 'New' or 'Revised' license",
+            "License Link": "http://opensource.org/licenses/BSD-3-Clause"
+           },
+           "BSDv2": {
+            "License Long Name": "BSD 2-Clause 'Simplified' or 'FreeBSD' license",
+            "License Link": "http://opensource.org/licenses/BSD-2-Clause"
+           },
+           "FreeBSD": {
+            "License Long Name": "BSD 2-Clause 'Simplified' or 'FreeBSD' license",
+            "License Link": "http://opensource.org/licenses/BSD-2-Clause"
+           },
+           "BSD": {
+            "License Long Name": "Berkeley Source Distribution",
+            "License Link": "http://en.wikipedia.org/wiki/BSD_licenses"
+           },
+           "CC0": {
+            "License Long Name": "Creative Commons Public Domain Dedication",
+            "License Link": "https://creativecommons.org/publicdomain/zero/1.0/"
+           },
+           "CPL": {
+            "License Long Name": "Common Public License",
+            "License Link": "http://opensource.org/licenses/cpl1.0.php"
+           },
+           "CDDL": {
+            "License Long Name": "Common Development and Distribution License",
+            "License Link": "http://en.wikipedia.org/wiki/Common_Development_and_Distribution_License"
+           },
+           "COTS": {
+            "License Long Name": "Commercial off-the-shelf",
+            "License Link": "http://en.wikipedia.org/wiki/Commercial_off-the-shelf"
+           },
+           "EPL": {
+            "License Long Name": "Eclipse Public License",
+            "License Link": "http://www.eclipse.org/legal/epl-v10.html"
+           },
+           "GPR": {
+            "License Long Name": "Government Purpose Rights",
+            "License Link": "http://www.acq.osd.mil/dpap/dars/dfars/html/current/227_71.htm"
+           },
+           "UGPR": {
+            "License Long Name": "Unlimited Government Purpose Rights",
+            "License Link": "http://www.acq.osd.mil/dpap/dars/dfars/html/current/227_71.htm"
+           },
+           "GPLv3": {
+            "License Long Name": "GNU General Public License (GPL) version 3",
+            "License Link": "http://www.gnu.org/licenses/gpl.html"
+           },
+           "GPL": {
+            "License Long Name": "GNU General Public License (GPL) version 3",
+            "License Link": "http://www.gnu.org/licenses/gpl.html"
+           },
+           "GPLv2": {
+            "License Long Name": "GNU General Public License (GPL) version 2",
+            "License Link": "http://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
+           },
+           "LGPL": {
+            "License Long Name": "GNU Library or 'Lesser' General Public License (LGPL)",
+            "License Link": "http://www.gnu.org/licenses/lgpl.html"
+           },
+           "MIT": {
+            "License Long Name": "MIT License",
+            "License Link": "http://en.wikipedia.org/wiki/MIT_License"
+           },
+           "MPLv2": {
+            "License Long Name": "Mozilla Public License 2.0",
+            "License Link": "http://www.mozilla.org/MPL/2.0/"
+           },
+           "NCSA": {
+            "License Long Name": "NCSA/University of Illinois Open Source License",
+            "License Link": "http://directory.fsf.org/wiki/License:IllinoisNCSA"
+           },
+           "NCSLA": {
+            "License Long Name": "Non-Commercial Software License Agreement (CU14012)",
+            "License Link": "https://secure.nouvant.com/columbia/technology/cu14012/license/258"
+           },
+           "Public Domain": {
+            "License Long Name": "Public Domain",
+            "License Link": "http://directory.fsf.org/wiki/License:PublicDomain"
+           },
+           "SUN": {
+            "License Long Name": "Sun Public License",
+            "License Link": "http://en.wikipedia.org/wiki/Sun_Public_License"
+           },
+           "SPL": {
+            "License Long Name": "Sun Public License",
+            "License Link": "http://en.wikipedia.org/wiki/Sun_Public_License"
+           },
+           "CMUCS": {
+            "License Long Name": "Carnegie Mellon University Software Licensing",
+            "License Link": "http://www.cs.cmu.edu/~helpext/software_licensing/index.html"
+           },
+           "LLVM": {
+            "License Long Name": "LLVM Release License",
+            "License Link": "http://llvm.org/releases/2.8/LICENSE.TXT"
+           },
+           "HTK": {
+            "License Long Name": "University of Cambridge HTK License",
+            "License Link": "http://llvm.org/releases/2.8/LICENSE.TXT"
+           }
+          }
+        }
       },
 
       observers: [
@@ -192,7 +313,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             p.Contributors.join('*'),
             p.Description,
             p['External Link'],
-            p.License.join('*'),
+            typeof p.License === 'string' ? p.License : p.License.join('*'),
             p['NASA Center'],
             p['Public Code Repo'],
             p.Software,
@@ -226,6 +347,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _hasQueryParams: function() {
         return this.queryParams.q || this.queryParams.tag;
+      },
+
+      _getLicenseLink: function(license) {
+        return this.licenses[license]['License Link'];
+      },
+
+      _getLicenseName: function(license) {
+        return this.licenses[license]['License Long Name'];
       }
     });
   </script>
