@@ -14,32 +14,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>my-view1</title>
+    <title>code-nasa-app</title>
 
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../bower_components/web-component-tester/browser.js"></script>
 
     <!-- Import the element to test -->
-    <link rel="import" href="../src/my-view1.html">
+    <link rel="import" href="../src/code-nasa-app.html">
   </head>
   <body>
     <test-fixture id="basic">
       <template>
-        <my-view1></my-view1>
+        <code-nasa-app></code-nasa-app>
       </template>
     </test-fixture>
 
     <script>
-      suite('my-view1 tests', function() {
+      suite('code-nasa-app tests', function() {
         var home;
 
         setup(function() {
           home = fixture('basic');
         });
 
-        test('Number in circle should be 1', function() {
-          var circle = Polymer.dom(home.root).querySelector('.circle');
-          assert.equal(circle.textContent, '1');
+        test('Should have 4 pages in the app', function() {
+          var pages = Polymer.dom(home.root).querySelector('iron-pages');
+          assert.equal(Polymer.dom(pages).children.length, '4');
         })
       });
     </script>
