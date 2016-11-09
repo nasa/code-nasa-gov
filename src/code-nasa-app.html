@@ -64,9 +64,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: absolute;
         top: 0;
         right: 0;
+        margin: 16px;
+      }
+
+      .logo > img {
         width: 44px;
         height: 44px;
-        margin: 16px;
       }
       
       .tabs {
@@ -166,8 +169,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-header reveals threshold="1">
       <button class="menu-button" on-click="_toggleDrawer"></button>
-      <a href="/#/">
-        <img class="logo" src="/images/logos/nasa-144.png" alt="NASA Logo">
+      <a href="/#/" class="logo">
+        <img src="/images/logos/nasa-144.png" alt="NASA Logo">
       </a>
       <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
         <a href="/#/" name="projects">Projects</a>
