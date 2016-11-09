@@ -25,6 +25,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 24px;
       }
 
+      span.desktop-only {
+        display: none;
+      }
+
       .section {
         text-align: center;
       }
@@ -44,6 +48,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         .container {
           max-width: 980px;
+        }
+
+        span.desktop-only {
+          display: inline;
         }
 
         .section {
@@ -76,7 +84,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="container">
       <div class="splash">
-        <h1>Share your Code</h1>
+        <h1>
+          Share
+          <span class="desktop-only">your Code</span>
+        </h1>
       </div>
 
       <div class="section first">

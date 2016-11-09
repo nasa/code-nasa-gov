@@ -87,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         letter-spacing: 2px;
       }
 
-      .project > p {
+      .project > p.link {
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -101,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-size: 18px;
       }
 
-      .tag {
+      .project > p.tags > a {
         margin-right: 0.5em;
       }
 
@@ -120,6 +120,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           background-repeat: no-repeat;
           background-position: center 96%;
           background-size: 32px 32px;
+        }
+
+        .project > span.licenses {
+          float: right;
+          margin-left: 24px;
         }
 
         #query {
@@ -156,20 +161,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   [[_getProperty(item, 'Software')]]
                 </a>
               </h2>
-              <p>
+              <p class="link">
                 <a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">
                   [[_getProperty(item, 'Public Code Repo')]]
                 </a>
               </p>
               <p>[[item.Description]]</p>
-              <p>
-                <template is="dom-repeat" items="[[item.Categories]]" as="tag">
-                  <a href$="/?tag=[[tag]]" class="tag">#[[tag]]</a>
-                </template>
-              </p>
-              <p>
+              <span class="licenses">
                 <template is="dom-repeat" items="[[item.License]]" as="license">
                   <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
+                </template>
+              </span>
+              <p class="tags">
+                <template is="dom-repeat" items="[[item.Categories]]" as="tag">
+                  <a href$="/?tag=[[tag]]">#[[tag]]</a>
                 </template>
               </p>
             </div>
