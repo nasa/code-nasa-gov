@@ -3,8 +3,8 @@
   "short_name": "NASA OSS",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#21292E",
-  "background_color": "#21292E",
+  "theme_color": "#212121",
+  "background_color": "#212121",
   "icons": [
     {
       "src": "images/logos/nasa-192.png",

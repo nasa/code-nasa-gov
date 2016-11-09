@@ -14,19 +14,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="shared-styles">
   <template>
     <style>
-      h1 {
-        font-family: 'ArcaMajora3-Bold', sans-serif;
-        font-size: 1.3em;
-        font-weight: normal;
-        letter-spacing: 10px;
-        color: #FFF;
-      }
-
       h2 {
         font-size: 1em;
       }
 
-      h1, h2, p {
+      h2, p {
         margin: 18px 0;
       }
 
@@ -47,23 +39,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .splash {
-        padding: 46vw 0 40vw;
+        padding: 55.5vw 0 40vw;
         text-align: center;
         text-transform: uppercase;
       }
 
-      @media (min-width: 768px) {
-        h1 {
-          font-size: 1.9em;
-          letter-spacing: 28px;
-        }
+      .splash > h1 {
+        font-family: 'ArcaMajora3-Bold', sans-serif;
+        font-size: 1.2em;
+        font-weight: normal;
+        letter-spacing: 9px;
+        line-height: 1.5em;
+        margin: -0.75em 0 24px 9px;
+        color: #FFF;
+      }
 
-        h1, h2, p {
+      @media (min-width: 768px) {
+        h2, p {
           margin: 20px 0;
         }
 
         .splash {
-          padding: 24vw 0 14vw;
+          padding: 27vw 0 14vw;
+        }
+
+        .splash > h1 {
+          font-size: 1.9em;
+          letter-spacing: 28px;
+          margin: -0.75em 0 24px 28px;
         }
       }
     </style>
