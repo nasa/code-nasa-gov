@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                           linear-gradient(0deg, #323D44, transparent 1300px);
         background-repeat: no-repeat;
         background-position: center top, center 212vw, center bottom;
-        background-size: 200%;
+        background-size: 250%;
         font-size: 14px;
         line-height: 20px;
       }
@@ -32,7 +32,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-size: 12px;
       }
 
+      .splash {
+        padding-bottom: 60px;
+      }
+
       #query {
+        margin-top: 50vw;
         width: 400px;
         max-width: 100%;
         box-sizing: border-box;
@@ -42,14 +47,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-position: left center;
         background-size: 24px 24px;
         border: none;
-        border-bottom: 1px solid var(--app-accent-color);
-        outline: none;
+        border-bottom: 1px solid #FFF;
         font-size: 16px;
         color: #FFF;
-      }
-
-      #query:focus {
-        border-bottom: 1px solid #FFF;
       }
 
       .splash,
@@ -112,6 +112,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             linear-gradient(0deg, #323D44, transparent 1300px);
           background-position: center top, center 106vw, center bottom;
           background-size: 100%;
+        }
+
+        .splash {
+          padding: 27vw 0 22vw;
+          background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E);
+          background-repeat: no-repeat;
+          background-position: center 96%;
+          background-size: 32px 32px;
+        }
+
+        #query {
+          margin-top: 0;
         }
       }
     </style>
