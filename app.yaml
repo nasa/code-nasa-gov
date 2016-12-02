@@ -33,6 +33,21 @@ handlers:
   upload: manifest.json
   secure: always
 
+- url: /NASA-M-16-21-OCIO-Memo.pdf
+  static_files: NASA-M-16-21-OCIO-Memo.pdf
+  upload: NASA-M-16-21-OCIO-Memo.pdf
+  secure: always
+
+- url: /NASA-M-16-21-Framework.pdf
+  static_files: NASA-M-16-21-Framework.pdf
+  upload: NASA-M-16-21-Framework.pdf
+  secure: always
+  
+- url: /code.json
+  static_files: code.json
+  upload: code.json
+  secure: always
+
 - url: /.*
   static_files: index.html
   upload: index.html
