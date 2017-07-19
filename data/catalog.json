@@ -1,4 +1,14 @@
 [{
+		"NASA Center": "Headquarters",
+		"Contributors": ["brian.a.thomas@nasa.gov", "jennifer.n.betancourt@nasa.gov"],
+		"Software": "APOD API",
+		"External Link": "https://github.com/nasa/apod-api",
+		"Public Code Repo": "https://github.com/nasa/apod-api",
+		"Description": "Astronomy Picture of the Day API service. A microservice written in Python which may be run on Google App Engine with the Flask micro framework.",
+		"License": ["ALv2"],
+		"Categories": ["API", "Images"],
+		"Update_Date": "2017-07-07"
+	},{
 		"NASA Center": "Ames Research Center",
 		"Contributors": ["creon@nas.nasa.gov"],
 		"Software": "Viewpoints: Software for Visualization of Multivariate Data",
@@ -502,7 +512,7 @@
 		"External Link": "https://github.com/nasa-gibs/mrf",
 		"Public Code Repo": "https://github.com/nasa-gibs/mrf",
 		"Description": "The source code contains the Meta Raster Format (MRF) specification and plugin for GDAL, which is a part of the OnEarth software package. OnEarth consists of image formatting and serving modules which facilitate the deployment of a web service capable of efficiently serving standards-based requests for georeferenced raster imagery at multiple spatial resolutions including, but not limited to, full spatial resolution. The Meta Raster Format and OnEarth software were originally developed at the Jet Propulsion Laboratory (JPL) to serve global daily composites of MODIS imagery. Since then, it has been deployed and repurposed in other installations, including at the Physical Oceanography Distributed Active Archive Center (PO.DAAC) in support of the State of the Oceans (SOTO) visualization tool, the Lunar Mapping and Modeling Project (LMMP), and GIBS.",
-		"License": ["NASA Open Source"],
+		"License": ["ALv2"],
 		"Categories": ["worldview", "earth data science", "eosdis", "Tiled WMS", "global imagery browse services", "gibs", "mrf", "onearth"],
 		"Update_Date": "2016-02-05"
 	}, {
@@ -858,10 +868,10 @@
 	}, {
 		"NASA Center": "Langley Research Center",
 		"Contributors": ["larc-sra@mail.nasa.gov"],
-		"Software": "Tolerance Domain Specific Language",
-		"External Link": "https://github.com/kleb/nasarb/blob/master/uq4sim",
-		"Public Code Repo": "https://github.com/kleb/nasarb/blob/master/uq4sim/trunk/README.txt",
-		"Description": "This sensitivity task employs the Monte Carlo method. Thousands of simulations are run with randomly varied input parameters, and then statistical correlations are computed to determine the sensitivity of output parameters to each input parameter.",
+		"Software": "NASA Ruby",
+		"External Link": "https://github.com/kleb/nasarb",
+		"Public Code Repo": "https://github.com/kleb/nasarb",
+		"Description": "A home for NASA's open source Ruby software.  funit (Fortran unit testing framework.) fortran (Fortran utilities.) watch-paths (Poor man's file monitoring.) namelists (Generates webpage for creating namelists found in Fortran programs.) uq4sim (Uncertainty quantification for simulation.)",
 		"License": ["NASA Open Source"],
 		"Categories": ["Data and Image Processing"],
 		"Update_Date": "2008-06-16"
@@ -950,9 +960,9 @@
 		"Contributors": ["arc-sra-team@mail.nasa.gov"],
 		"Software": "NASA Tensegrity Robotics Toolkit (NTRT) v1",
 		"External Link": "https://github.com/NASA-Tensegrity-Robotics-Toolkit/NTRTsim",
-		"Public Code Repo": "https://github.com/NASA-Tensegrity-Robotics-Toolkit/NTRTsim/releases/tag/V1.1",
+		"Public Code Repo": "https://github.com/NASA-Tensegrity-Robotics-Toolkit/NTRTsim",
 		"Description": "The NASA Tensegrity Robotics Toolkit (NTRT) is a collection of C and MATLAB software modules for the modeling, simulation, and control of Tensegrity Robots. Tensegrity Robots are a biologically inspired approach to building robots based on the tension networks of tensegrity structures, which have no rigid connections between elements. The NTRT was created to enable: the rapid co-exploration of structures and controls in a physics based simulation environment; the development of tensegrity robotics algorithms such as structural analysis, kinematics, and motion planning; and the validation of the algorithms and controls on hardware prototypes of the tensegrity robots.",
-		"License": ["NASA Open Source"],
+		"License": ["ALv2"],
 		"Categories": ["Autonomous Systems"],
 		"Update_Date": "2015-01-09"
 	}, {
@@ -977,15 +987,33 @@
 		"Update_Date": "2016-01-11"
 	}, {
 		"NASA Center": "Ames Research Center Center",
-		"Contributors": ["arc-sra-team@mail.nasa.gov"],
+		"Contributors": ["Joseph Rios"],
 		"Software": "Parallel Dantzig-Wolfe Decomposition",
-		"External Link": "http://sourceforge.net/projects/dwsolver",
-		"Public Code Repo": "http://sourceforge.net/projects/dwsolver/files/latest/download",
+		"External Link": "https://github.com/nasajoey/dwsolver",
+		"Public Code Repo": "https://github.com/nasajoey/dwsolver",
 		"Description": "This implementation of the Dantzig-Wolfe decomposition is built upon the GNU Linear Programming Kit. The technology provides a command-line tool for solving properly decomposed linear programs.",
 		"License": ["NASA Open Source"],
-		"Categories": ["Aeronautics"],
+		"Categories": [
+			"Aeronautics",
+			"Linear Programming",
+			"Optimization"
+		],
 		"Update_Date": "2015-02-28"
 	}, {
+		"NASA Center": "Ames Research Center Center",
+		"Contributors": ["Joseph Rios"],
+		"Software": "utm-apis",
+		"External Link": "https://github.com/nasa/utm-apis",
+		"Public Code Repo": "https://github.com/nasa/utm-apis",
+		"Description": "This repository contains the collection of OpenAPI specification APIs within the NASA's research version of the UTM System.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"Aeronautics",
+			"Linear Programming",
+			"Optimization"
+		],
+		"Update_Date": "2017-07-12"
+	},{
 		"NASA Center": "Langley Research Center",
 		"Contributors": [],
 		"Software": "NASTRAN 95",
@@ -5094,7 +5122,7 @@
 		],
 		"Software": "TrickFMI: A Functional Mockup Interface (FMI) Standard Implementation for Trick Base Models and Simulations",
 		"External Link": "https://github.com/nasa/TrickFMI/wiki",
-		"Public Code Repo": "https://github.com/nasa/TrickFMI.git",
+		"Public Code Repo": "https://github.com/nasa/TrickFMI",
 		"Description": "This software supports FMI based model exchange with Trick based simulations. The Functional Mockup Interface (FMI) standard was developed in partnership with governmental, academic and commercial entities in the European Union. This standard is used to support the exchange of component models for complex system simulations throughout Europe and the United States. Trick simulations are used all across NASA for simulations that support human spaceflight activities. However, until now, there were no means to use FMI based models in a Trick based simulation or a method for providing Trick based models that were FMI compliant. This software provides implementation software to do both. There are two principal components to the software: A C based software implementation for wrapping Trick based C models that provide an FMI compliant interface; A collection of C++ classes that can be used in a Trick based simulation to use an FMI compliant model (FMU).",
 		"Languages": [
 			"C++",
@@ -6803,24 +6831,24 @@
 		],
 		"Update_Date": "2017-03-07"
 	},
-{
-	"NASA Center": "Marshall Space Flight Center",
-    "Contributors": [
-      "manilmaskey, amarouane"
-    ],
-    "Software": "pyCMR",
-    "External Link": "https://github.com/ghrcdaac/cmr/wiki",
-    "Public Code Repo": "https://github.com/ghrcdaac/cmr",
-    "Description": "Python client library that abstracts CMR API calls for search, ingest, update, and deletion of collections and granules.",
-    "License": [
-      "NASA Open Source"
-    ],
-    "Categories": [
-      "APL Client Library",
-      "Client SDK"
-    ],
-    "Update_Date": "2017-04-12"
-}, {
+	{
+		"NASA Center": "Marshall Space Flight Center",
+		"Contributors": [
+			"manilmaskey, amarouane"
+		],
+		"Software": "pyCMR",
+		"External Link": "https://github.com/ghrcdaac/cmr/wiki",
+		"Public Code Repo": "https://github.com/ghrcdaac/cmr",
+		"Description": "Python client library that abstracts CMR API calls for search, ingest, update, and deletion of collections and granules.",
+		"License": [
+			"NASA Open Source"
+		],
+		"Categories": [
+			"APL Client Library",
+			"Client SDK"
+		],
+		"Update_Date": "2017-04-12"
+	}, {
 		"NASA Center": "Ames Research Center",
 		"Contributors": ["mreese84"],
 		"Software": "Metadata Management Tool (MMT)",
@@ -6832,5 +6860,454 @@
 			"CMR", "Ruby", "application"
 		],
 		"Update_Date": "2017-03-31"
+	},
+	{
+		"NASA Center": "Langley Research Center",
+		"Contributors": ["KevinMcCluney"],
+		"Software": "CFS Command and Data Dictionary Tool (CCDDT)",
+		"External Link": "https://github.com/nasa/CCDD",
+		"Public Code Repo": "https://github.com/nasa/CCDD",
+		"Description": "The Core Flight System (CFS) Command and Data Dictionary (CDD) utility, or CCDD, is a software tool for managing the data structures for CFS and CFS applications, including telemetry data structures, command information, and other data pertinent to a CFS project.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"CFS", "java", "SQL"
+		],
+		"Update_Date": "2017-05-01"
+	},
+	{
+		"NASA Center": "Johnson Space Center",
+		"Contributors": ["KevinMcCluney"],
+		"Software": "CFS Command and Data Dictionary Tool (CCDDT)",
+		"External Link": "https://github.com/nasa/CCDD",
+		"Public Code Repo": "https://github.com/nasa/CCDD",
+		"Description": "The Core Flight System (CFS) Command and Data Dictionary (CDD) utility, or CCDD, is a software tool for managing the data structures for CFS and CFS applications, including telemetry data structures, command information, and other data pertinent to a CFS project.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"CFS", "java", "SQL"
+		],
+		"Update_Date": "2017-05-01"
+	},
+	{
+    "NASA Center": "Ames Research Center",
+    "Contributors": [
+      "ksutka"
+    ],
+    "Software": "MAV",
+    "External Link": "https://github.com/nasa/MAV",
+    "Public Code Repo": "https://github.com/nasa/MAV",
+    "Description": "Modeling, Analysis, and Visualization (MAV) of ATM concepts",
+    "License": [
+      "Apache License 2.0"
+    ],
+    "Categories": [
+      "Toolkit",
+      "Analysis",
+      "Visualization"
+    ],
+    "Update_Date": "2017-03-03"
+},
+	{
+		"NASA Center": "Langley Research Center",
+		"Contributors": ["vickiely, Smewhen"],
+		"Software": "Drought Severity Assessment Tool (DSAT)",
+		"External Link": "https://github.com/NASA-DEVELOP/DSAT",
+		"Public Code Repo": "https://github.com/NASA-DEVELOP/DSAT",
+		"Description": "The Drought Severity Assessment Tool (formerly Drought Severity Assessment - Decision Support Tool) will be used by Navajo Nation Department of Water Resource Managers for their monthly drought reports and other activities related to drought monitoring within the region. With small adjustments it is possible for the tool to be used in other locations given the user has already downloaded and processed the proper precipitation data.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"R", "resource management", "application"
+		],
+		"Update_Date": "2017-02-23"
+	},
+	{
+		"NASA Center": "Langley Research Center",
+		"Contributors": ["kdottiemo"],
+		"Software": "Chesapeake Bay Chlorophyll Hotspot Identifier (CBCHI)",
+		"External Link": "https://github.com/NASA-DEVELOP/CBCHI",
+		"Public Code Repo": "https://github.com/NASA-DEVELOP/CBCHI",
+		"Description": "Chesapeake Bay Chlorophyll Hotspot Identifier (CBCHI) takes in raw Landsat 8 surface reflectance products and produces two maps to be opened in ArcMap that can be used to identify chlorophyll hotspots. It also creates a true color image.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"Landsat", "imagery", "application"
+		],
+		"Update_Date": "2017-02-27"
+	},
+	{
+		"NASA Center": "Langley Research Center",
+		"Contributors": ["kdottiemo, Smewhen"],
+		"Software": "Visualization of CALIPSO (VOCAL)",
+		"External Link": "https://github.com/NASA-DEVELOP/VOCAL",
+		"Public Code Repo": "https://github.com/NASA-DEVELOP/VOCAL",
+		"Description": "Visualization of CALIPSO (VOCAL). A CALIPSO Cross Cutting tool for visualizing data.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"visualization", "python", "application"
+		],
+		"Update_Date": "2017-04-25"
+	},
+	{
+		"NASA Center": "Langley Research Center",
+		"Contributors": ["kdottiemo"],
+		"Software": "Move Away Superfluous Clouds (MASC)",
+		"External Link": "https://github.com/NASA-DEVELOP/MASC",
+		"Public Code Repo": "https://github.com/NASA-DEVELOP/MASC",
+		"Description": "This code removes clouds, cloud shadow, water, and snow pixels from Landsat scenes using the cloud mask layer that is provided with Landsat data.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"Landsat", "mask layer", "application"
+		],
+		"Update_Date": "2017-03-21"
+	},
+	{
+		"NASA Center": "Langley Research Center",
+		"Contributors": ["kdottiemo"],
+		"Software": "GC-ReDI",
+		"External Link": "https://github.com/NASA-DEVELOP/GC-ReDI",
+		"Public Code Repo": "https://github.com/NASA-DEVELOP/GC-ReDI",
+		"Description": "This Google Earth Engine software quantifies the decreasing water surface area in Lake Mead and the lower Grand Canyon and assesses the resulting changes in land cover –specifically, riparian vegetation and riparian sediment. The software provides images, statistics, and graphs to understand the drought-induced changes.",
+		"License": ["NASA Open Source"],
+		"Categories": [
+			"imagery", "visualization", "application"
+		],
+		"Update_Date": "2017-05-05"
+	},
+        {
+		"NASA Center": "Marshall Space Flight Center",
+		"Contributors": [
+			"tjlang"
+		],
+		"Software": "Multiple-Doppler Radar Analysis Toolkit (MultiDop)",
+		"External Link": "https://github.com/nasa/MultiDop/wiki",
+		"Public Code Repo": "https://github.com/nasa/MultiDop",
+		"Description": "MultiDop is a Python-based interface between the C-based DDA code developed at University of Oklahoma and the Python Atmospheric Radiation Measurement Radar Toolkit (Py-ART) software developed at Argonne National Lab. Use this software to perform 3D wind analyses using 2-3 independent Doppler radars.",
+		"License": [
+			"NASA Open Source"
+		],
+		"Categories": [
+			"Earth Science",
+			"Toolkit",
+			"Meteorology",
+			"Radar",
+			"Doppler",
+			"Winds"
+		],
+		"Update_Date": "2017-05-31"
+	},
+	{
+		"NASA Center": "Ames Research Center",
+    		"Contributors": [
+      			"Christopher J. Burke"
+    		],
+   		"Software": "Kepler-FLTI",
+    		"External Link": "https://github.com/nasa/Kepler-FLTI",
+    		"Public Code Repo": "https://github.com/nasa/Kepler-FLTI",
+    		"Description": " Illustrate using the Flux-Level Transit Injection (FLTI) Tests of the Kepler pipeline for Data Release 25.  This code generates the figures in the documentation of FLTI, Burke, C.J. and Catanzarite, J. 2017, Planet Detection Metrics: Per-Target Flux-Level Transit Injection Tests of TPS for Data Release 25, KSCI-19109-001",
+    		"License": [
+      			"NASA Open Source"
+    		],
+    		"Categories": [
+      			"Kepler"
+    		],
+    		"Update_Date": "2017-07-13"
+	},
+	{
+		"NASA Center": "Ames Research Center",
+    		"Contributors": [
+      			"Christopher J. Burke"
+    		],
+    		"Software": "KeplerPORTs",
+    		"External Link": "https://github.com/nasa/KeplerPORTs",
+    		"Public Code Repo": "https://github.com/nasa/KeplerPORTs",
+    		"Description": "Illustrate making use of numerous Kepler Planet Occurrence Rate Data Products for Data Release 25 and SOC 9.3 Kepler Pipeline version.  This code generates a detection contour according to the documentation Burke, C.J. and Catanzarite, J. 2017, Planet Detection Metrics: Per-Target Detection Contours for Data Release 25, KSCI-19111-001",
+    		"License": [
+      			"NASA Open Source"
+    		],
+    		"Categories": [
+      			"Kepler"
+    		],
+    		"Update_Date": "2017-07-13"
+	},
+ 	{
+		"NASA Center": "Ames Research Center",
+    		"Contributors": [
+			"Jeff Coughlin"
+    		],
+	    	"Software": "Kepler DR25 Robovetter",
+	    	"External Link": "https://github.com/nasa/kepler-robovetter",
+	    	"Public Code Repo": "https://github.com/nasa/kepler-robovetter",
+	    	"Description": "The Kepler DR25 Robovetter code. The Robovetter dispositions Kepler Threshold Crossing Events (TCEs) into Planet Candidates (PCs) and False Positives (FPs) using sophisticated vetting metrics and decision-tree logic.",
+	    	"License": [
+	      		"NASA Open Source"
+	    	],
+	    	"Categories": [
+	      		"Kepler",
+	      		"DR25",
+	      		"Transits",
+			"Vetting"
+	  	],
+	    "Update_Date": "2017-06-12"
+	},
+ {
+		"NASA Center": "Ames Research Center",
+	    "Contributors": [
+	      "balhar-jakub",
+				"tag3",
+				"servetg",
+				"strikerM",
+				"revo09",
+				"pdavidc",
+				"emxsys",
+				"GabrielePrestifilippo",
+				"zglueck",
+				"carla-orru",
+				"AkeluX",
+				"RandolphKim",
+				"revision0"
+	    ],
+	    "Software": "WebWorldWind",
+	    "External Link": "https://github.com/NASAWorldWind/WebWorldWind",
+	    "Public Code Repo": "https://github.com/NASAWorldWind/WebWorldWind",
+	    "Description": "NASA World Wind in Java for HTML5",
+	    "License": [
+	      "NASA Open Source Agreement Version 1.3"
+	    ],
+	    "Categories": [
+	      "WorldWind",
+				"visual simulation",
+				"satellite",
+				"orbital dynamics",
+				"web application"
+	    ],
+	    "Update_Date": "2016-06-19"
+	},
+	{
+		"NASA Center": "Ames Research Center",
+	    "Contributors": [
+				"pdavidc",
+				"zglueck"
+	    ],
+	    "Software": "NASAWorldWind.github.io",
+	    "External Link": "https://github.com/NASAWorldWind/NASAWorldWind.github.io",
+	    "Public Code Repo": "https://github.com/NASAWorldWind/NASAWorldWind.github.io",
+	    "Description": "NASA World Wind organization website",
+	    "License": [
+	      "NASA Open Source Agreement Version 1.3"
+	    ],
+	    "Categories": [
+	      "WorldWind",
+				"visual simulation",
+				"satellite",
+				"orbital dynamics",
+				"github"
+	    ],
+	    "Update_Date": "2016-06-19"
+	},
+	{
+		"NASA Center": "Ames Research Center",
+	    "Contributors": [
+				"pdavidc",
+				"emxsys",
+				"zglueck",
+				"Beak-man"
+	    ],
+	    "Software": "WorldWindAndroid",
+	    "External Link": "https://github.com/NASAWorldWind/WorldWindAndroid",
+	    "Public Code Repo": "https://github.com/NASAWorldWind/WorldWindAndroid",
+	    "Description": "NASA World Wind in Java for Android",
+	    "License": [
+	      "NASA Open Source Agreement Version 1.3"
+	    ],
+	    "Categories": [
+	      "WorldWind",
+				"visual simulation",
+				"satellite",
+				"orbital dynamics",
+				"android",
+				"application"
+	    ],
+	    "Update_Date": "2016-06-19"
+	},
+	{
+		"NASA Center": "Ames Research Center",
+	    "Contributors": [
+				"pdavidc",
+				"emxsys"
+	    ],
+	    "Software": "WorldWindServerKit",
+	    "External Link": "https://github.com/NASAWorldWind/WorldWindServerKit",
+	    "Public Code Repo": "https://github.com/NASAWorldWind/WorldWindServerKit",
+	    "Description": "NASA World Wind map server kit",
+	    "License": [
+	      "GPLv2"
+	    ],
+	    "Categories": [
+	      "WorldWind",
+				"visual simulation",
+				"satellite",
+				"orbital dynamics",
+				"server kit",
+				"GeoServer",
+				"java"
+	    ],
+	    "Update_Date": "2016-06-19"
+	},
+	{
+		"NASA Center": "Ames Research Center",
+	    "Contributors": [
+				"pdavidc",
+				"emxsys",
+				"zglueck",
+				"tag3",
+				"moovida"
+	    ],
+	    "Software": "WorldWindJava",
+	    "External Link": "https://github.com/NASAWorldWind/WorldWindJava",
+	    "Public Code Repo": "https://github.com/NASAWorldWind/WorldWindJava",
+	    "Description": "NASA World Wind in Java",
+	    "License": [
+	      "NASA Open Source Agreement Version 1.3"
+	    ],
+	    "Categories": [
+	      "WorldWind",
+				"visual simulation",
+				"satellite",
+				"orbital dynamics",
+				"web application",
+				"java"
+	    ],
+	    "Update_Date": "2016-06-19"
+	},
+	{
+		"NASA Center": "Langley Research Center",
+			"Contributors": [
+				"kdottiemo",
+				"egotschalk"
+			],
+			"Software": "GATER",
+			"External Link": "https://github.com/NASA-DEVELOP/GATER",
+			"Public Code Repo": "https://github.com/NASA-DEVELOP/GATER",
+			"Description": "Geographic Applications for Transitioning Everglades Regions (GATER). Meant for running within the Google Earth Engine API, this JavaScript code provides an algorithm for cloud removal from Landsat scenes, and runs a classification scheme which classifies mangrove extent within Everglades National Park.",
+			"License": [
+				"NASA Open Source Agreement Version 1.3"
+			],
+			"Categories": [
+				"Geographic Applications for Transitioning Everglades Regions",
+				"Google Earth API",
+				"JavaScript",
+				"algorithm",
+				"cloud removal",
+				"Landsat scenes",
+				"classification scheme",
+				"Everglades National Park"
+			],
+			"Update_Date": "2016-06-22"
+	},
+	{
+		"NASA Center": "",
+			"Contributors": [
+				"Kathleen Moore"
+			],
+			"Software": "SWIM",
+			"External Link": "https://github.com/NASA-DEVELOP/SWIM",
+			"Public Code Repo": "https://github.com/NASA-DEVELOP/SWIM",
+			"Description": "This tool allows users to identify surface water from the most current imagery available, or to monitor temporal changes of surface water in their management area.",
+			"License": [
+				"NASA Open Source Agreement Version 1.3"
+			],
+			"Categories": [
+				"current imagery",
+				"temporal changes",
+				"surface water"
+			],
+			"Update_Date": "2016-06-22"
+	},
+	{
+		"NASA Center": "",
+			"Contributors": [
+				"kdottiemo"
+			],
+			"Software": "ESVIA",
+			"External Link": "https://github.com/NASA-DEVELOP/ESVIA/graphs/contributors",
+			"Public Code Repo": "https://github.com/NASA-DEVELOP/ESVIA/graphs/contributors",
+			"Description": "Elkhorn Slough Vegetation Imagery Assessment (ESVIA). This suite of Google Earth Engine Javascript code analyzes vegetation change in a historical time-series using Landsat, as well as current-day vegetation productivity using Sentinel 2A imagery. Included in the scripts are operations such as image acquisition, image processing, and application.",
+			"License": [
+				"NASA Open Source Agreement Version 1.3"
+			],
+			"Categories": [
+				"Google Earth",
+				"java",
+				"vegetation",
+				"vegetation imagery",
+				"vegetation change",
+				"landsat",
+				"Sentinel 2A imagery"
+			],
+			"Update_Date": "2016-06-23"
+	},
+	{
+		"NASA Center": "",
+			"Contributors": [
+				"kdottiemo"
+			],
+			"Software": "PiCo",
+			"External Link": "https://github.com/NASA-DEVELOP/PiCo",
+			"Public Code Repo": "https://github.com/NASA-DEVELOP/PiCo",
+			"Description": "Pixelwise Correlation-Based Landscape Classification (PiCo). PiCo, an R script, automates and regionalizes the Climate Landscape Response (CLaRe) metrics developed by Wallace et al 2016. This script performs a pixel-wise regression analysis to produce rasters whose correlation values can be evaluated to target buffelgrass.",
+			"License": [
+				"NASA Open Source Agreement Version 1.3"
+			],
+			"Categories": [
+				"R",
+				"climate",
+				"pixel-wise regression analysis",
+				"buffelgrass",
+				"pixel-wise",
+				"correlation-based",
+				"landscape"
+			],
+			"Update_Date": "2016-06-23"
+	},
+	{
+		"NASA Center": "",
+			"Contributors": [
+				"kdottiemo",
+				"kylepeterson777"
+			],
+			"Software": "POPP",
+			"External Link": "https://github.com/NASA-DEVELOP/POPP",
+			"Public Code Repo": "https://github.com/NASA-DEVELOP/POPP",
+			"Description": "Palm Oil Plantation Predictor (POPP). This Python software automates the process of downloading, atmospherically correcting, and processing raster data in order to identify potential palm oil plantations.",
+			"License": [
+				"NASA Open Source Agreement Version 1.3"
+			],
+			"Categories": [
+				"palm oil",
+				"plantation",
+				"python",
+				"atmospherically",
+				"raster"
+			],
+			"Update_Date": "2016-06-23"
+	},
+	{
+		"NASA Center": "",
+			"Contributors": [
+				"kdottiemo"
+			],
+			"Software": "CBCHI",
+			"External Link": "https://github.com/NASA-DEVELOP/CBCHI",
+			"Public Code Repo": "https://github.com/NASA-DEVELOP/CBCHI",
+			"Description": "Chesapeake Bay Chlorophyll Hotspot Identifier (CBCHI) takes in raw Landsat 8 surface reflectance products and produces two maps to be opened in ArcMap that can be used to identify chlorophyll hotspots. It also creates a true color image.",
+			"License": [
+				"NASA Open Source Agreement Version 1.3"
+			],
+			"Categories": [
+				"Chesapeake Bay",
+				"chlorophyll",
+				"Landsat 8",
+				"ArcMap"
+			],
+			"Update_Date": "2016-06-23"
 	}
+
 ]
