@@ -3288,7 +3288,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/openmctweb",
+		        "repositoryURL": "https://github.com/nasa/openmct/",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -33812,41 +33812,6 @@
 		            "NASA",
 		            "CMR",
 		            "EOSDIS"
-		        ]
-		    },
-		    {
-		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb6434"
-		        },
-		        "contact": {
-		            "email": "peter.l.richards@nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2017-08-23"
-		        },
-		        "description": "Open MCT (Open Mission Control Technologies) is a next-generation mission control framework for visualization of data on desktop and mobile devices. It is developed at NASA's Ames Research Center, and is being used by NASA for data analysis of spacecraft missions, as well as planning and operation of experimental rover systems. As a generalizable and open source framework, Open MCT could be used as the basis for building applications for planning, operation, and analysis of any systems producing telemetry data.",
-		        "laborHours": 0,
-		        "name": "Open Mission Control Web (Open MCT Web)",
-		        "organization": "ARC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://github.com/nasa/openmct/blob/master/LICENSES.md",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "openSource"
-		        },
-		        "repositoryURL": "https://github.com/nasa/openmctweb",
-		        "tags": [
-		            "NASA",
-		            "ARC",
-		            "Open Source",
-		            "Operations",
-		            "MCT"
 		        ]
 		    },
 		    {
