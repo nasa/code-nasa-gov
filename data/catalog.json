@@ -12091,5 +12091,51 @@
             "bayesian"
         ], 
         "Software": "Sequential Monte Carlo Sampling with Python"
+    }, 
+    {
+        "Update_Date": "2018-10-23", 
+        "Description": "HyperSolve AD Mini-App uses an in-house developed AD tool that is based on operator-overloading to compute linearizations of a given function.", 
+        "Public Code Repo": "https://github.com/T-infinity/miniapps", 
+        "License": [
+            "NASA Open Source"
+        ], 
+        "NASA Center": "Langley Research Center", 
+        "External Link": "https://software.nasa.gov/software/LAR-19476-1", 
+        "Contributors": [
+            "kbthomp1"
+        ], 
+        "Labor_Hours": 320, 
+        "Categories": [
+            "operator", 
+            "overloading", 
+            "linearization", 
+            "function"
+        ], 
+        "Software": "HyperSolve AD Mini-App"
+    },
+    {
+        "Update_Date": "2018-11-08", 
+        "Description": "Python module for applying the Multi-Level Monte Carlo (MLMC) method for uncertainty propagation.", 
+        "Public Code Repo": "https://github.com/nasa/mlmcpy", 
+        "License": [
+            "NASA Open Source"
+        ], 
+        "NASA Center": "Langley Research Center", 
+        "External Link": "https://github.com/nasa/mlmcpy", 
+        "Contributors": [
+            "lukemorrill",
+            "jwarner308"
+        ], 
+        "Labor_Hours": 784, 
+        "Categories": [
+            "multi", 
+            "level", 
+            "monte", 
+            "carlo",
+            "python",
+            "uncertainty"
+        ], 
+        "Software": "Multi-Level Monte Carlo"
     }
+
 ]
