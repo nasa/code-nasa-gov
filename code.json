@@ -15793,41 +15793,6 @@
 		    },
 		    {
 		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb6232"
-		        },
-		        "contact": {
-		            "email": "jpl_ott@jpl.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2016-10-7"
-		        },
-		        "description": "PBEM is a rules-based approach to enterprise management that can be used to automate certain management tasks.  PBEM simplifies the management of a given endeavor by establishing policies to deal with situations that are likely to occur.  Policies are operating rules that can be referred to as a means of maintaining order, security, consistency, or other ways of successfully furthering a goal or mission.  PBEM provides a way of managing configuration of network elements, applications and processes via a set of high-level rules or business policies rather than managing individual elements.  There is a need for abstraction of the capabilities of the individual elements, thus switching the control to higher level.  The benefit of this approach is that it allows unique management rules (or commands) to be specified and applied to a cross-section of the GIG.",
-		        "identifier": "NPO-45816-1",
-		        "laborHours": 0,
-		        "name": "Policy Base Management Natural Language Parser",
-		        "organization": "JPL",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://software.nasa.gov/faq",
-		                    "name": "Pending Release"
-		                }
-		            ],
-		            "usageType": "governmentWideReuse"
-		        },
-		        "repositoryURL": "https://software.nasa.gov/software/NPO-45816-1",
-		        "tags": [
-		            "NASA",
-		            "JPL",
-		            "U.S. Government Purpose Release",
-		            "Business Systems and Project Management"
-		        ]
-		    },
-		    {
-		        "_id": {
 		            "$oid": "5a3a9b78da833f1e40fb6233"
 		        },
 		        "contact": {
@@ -18274,41 +18239,6 @@
 		            "JPL",
 		            "U.S. Government Purpose Release",
 		            "Autonomous Systems"
-		        ]
-		    },
-		    {
-		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb6279"
-		        },
-		        "contact": {
-		            "email": "jpl_ott@jpl.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2016-10-26"
-		        },
-		        "description": "MISR is a NASA instrument on board an earth-orbiting satellite that provides new types of information for scientists studying Earth's climate, such as the partitioning of energy and carbon between the land surface and the atmosphere, and the regional and global impacts of different types of atmospheric particles and clouds on climate. This software allows for visualizing MISR data. MISR INteractive eXplorer functions both as a general-purpose tool to visualize MISRdata and as a specialized tool to analyze properties of smoke and volcanic plumes. ",
-		        "identifier": "NPO-47098-1",
-		        "laborHours": 0,
-		        "name": "MISR INteractive eXplorer",
-		        "organization": "JPL",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://github.com/nasa/MINX/blob/master/LICENSE.txt",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "governmentWideReuse"
-		        },
-		        "repositoryURL": "https://github.com/nasa/MINX",
-		        "tags": [
-		            "NASA",
-		            "JPL",
-		            "U.S. Government Purpose Release",
-		            "Data and Image Processing"
 		        ]
 		    },
 		    {
@@ -23489,41 +23419,6 @@
 		            "JSC",
 		            "U.S. Government Purpose Release ",
 		            "Operations"
-		        ]
-		    },
-		    {
-		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb630e"
-		        },
-		        "contact": {
-		            "email": "jsc-ttco-software-request@mail.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2014-4-15"
-		        },
-		        "description": "DSS software predicts and analyzes the dynamics of a load of cargo dropped with parachutes from an aircraft, from the first motion in the aircraft until the payload reaches the ground. The system, which comprises a Microsoft Windows version paired with Excel, is easier to use than the UNIX system-based version.",
-		        "identifier": "MSC-24014-1",
-		        "laborHours": 0,
-		        "name": "Decelerator System Simulation (DSS)",
-		        "organization": "JSC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://software.nasa.gov/faq",
-		                    "name": "Pending Release"
-		                }
-		            ],
-		            "usageType": "governmentWideReuse"
-		        },
-		        "repositoryURL": "https://software.nasa.gov/software/MSC-24014-1",
-		        "tags": [
-		            "NASA",
-		            "JSC",
-		            "U.S. Release Only",
-		            "Design and Integration Tools"
 		        ]
 		    },
 		    {
@@ -34331,41 +34226,6 @@
 		            "NASA",
 		            "GSFC",
 		            "Vehicle Management (Space/Air/Ground)"
-		        ]
-		    },
-		    {
-		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb6445"
-		        },
-		        "contact": {
-		            "email": "arc-webservices@mail.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2017-08-23"
-		        },
-		        "description": "Here you'll find a growing collection of 3D models, textures, and images from inside NASA.",
-		        "laborHours": 0,
-		        "name": "NASA-3D-Resources",
-		        "organization": "ARC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://software.nasa.gov/faq",
-		                    "name": "Pending Release"
-		                }
-		            ],
-		            "usageType": "openSource"
-		        },
-		        "repositoryURL": "https://github.com/nasa/NASA-3D-Resources",
-		        "tags": [
-		            "NASA",
-		            "ARC",
-		            "3D",
-		            "models",
-		            "visualizations"
 		        ]
 		    },
 		    {
