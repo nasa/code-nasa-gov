@@ -708,41 +708,6 @@
 		    },
 		    {
 		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb6084"
-		        },
-		        "contact": {
-		            "email": "arc-sra-team@mail.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2014-4-15"
-		        },
-		        "description": "The SPIFe interface allows plans to be generated under complex constraints and reduces the number of team members necessary to achieve mission goals. The technology, consisting of a set of plugins built using the Java Eclipse Rich Client Platform (RCP), complies with the standards of the Ensemble project. SPIFe software offers several novel controls and visualizations for task planning and a generalized application interface for communicating with planning engines.",
-		        "identifier": "ARC-15795-1A",
-		        "laborHours": 0,
-		        "name": "Scheduling and Planning Interface for Exploration (SPIFe)",
-		        "organization": "ARC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://github.com/nasa/OpenSPIFe/blob/master/LICENSE.md",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "governmentWideReuse"
-		        },
-		        "repositoryURL": "https://github.com/nasa/OpenSPIFe/wiki",
-		        "tags": [
-		            "NASA",
-		            "ARC",
-		            "U.S. Government Purpose Release",
-		            "Operations"
-		        ]
-		    },
-		    {
-		        "_id": {
 		            "$oid": "5a3a9b78da833f1e40fb6085"
 		        },
 		        "contact": {
@@ -1188,7 +1153,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://app.assembla.com/spaces/viewpoints/wiki/Home",
+		        "repositoryURL": "https://app.assembla.com/spaces/viewpoints/documents",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1433,7 +1398,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://sourceforge.net/projects/dwsolver",
+		        "repositoryURL": "https://github.com/alotau/dwsolver",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1468,7 +1433,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/mpd/",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/mpd",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1503,7 +1468,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/autobayes/",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/autobayes",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1538,7 +1503,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/mkad/",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/mkad",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1643,7 +1608,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://ritchielee.net/software/libnfg-snap-1-0/",
+		        "repositoryURL": "http://ritchielee.net/wp-content/uploads/2015/11/libnfg-snap-1.0.zip",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1853,7 +1818,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/project/wiring/",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/project/wiring",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1923,7 +1888,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/OpenSPIFe/",
+		        "repositoryURL": "https://github.com/nasa/OpenSPIFe",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -1946,13 +1911,13 @@
 		        "description": "MCP is a high-performance file copy utility that achieves performance gains through parallelization. Multiple files and parts of single files are processed in parallel using multiple threads on multiple processors. The program employs the OpenMP and MPI programming models. ",
 		        "identifier": "ARC-16494-1",
 		        "laborHours": 0,
-		        "name": "Multi-threaded Copy Program (MCP) aka Mutil",
+		        "name": "Multi-threaded Copy Program (MCP)",
 		        "organization": "ARC",
 		        "permissions": {
 		            "exemptionText": null,
 		            "licenses": [
 		                {
-		                    "URL": "https://www.gnu.org/licenses/",
+		                    "URL": "",
 		                    "name": "NASA v3"
 		                }
 		            ],
@@ -2343,7 +2308,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/mts-search/",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/mts-search",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -3078,7 +3043,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://sourceforge.net/projects/savors",
+		        "repositoryURL": "https://github.com/pkolano/savors",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -3113,7 +3078,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://save-ha.sourceforge.net/",
+		        "repositoryURL": "https://sourceforge.net/projects/save-ha",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -3988,7 +3953,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/PrognosticsAlgorithmLibrary/",
+		        "repositoryURL": "https://github.com/nasa/PrognosticsAlgorithmLibrary",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -4128,7 +4093,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/PrognosticsModelLibrary/",
+		        "repositoryURL": "https://github.com/nasa/PrognosticsModelLibrary",
 		        "tags": [
 		            "NASA",
 		            "ARC",
@@ -7103,7 +7068,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/EADINLite/",
+		        "repositoryURL": "https://github.com/nasa/EADINLite",
 		        "tags": [
 		            "NASA",
 		            "GRC",
@@ -7173,7 +7138,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/channel-emulator/",
+		        "repositoryURL": "https://github.com/nasa/channel-emulator",
 		        "tags": [
 		            "NASA",
 		            "GRC",
@@ -7313,7 +7278,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/ipv6_python/",
+		        "repositoryURL": "https://github.com/nasa/ipv6_python",
 		        "tags": [
 		            "NASA",
 		            "GRC",
@@ -7768,7 +7733,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/JAT/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/JAT/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -8112,13 +8077,13 @@
 		            "exemptionText": null,
 		            "licenses": [
 		                {
-		                    "URL": "https://github.com/nasa/earthdata-search/blob/master/LICENSE",
+		                    "URL": "",
 		                    "name": "NASA v3"
 		                }
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://api-test.echo.nasa.gov/legacy-services/apis.html",
+		        "repositoryURL": "https://api.echo.nasa.gov/legacy-services/apis.html",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -8293,7 +8258,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/ace/",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/ace/#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -8363,7 +8328,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/IRC/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/IRC/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -8538,7 +8503,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/HDF-EOS2/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/HDF-EOS2/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -8818,7 +8783,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/metacheck/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/metacheck/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -8888,7 +8853,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/RETRO/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/RETRO/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -9308,7 +9273,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://sourceforge.net/projects/coreflightexec/files/cFE-6.1.1/",
+		        "repositoryURL": "https://sourceforge.net/projects/coreflightexec",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -9343,7 +9308,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/nasa/eefs/",
+		        "repositoryURL": "https://github.com/nasa/eefs",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -9483,7 +9448,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/mystran/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/mystran/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -9862,13 +9827,13 @@
 		            "exemptionText": null,
 		            "licenses": [
 		                {
-		                    "URL": "https://opensource.org/licenses/NASA-1.3",
+		                    "URL": "https://github.com/nasa/MM/blob/master/Core%20Flight%20System%20(CFS)%20NOSA.pdf",
 		                    "name": "NASA v3"
 		                }
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://sourceforge.net/projects/cfs-mm/",
+		        "repositoryURL": "https://github.com/nasa/MM",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -9973,7 +9938,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/emtg/index.php",
+		        "repositoryURL": "https://opensource.gsfc.nasa.gov/projects/emtg/index.php#software",
 		        "tags": [
 		            "NASA",
 		            "GSFC",
@@ -10438,41 +10403,6 @@
 		    },
 		    {
 		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb619a"
-		        },
-		        "contact": {
-		            "email": "gsfc-softwarerequest@mail.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2016-7-18"
-		        },
-		        "description": "Simulator of spacecraft attitude, orbit dynamics, and environmental models. Spacecraft models composed of multiple bodies are supported. The environment models include ephemerides for all planets and major moons in the solar system. Supports geometrical visualization through an OpenGL interface. The simulator is opensource and portable across computing platforms, making it customizable and extensible. It is written to support the entire GNC design cycle, from rapid prototyping and design analysis, to high-fidelity flight code verification.\r\n",
-		        "identifier": "GSC-16720-1",
-		        "laborHours": 0,
-		        "name": "42: A Comprehensive General-Purpose Simulation of Attitude and Trajectory Dynamics and Control of Multiple Spacecraft Composed of Multiple Rigid or Flexible Bodies",
-		        "organization": "GSFC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://science.nasa.gov/earth-science/earth-science-data/data-information-policy/data-rights-related-issues",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "openSource"
-		        },
-		        "repositoryURL": "https://disc.sci.gsfc.nasa.gov/additional/techlab/s4pa",
-		        "tags": [
-		            "NASA",
-		            "GSFC",
-		            "Open Source",
-		            "Design and Integration Tools"
-		        ]
-		    },
-		    {
-		        "_id": {
 		            "$oid": "5a3a9b78da833f1e40fb6199"
 		        },
 		        "contact": {
@@ -10574,41 +10504,6 @@
 		            "GSFC",
 		            "U.S. Government Purpose Release",
 		            "Operations"
-		        ]
-		    },
-		    {
-		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb619c"
-		        },
-		        "contact": {
-		            "email": "gsfc-softwarerequest@mail.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2016-7-18"
-		        },
-		        "description": "Earthdata Search is a web application enabling users to quickly and intuitively discover, search, visualize, and access Earth Science data in a highly visual manner.  It interfaces with and demonstrates current state-of-the-art services provided by NASA EOSDIS such as the Common Metadata Repository (CMR) for sub-second search results, the Global Imagery Browse Services (GIBS) for fast tiled imagery visualizations of data, and OPeNDAP for data access, transformation, and subsetting.",
-		        "identifier": "GSC-17399-1",
-		        "laborHours": 0,
-		        "name": "Earthdata Search Web Application",
-		        "organization": "GSFC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://opensource.org/licenses/NASA-1.3",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "openSource"
-		        },
-		        "repositoryURL": "https://search.earthdata.nasa.gov/",
-		        "tags": [
-		            "NASA",
-		            "GSFC",
-		            "Open Source",
-		            "Environmental Science (Earth, Air, Space, Exoplanet)"
 		        ]
 		    },
 		    {
@@ -13777,7 +13672,6 @@
 		        "identifier": "HQN-11316-1",
 		        "laborHours": 0,
 		        "name": "NASA Root Cause Analysis Tool (RCAT)",
-		        "organization": "HDQS",
 		        "permissions": {
 		            "exemptionText": null,
 		            "licenses": [
@@ -26643,41 +26537,6 @@
 		    },
 		    {
 		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb636a"
-		        },
-		        "contact": {
-		            "email": "larc-sra@mail.nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2014-4-15"
-		        },
-		        "description": "Kodiak is a software implementation of an algorithm for verifying expressions involving nonlinear real arithmetic. It includes an optimizer for nonlinear real functions, a solver for nonlinear inequalities, and an application programming interface (API) for integrating other software verification tools.",
-		        "identifier": "LAR-18268-1",
-		        "laborHours": 0,
-		        "name": "Kodiak: A Software Library for Verifying Nonlinear Arithmetic Statements",
-		        "organization": "LaRC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://github.com/nasa/Kodiak/blob/master/LICENSE.pdf",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "openSource"
-		        },
-		        "repositoryURL": "https://github.com/nasa/kodiak",
-		        "tags": [
-		            "NASA",
-		            "LaRC",
-		            "Open Source",
-		            "Data and Image Processing"
-		        ]
-		    },
-		    {
-		        "_id": {
 		            "$oid": "5a3a9b78da833f1e40fb636c"
 		        },
 		        "contact": {
@@ -28278,7 +28137,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://shemesh.larc.nasa.gov/PVSClass2012/pvsclass2012/lectures-printer/hypatheon.pdf",
+		        "repositoryURL": "https://github.com/nasa/pvslib/tree/master/Hypatheon-1.2",
 		        "tags": [
 		            "NASA",
 		            "LaRC",
@@ -28509,9 +28368,9 @@
 		            "metadataLastUpdated": "2016-10-17"
 		        },
 		        "description": "Kodiak is an implementation of a software library for verifying expressions involving nonlinear real arithmetic. The current innovation discloses the implementation of a generic branch and bound algorithm for rigorous computations and prototype implementation of algorithms for solving global optimization problems.",
-		        "identifier": "LAR-18517-1",
+		        "identifier": "LAR-19222-1",
 		        "laborHours": 0,
-		        "name": "Generic Branch and Bound Algorithm for Rigorous Numerical Computations (KODIAK)",
+		        "name": "Kodiak's Boolean Checker Software Module",
 		        "organization": "LaRC",
 		        "permissions": {
 		            "exemptionText": null,
@@ -28719,9 +28578,9 @@
 		            "metadataLastUpdated": "2016-11-10"
 		        },
 		        "description": "The communication module of ICAROUS enables data transfer between ICAROUS and other off board entities, e.g., ground stations, other air traffic, via the open source MAVLink protocol (http://qgroundcontrol.org/mavlink/start).  The decision making module of ICAROUS provides a framework to monitor incoming data from aircraft sensors and data links for conflicts, e.g., violations of keep-in/keep-out regions, collision hazards, weather hazards, and resolve these conflicts with the help of the core ICAROUS algorithms.\r\n",
-		        "identifier": "LAR-18975-1",
+		        "identifier": "LAR-19281-1",
 		        "laborHours": 0,
-		        "name": "ICAROUS' Communication and Decision Making Software Modules",
+		        "name": "Independent Configurable Architecture for Reliable Operations of Unmanned Systems with Distributed On-board Services (ICAROUS-2)",
 		        "organization": "LaRC",
 		        "permissions": {
 		            "exemptionText": null,
@@ -28789,9 +28648,9 @@
 		            "metadataLastUpdated": "2016-3-28"
 		        },
 		        "description": "DAIDALUS is a reference implementation in Java and C++ of RTCA-228 detect and avoid concept for the integration of Unmanned Aircraft Systems into civil airspace. DAIDALUS consists of algorithms for determining the current well-clear status between two aircraft and for predicting a well-clear violation within a lookahead time, assuming non-maneuvering trajectories. In the case of a predicted well-clear violation, DAIDALUS also provides an algorithm that computes the time interval of well-clear violation. Furthermore, DAIDALUS implements algorithms for computing prevention bands, assuming a simple kinematic trajectory model. Prevention bands are ranges of track, ground speed, and vertical speed maneuvers that are predicted to be in well-clear violation within a given lookahead time.\r\n",
-		        "identifier": "LAR-18464-1",
+		        "identifier": "LAR-19282-1",
 		        "laborHours": 0,
-		        "name": "Well-Clear Violation Volumes for Concept of Integration of UAS in the NAS",
+		        "name": "Detect and Avoid Alerting Logic for Unmanned Systems (DAIDALUS) with Dynamic Well-Clear Separation Volumes",
 		        "organization": "LaRC",
 		        "permissions": {
 		            "exemptionText": null,
@@ -32545,7 +32404,7 @@
 		            "metadataLastUpdated": "2017-08-17"
 		        },
 		        "description": "Python client library that abstracts CMR API calls for search, ingest, update, and deletion of collections and granules.",
-		        "identifier": "ARC-pyCMR",
+		        "identifier": "MFS-33409-1",
 		        "laborHours": 0,
 		        "name": "pyCMR",
 		        "organization": "ARC",
@@ -32612,7 +32471,7 @@
 		            "$oid": "5a3a9b78da833f1e40fb6414"
 		        },
 		        "contact": {
-		            "email": "cesar.a.munoz@nasa.gov"
+		            "email": "larc-sra@mail.nasa.gov"
 		        },
 		        "date": {
 		            "created": "",
@@ -32620,9 +32479,9 @@
 		            "metadataLastUpdated": "2017-08-23"
 		        },
 		        "description": "PRECiSA (Program Round-off Error Certifier via Static Analysis) is a fully automatic analyzer for the estimation of round-off errors of floating-point valued functional expressions. The input to PRECiSA is a program composed of floating-point valued functions.",
-		        "identifier": "LaRC-PRECiSA",
+		        "identifier": "LAR-19227-1",
 		        "laborHours": 0,
-		        "name": "PRECiSA",
+		        "name": "Program Round-Off Certifier via Static Analysis (PRECiSA) with Kodiak Integration",
 		        "organization": "LaRC",
 		        "permissions": {
 		            "exemptionText": null,
@@ -32634,7 +32493,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "http://github.com/nasa/PRECiSA",
+		        "repositoryURL": "https://github.com/nasa/PRECiSA",
 		        "tags": [
 		            "NASA",
 		            "LaRC",
@@ -33090,7 +32949,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "https://github.com/NASA-DEVELOP/MASC",
+		        "repositoryURL": "https://github.com/NASA-DEVELOP/GC-ReDI",
 		        "tags": [
 		            "NASA",
 		            "imagery",
@@ -33447,7 +33306,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "http://ti.arc.nasa.gov/m/opensource/downloads/KalmanFilterAugmentation.zip",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/kalman",
 		        "tags": [
 		            "NASA",
 		            "model development",
@@ -33520,7 +33379,7 @@
 		            ],
 		            "usageType": "openSource"
 		        },
-		        "repositoryURL": "http://ti.arc.nasa.gov/m/opensource/downloads/ROC_Curve_Code_Augmentation.zip",
+		        "repositoryURL": "https://ti.arc.nasa.gov/opensource/projects/roc",
 		        "tags": [
 		            "NASA",
 		            "model development",
@@ -33792,8 +33651,9 @@
 		            "metadataLastUpdated": "2017-08-23"
 		        },
 		        "description": "Earthdata Search is a web application developed by NASA EOSDIS to enable data discovery, search, comparison, visualization, and access across EOSDIS' Earth Science data holdings",
+		        "identifier": "GSC-17399-1",
 		        "laborHours": 0,
-		        "name": "earthdata-search",
+		        "name": "Earthdata Search Web Application",
 		        "organization": "GSFC",
 		        "permissions": {
 		            "exemptionText": null,
@@ -34635,39 +34495,6 @@
 		    },
 		    {
 		        "_id": {
-		            "$oid": "5a3a9b78da833f1e40fb6452"
-		        },
-		        "contact": {
-		            "email": "james.marshall-1@nasa.gov"
-		        },
-		        "date": {
-		            "created": "",
-		            "lastModified": "",
-		            "metadataLastUpdated": "2017-08-23"
-		        },
-		        "description": "NASA core Flight System Memory Manager Application",
-		        "laborHours": 0,
-		        "name": "MM",
-		        "organization": "GSFC",
-		        "permissions": {
-		            "exemptionText": null,
-		            "licenses": [
-		                {
-		                    "URL": "https://github.com/nasa/MM/blob/master/Core%20Flight%20System%20(CFS)%20NOSA.pdf",
-		                    "name": "NASA v3"
-		                }
-		            ],
-		            "usageType": "openSource"
-		        },
-		        "repositoryURL": "https://github.com/nasa/MM",
-		        "tags": [
-		            "NASA",
-		            "CFE",
-		            "CFS"
-		        ]
-		    },
-		    {
-		        "_id": {
 		            "$oid": "5a3a9b78da833f1e40fb6451"
 		        },
 		        "contact": {
@@ -35007,8 +34834,9 @@
 		            "metadataLastUpdated": "2017-08-23"
 		        },
 		        "description": "The network-traffic-analysis-tools directory contains a collection of applications written in C to help both analyze and visualize MPTCP packet traces.",
+		        "identifier": "LEW-19620-1",
 		        "laborHours": 0,
-		        "name": "multipath-tcp-tools",
+		        "name": "Multipath TCP (MPTCP) Tools, Analytics, and Configurations",
 		        "organization": "GRC",
 		        "permissions": {
 		            "exemptionText": null,
@@ -35040,8 +34868,9 @@
 		            "metadataLastUpdated": "2017-08-23"
 		        },
 		        "description": "SingleDop is a software module, written in the Python programming language, that will retrieve two-dimensional low-level winds from either real or simulated Doppler radar data.",
+		        "identifier": "MFS-33272-1",
 		        "laborHours": 0,
-		        "name": "SingleDop",
+		        "name": "Single Doppler Retrieval Toolkit (SingleDop)",
 		        "organization": "MSFC",
 		        "permissions": {
 		            "exemptionText": null,
