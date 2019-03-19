@@ -40126,7 +40126,7 @@
       },
       "tags": [
         "landslide",
-        "imerge",
+        "imerg",
         "gpm",
         "hazard",
         "analysis",
@@ -40204,6 +40204,62 @@
       "repositoryURL": "https://github.com/nasa/SCA",
       "externalURL": "https://software.nasa.gov/software/GSC-17537-1",
       "laborHours": 1872
+    },
+    {
+      "name": "LAGER (Light-weight Accumulator Gathering Efficiently in Real-time)",
+      "description": "LAGER (Light-weight Accumulator Gathering Efficiently in Real-time) is a reliable software logging system designed to allow multiple logging sources to log to multiple end users.",
+      "permissions": {
+        "licenses": [
+          {
+            "URL": "https://example.com",
+            "name": "NASA Open Source v1.3"
+          }
+        ],
+        "usageType": "openSource"
+      },
+      "tags": [
+        "logging",
+        "high performance",
+        "LTTng"
+      ],
+      "date": {
+        "created": "2018-01-10",
+        "lastModified": "2019-02-06",
+        "metadataLastUpdated": "2019-03-19"
+      },
+      "contact": {
+        "email": "jsc-ttco-software-request@mail.nasa.gov"
+      },
+      "contributors": [
+        {
+          "name": "Chuck Claunch",
+          "email": "charles.a.claunch@nasa.gov",
+          "github": "impala454"
+        },
+        {
+          "name": "Patrick Knauth",
+          "email": "patrick.w.knauth@nasa.gov",
+          "github": "patrickk183"
+        },
+        {
+          "name": "Jairo Sanchez",
+          "email": "jairo.sanchez@nasa.gov",
+          "github": "dotjairo"
+        },
+        {
+          "name": "Philip Strawser",
+          "email": "philip.a.strawser@nasa.gov",
+          "github": "pstrawse"
+        }
+      ],
+      "organization": "JSC",
+      "repositoryURL": "https://github.com/nasa/lager",
+      "externalURL": "https://software.nasa.gov/software/MSC-26455-1",
+      "laborHours": 2880,
+      "languages": [
+        "C++",
+        "CMake"
+      ]
     }
   ]
 }
