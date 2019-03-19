@@ -12,6 +12,10 @@ Install bower and [polymer-cli](https://github.com/Polymer/polymer-cli):
 
     npm install -g bower polymer-cli
 
+Check that you are using Node v8+
+
+    node -v
+    
 ### Install dependencies
 
     bower i
