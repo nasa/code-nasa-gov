@@ -15,6 +15,7 @@ node_js:
 before_script:
   - npm install -g bower
   - npm install -g polymer-cli@1.9.7
+  - polymer --version
   - bower install
 script:
   - xvfb-run polymer test
