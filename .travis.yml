@@ -9,12 +9,9 @@ addons:
     packages:
       - google-chrome-stable
 node_js:
-  - '6'
-  - '5'
-  - '4'
+  - '8'
 before_script:
-  - npm install -g bower
-  - npm install -g polymer-cli@1.9.7
+  - npm install -g bower polymer-cli
   - polymer --version
   - bower install
 script:
