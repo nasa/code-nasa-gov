@@ -1,5 +1,7 @@
 # CODE.NASA.GOV
 
+[![Build Status](https://travis-ci.org/nasa/code-nasa-gov.svg?branch=master)](https://travis-ci.org/nasa/code-nasa-gov)
+
 Catalog of Open Source Software from NASA. Built using [Polymer](https://www.polymer-project.org).
 
 ## Setup
