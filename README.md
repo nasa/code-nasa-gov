@@ -4,7 +4,7 @@
 
 Catalog of Open Source Software from NASA. Built using [Polymer](https://www.polymer-project.org).
 
-The code.json file feeds the <a href="https://code.nasa.gov>code.nasa.gov</a> website and is reflected in the NASA projects available on <a href="https://code.gov>code.gov</a>
+The code.json file feeds the <a href="https://code.nasa.gov">code.nasa.gov</a> website and is reflected in the NASA projects available on <a href="https://code.gov">code.gov</a>
 
 Most of code projects listed in code.json have real open-source licenses. Some have licenses that constrain use to other US government agencies. The license type for each code project is flagged in the json. 
 
