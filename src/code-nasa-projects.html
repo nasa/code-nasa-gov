@@ -89,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .project > p.link {
-        width: 100%;
+        /*width: 100%;*/
         overflow: hidden;
         text-overflow: ellipsis;
       }
@@ -149,32 +149,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a href="/#/">Show all projects</a>
         </template>
       </p>
+      <p class="meta">
+        <!-- <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"> -->
+          Project tags with 'nlp:' prefixes were generated using machine-learning. Tags come from list of 8000 NASA concepts tracked in published reports and papers. They are assigned here using natural language processing applied to the code project descriptions below. Not all will be accurate.
+       <!--  </template> -->
+      </p>
 
       <iron-list items="[[matchedProjects]]" scroll-target="document">
         <template>
           <div>
             <div class="project">
-              <h2>
+              <h2 >
                 <a href$="[[_getProperty(item, 'External Link')]]" target="_blank">
                   [[_getProperty(item, 'Software')]]
                 </a>
               </h2>
-              <p class="link">
-                <a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">
-                  [[_getProperty(item, 'Public Code Repo')]]
-                </a>
-              </p>
-              <p>[[item.Description]]</p>
               <span class="licenses">
                 <template is="dom-repeat" items="[[item.License]]" as="license">
                   <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
                 </template>
               </span>
-              <p class="tags">
+              <p class="link">
+                <a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">
+                  [[_getProperty(item, 'Public Code Repo')]]
+                </a>
+              </p>
+              
+              
+
+              <p>[[item.Description]]</p>
+              <!-- <span class="licenses">
+                <template is="dom-repeat" items="[[item.License]]" as="license">
+                  <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
+                </template>
+              </span> -->
+              
+              
+              <p class="tags">A.I. generated tags :
+                <template is="dom-repeat" items="[[item.Categories_NLP]]" as="tag">
+                  <a href$="/?tag=[[tag]]">#[[tag]]</a>
+                </template>
+              </p>
+              <p class="tags">Human generated tags :
                 <template is="dom-repeat" items="[[item.Categories]]" as="tag">
                   <a href$="/?tag=[[tag]]">#[[tag]]</a>
                 </template>
               </p>
+              
             </div>
           </div>
         </template>
@@ -333,6 +354,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var p = projects[i];
           p._search = [
             p.Categories.join('*'),
+            p.Categories_NLP.join('*'),
             p.Contributors.join('*'),
             p.Description,
             p['External Link'],
@@ -356,7 +378,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             var tag = this.queryParams.tag || '';
             var regex = new RegExp(q, 'i');
             this.matchedProjects = this.projects.filter(function(p) {
-              return (!q || regex.exec(p._search)) && (!tag || p.Categories.indexOf(tag) !== -1);
+              return (!q || regex.exec(p._search)) && (!tag || p.Categories.indexOf(tag) !== -1 || p.Categories_NLP.indexOf(tag) !== -1);
             });
           } else {
             this.matchedProjects = this.projects;
