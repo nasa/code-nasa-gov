@@ -163,7 +163,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h2>1</h2>
         <div class="description">
           <p>
-            Submit a request to release your project as Open Source to your center SRA (Software Release Authority) at <a href="https://code.nasa.gov/#/SRA">code.nasa.gov/#/SRA</a>.
+            Submit a request to release your project as Open Source to your center SRA (Software Release Authority) at <a href="https://softwarerelease.ndc.nasa.gov/">https://softwarerelease.ndc.nasa.gov/</a>.
           </p>
         </div>
       </div>
@@ -256,21 +256,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <table>
             <tr>
               <th>Center</th>
-              <th>Name</th>
-              <th>Title</th>
-              <th>Phone</th>
               <th>Email</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              
             </tr>
 
             <template is="dom-repeat" items="[[sras]]">
               <tr>
                 <td>[[item.Center]]</td>
-                <td>[[item.Name]]</td>
-                <td>[[item.Title]]</td>
-                <td>[[item.Phone]]</td>
                 <td>
                   <a href$="[[_getMailtoHref(item.Email)]]" target="_blank">[[item.Email]]</a>
                 </td>
+                <td>[[item.Name]]</td>
+                <td>[[item.Title]]</td>
+                <td>[[item.Phone]]</td>
+                
               </tr>
             </template>
           </table>
