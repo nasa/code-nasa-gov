@@ -1,0 +1,112 @@
+<html><head><meta charset="UTF-8"><link rel="import" href="code-nasa-app.html"></head><body><dom-module id="code-nasa-related">
+  <template strip-whitespace="">
+    <style include="shared-styles">
+      :host {
+        display: block;
+        background-color: #000;
+        background-image: url('/images/backgrounds/share.jpg');
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: 250%;
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      span.desktop-only {
+        display: none;
+      }
+
+      .section {
+        text-align: center;
+        margin-top:4em;
+      }
+
+      .section::before {
+        display: block;
+        margin: 0 auto;
+        content: '';
+        width: 100px;
+        border-top: 1px solid var(--app-accent-color);
+      }
+
+      @media (min-width: 768px) {
+        :host {
+          background-size: 100%;
+        }
+
+        .container {
+          max-width: 980px;
+        }
+
+        span.desktop-only {
+          display: inline;
+        }
+
+        .section {
+          display: inline-block;
+          box-sizing: border-box;
+          vertical-align: top;
+          width: 40.5%;
+          text-align: left;
+          border-left: 1px solid var(--app-accent-color);
+          padding-left: 40px;
+          padding-bottom:48px;
+        }
+
+        .section.first {
+          margin-right: 19%;
+        }
+
+        .section > h2 {
+          margin-top: 0;
+        }
+
+        .section > p {
+          margin-bottom: 0;
+        }
+
+        .section::before {
+          content: none;
+        }
+      }
+    </style>
+
+    <div class="container">
+      <div class="splash">
+        <h1>
+          Related
+          <span class="desktop-only">Resources</span>
+        </h1>
+      </div>
+
+      <div class="section first">
+        <h2><a href="https://open.nasa.gov/">Open.NASA.GOV</a></h2>
+        <p>
+          Open.nasa.gov is a central place for websites run by NASA's Open Innovation program. From here you can go to open <a href="https://data.nasa.gov/browse"> data</a>, open <a href="https://api.nasa.gov">APIs</a>, information on open-data centric outreach programs like datanauts and <a href="https://2019.spaceappschallenge.org">SpaceApps hackathon</a>, as well as <a href="https://open.nasa.gov/open-gov/">information</a> on how we meet open-government related mandates. 
+        </p>
+      </div>
+
+      <div class="section">
+        <h2><a href="https://software.nasa.gov/">Software.NASA.Gov</a></h2>
+        <p>
+          Not all releasable code is open-source code. If you work for another government agency, there may be code you can access that is not open-source but is sharable with certain parties. If you don't find what you're looking for here, check out <a href="https://software.nasa.gov/">Software.NASA.Gov</a>, which is run by the Technology Transfer office.
+        </p>
+      </div>
+      <div class="section first">
+        <h2><a href="https://github.com/nasa/code-nasa-gov">Source code for Code.nasa.gov</a></h2>
+        <p>
+          If you find a mistake on this page, you can submit a change by contributing an issue or pull request to <a href="https://github.com/nasa/code-nasa-gov">the public github repository</a> that holds this page's source code. If you find any mistakes in the `A.I. generated tags` on this website's <a href="https://code.nasa.gov/#/">projects page</a>, we'd like to know about it.
+        </p>
+      </div>
+      <div class="section">
+        <h2><a href="https://www.nasa.gov/offices/oct/openinnovation/aboutus">NASA's Challenges and Prizes</a></h2>
+        <p>
+          NASA has several programs for putting out data analysis and technology development contests and challenges to public. Centennial Challenge Program, NASA Tournament Lab, Challenge.gov, and NASA’s Center of Excellence for Collaborative Innovation are linked to from <a href="https://www.nasa.gov/offices/oct/openinnovation/aboutus/">this</a> page.
+        </p>
+      </div>
+    </div>
+  </template>
+
+  <script>Polymer({is:"code-nasa-related"});</script>
+</dom-module>
+</body></html>

@@ -67,6 +67,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: var(--app-accent-color);
         font-style: italic;
       }
+      .meta:
 
       iron-list {
         /**
@@ -75,6 +76,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
          */
         margin-top: -100vw;
         padding-top: 100vw;
+      }
+
+      .meta.explain {
+        margin-top:1.5em;
       }
 
       .project {
@@ -149,9 +154,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a href="/#/">Show all projects</a>
         </template>
       </p>
-      <p class="meta">
+      <p class="meta explain">
         <!-- <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"> -->
-          Project tags with 'nlp:' prefixes were generated using machine-learning. Tags come from list of 8000 NASA concepts tracked in published reports and papers. They are assigned here using natural language processing applied to the code project descriptions below. Not all will be accurate.
+          A.I. generated tags are predicted using a natural language processing model applied to project descriptons. Tags come from list of 8000 NASA concepts tracked in published reports and papers. Accuracy is not guaranteed. Click on a tag to see all projects with that tag.
        <!--  </template> -->
       </p>
 
