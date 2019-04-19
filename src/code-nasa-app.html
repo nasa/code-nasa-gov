@@ -13,6 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/fade-background.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
@@ -34,6 +35,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         left: 0;
         right: 0;
         z-index: 11;
+        background: linear-gradient(to bottom, rgba(33,33,33,1) 50%,rgba(33,33,33,0) 100%);
       }
 
       app-header::before {
@@ -167,17 +169,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path></app-location>
     <app-route route="[[route]]" pattern="/:page" data="{{routeData}}"></app-route>
 
-    <app-header reveals threshold="1">
-      <button class="menu-button" on-click="_toggleDrawer"></button>
-      <a href="/#/" class="logo">
-        <img src="/images/logos/nasa-144.png" alt="NASA Logo">
-      </a>
-      <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
-        <a href="/#/" name="projects">Projects</a>
-        <a href="/#/guide" name="guide">Guide</a>
-        <a href="/#/share" name="share">Share</a>
-        <a href="/#/related" name="related">Related</a>
-      </iron-selector>
+    <app-header reveals threshold="1" effects="fade-background">
+      <div sticky>
+        <button class="menu-button" on-click="_toggleDrawer"></button>
+        <a href="/#/" class="logo">
+          <img src="/images/logos/nasa-144.png" alt="NASA Logo">
+        </a>
+        <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
+          <a href="/#/" name="projects">Projects</a>
+          <a href="/#/guide" name="guide">Guide</a>
+          <a href="/#/share" name="share">Share</a>
+          <a href="/#/related" name="related">Related</a>
+        </iron-selector>
+      </div>
     </app-header>
 
     <iron-pages
