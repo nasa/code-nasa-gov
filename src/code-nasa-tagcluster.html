@@ -158,13 +158,13 @@
             } */
 
             .card-header{
-              padding-top:5em;
+              padding-top:7em;
             
             }
           </style>
       </head>  
       <body>
-      <div class="container"> -->
+      <div class="container" style="background-color:rgba(36, 12, 1,0.7);"> 
           <div class="main main-raised">
               <div class="container">
                 <!-- <div class="section"> -->
@@ -173,21 +173,33 @@
                     <div class="splash"> -->
                   <div class="card card-header">
                      
-                    <h1 class="title"><b>NASA's Open-Source Code Projects: <br> NLP Generated Tags Cluster</b></h1>
+                    <h1 class="title"><b>NASA's Open-Source Code Projects: <br> Explore Using NLP Generated Tags</b></h1>
                     <p id="tag"></p> 
                   </div>
                   <div style="margin-top: 1px; margin-bottom: 10px; padding-top: 10px;">
-                      <button id="btn" class="btn btn-primary"><a href="https://observablehq.com/@briantoliveira/untitled" target="_blank"></a><i class="material-icons">link</i> </a>to this Code in an Observable Live Editable Observable Notebook</button>
+                      
                       <p class="description"><i><strong>This notebook was created as an alternative way to interact with the data on <br> code.nasa.gov. It is an experiment!</strong></i></p>
-                      <p class="description"> Each of the code project's descriptions was run through a natural language processing model and higher-order concept tags predicted. Training dataset was from <a href="https://www.sti.nasa.gov/">NASA's Science Technology and Information program database</a>. The predicted higher-order concept tags were used to create clusters of similar code projects. 
+                      <button id="btn" class="btn btn-primary"><a href="https://observablehq.com/@briantoliveira/untitled" target="_blank"></a><i class="material-icons">This link</i> </a>will take you to the original Observable Notebook which is forkable, live, and editable.</button>
+                      <p class="description"> Each of the code project's descriptions was run through a natural language processing model and higher-order concept tags predicted. Training data for this machine-learning model came from <a href="https://www.sti.nasa.gov/">NASA's Science Technology and Information program database of published abstracts</a>. </p>
                         <p class="description">  This page explores how we might use those tags to quickly explore what code projects NASA has released to the public, without having to read through 500+ project descriptions.</p>
                     </div>
                     <!-- <div class="col2"> -->
-                
+                      <hr/>
+                    <!-- <div>
+                        <ul>This page consists of several reactive user interfaces:
+                          <li>
+                            Tag circles are scaled by number of times that term was tagged by natural langauge processing (NLP) model. Only tags for the code project clusters highlighted below are shown in the tag bubbles.
+                          </li>
+                          <li>Slides that control whether very common or uncommon tags are shown in the tag bubble.</li>
+                          <li>A box of clickable rows, which row representing a cluster of code projects with similar tags. When you select one or more projects both the tag bubble chart and the project list are repopulatd with only the projects in that cluster(s).</li>
+                          <li>A box of clickable rows, which row representing a cluster of code projects with similar tags.</li>
+                        </ul>  
+                    </div> -->
                     <div>
-  
-                        <p class="example">Tag circles are scaled by number of times that term was tagged by natural langauge processing (NLP) model. Only tags for the code project clusters highlighted below are shown in the tag bubbles. </p>
-                            
+                      <p class="example">
+                          Tag circles are scaled by number of times that concept tag was predicted by natural langauge processing (NLP) model as representative for a code project. Only tags found in the code project clusters highlighted below are shown in the tag bubbles.
+                      </p>
+
                     </div>
                 <!-- <div class="fullwidth">  
                 </div>     -->
@@ -196,34 +208,37 @@
                 </div>
                   
                   <div>
+                    <p>Limit tags by frequency</p>
                       <p id="max_tag_counts"></p>
                     <p id="min_tag_counts"></p>
                     
                     <div>
                     <div style="height: 100%; padding: 6px 0.25rem; left: -50vw; width: 50vw;"></div>
                     </div>
-                    <p class="description2">Each line below represents a cluster of code projects that was tagged with similar concept tags. The tags on each line are the tags found to be most representative of each code project cluster. </p>
-                      <!-- Each line represents the 5 most represented tags, once tag is selected it creates a cluster representation of projects with similar tags.</p> -->
+                    
+                    <!-- Each line represents the 5 most represented tags, once tag is selected it creates a cluster representation of projects with similar tags.</p> -->
                     <p id="clusters_selected"></p>
+                    <p class="description2">Each line above represents a cluster of code projects that was tagged with similar concept tags. The tags on each line are the tags found to be most representative of each code project cluster. 
+                        Select a cluster of code projects and both the bubble chart of tags above and list of code project names below will only reflect selected code projects. </p>
                   </div>
                   <div class="col3">
+                    
+                    <p id="nameDisplay" style="overflow: auto;background-color:rgba(248, 174, 190, 0.7);height:300px;padding-left:1em;"></p>
                     <p>
-                      <strong class="scrollNames">Scroll to see all the Projects within selected cluster(s), click to learn more about a project:</strong>
-                    </p>
-                    <p id="nameDisplay" style="overflow: auto;background-color: purple;height:300px;padding-left:1em;"></p>
+                        <strong class="description2">Scroll to see all the Projects within selected cluster(s), click to learn more about a project:</strong>
+                      </p>
                   </div>
                   <div style=" padding: 6px 0.25rem; left: -50vw; width: 50vw; margin-top: 41px; overflow: auto;"></div>
-                  <div class="info">
+                  <!-- <div class="info">
                       <h1><b>Additional Information</b></h1>
                       <h2><b>Websites that contain NASA Open-Source Code</b></h2>
                       <p>There are a couple different places you can find lists of NASA open-source code.</p>
                       <h5><b>The website that attempts to be the larger collection across the whole agency and only lists <br> open-source is <a href="https://code.nasa.gov">Code.NASA.Gov</a></b></h5>
                       <p>If you work in the federal government or inside NASA and would like to also see <br> some closed or government source only code, you should check out <br> <a href="https://software.nasa.gov/">software.nasa.gov</a> as well.</p>
                       <h2><b>Where the data we are using in this notebook come from?</b></h2>
-                      <!-- <p>In the notebook, all the JSON's containing information on open-source NASA code is located here:</p> -->
                       <p><b>Code.json</b> is this <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json">JSON file</a> which is harvested by <a href="https://code.gov">code.gov</a>.
                          It contains the NASA <br> open-source code projects metadata that you can find on their site. We also harvest <br> this JSON into code.nasa.gov where it is transformed slightly into catalog.json and <br> as raw project data to build <a href="https://code.nasa.gov">code.nasa.gov</a>.</p>
-                  </div>
+                  </div> -->
                 </div>
             </div>
           </div>
