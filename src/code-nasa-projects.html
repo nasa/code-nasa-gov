@@ -119,7 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         .splash {
           padding: 27vw 0 22vw;
-          background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E);
+          background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
           background-repeat: no-repeat;
           background-position: center 96%;
           background-size: 32px 32px;
@@ -133,12 +133,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         #query {
           margin-top: 0;
         }
+
+        page-er::shadow .pagination li.active button {
+        background: #E91E63;
+        }
+
+        page-er::shadow .pagination li.disabled button {
+          background: #B1B9E1;
+        }
       }
     </style>
 
-    <div class="container">
+    <div class="container" itemscope itemtype="https://code.nasa.gov/">
       <div class="splash">
-        <h1>code.nasa.gov</h1>
+        <h1 itemprop="title">code.nasa.gov</h1>
         <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
       </div>
 
@@ -162,19 +170,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <iron-list items="[[matchedProjects]]">
         <template>
-          <div>
+          <div itemscope>
             <div class="project">
-              <h2 >
+              <h2 itemprop="name">
                 <a href$="[[_getProperty(item, 'External Link')]]" target="_blank">
                   [[_getProperty(item, 'Software')]]
                 </a>
               </h2>
-              <span class="licenses">
+              <span class="licenses" itemprop="licenses">
                 <template is="dom-repeat" items="[[item.License]]" as="license">
                   <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
                 </template>
               </span>
-              <p class="link">
+              <p class="link" itemprop="project link">
                 <a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">
                   [[_getProperty(item, 'Public Code Repo')]]
                 </a>
@@ -182,7 +190,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               
               
 
-              <p>[[item.Description]]</p>
+              <p itemprop="description">[[item.Description]]</p>
               <!-- <span class="licenses">
                 <template is="dom-repeat" items="[[item.License]]" as="license">
                   <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
@@ -190,20 +198,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </span> -->
               
               
-              <p class="tags">A.I. generated tags:&nbsp
+              <p itemprop="tags" class="tags">A.I. generated tags:&nbsp
                 <template is="dom-repeat" items="[[item.Categories_NLP]]" as="tag">
                   <a href$="/?tag=[[tag]]">#[[tag]]</a>
                 </template>
               </p>
-              <p class="tags">Human generated tags:&nbsp
+              <p itemprop="tags" class="tags">Human generated tags:&nbsp
                 <template is="dom-repeat" items="[[item.Categories]]" as="tag">
                   <a href$="/?tag=[[tag]]">#[[tag]]</a>
                 </template>
               </p>
-              
             </div>
           </div>
         </template>
+      </page-er>
       </iron-list>
     </div>
   </template>
@@ -405,7 +413,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _getLicenseName: function(license) {
         return this.licenses[license]['License Long Name'];
-      }
+      },
+      
+    });
+
+    var pager = document.querySelector("page-er");
+
+    document.addEventListener('polymer-ready', function() {
+      pager.data = projects.items;
+    });
+    var results = document.querySelector("template");
+      document.addEventListener('pager-data', function(e) {
+      results.projects = { items: e.detail.data };
+    });
+    document.addEventListener('pager-change', function(e) {
+      results.projects = { items: e.detail.data };
     });
   </script>
 </dom-module>
