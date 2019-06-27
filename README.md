@@ -60,9 +60,9 @@ generated using fragment bundling:
     
 ### Deploying
 
-When deploying to a static web server (with no HTTP/2+Push), be sure to copy
-the files from `build/bundled` (**NOT** the project directory) which
-contains a functional service worker and minified files.
+When deploying to a static web server (with no HTTP/2+Push), be sure to copy only
+the files from `build/bundled` directory (**NOT** the project directory) which
+contains a functional service worker and minified files. Put them in a top level part of the directory, not within another build/bundled directory within the production directory.
 
 ### Adding a new view
 
