@@ -42,7 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 100%;
         box-sizing: border-box;
         padding: 6px 0 6px 30px;
-        background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E);
+        background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: left center;
         background-size: 24px 24px;
@@ -67,7 +67,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: var(--app-accent-color);
         font-style: italic;
       }
-      .meta:
 
       iron-list {
         /**
@@ -118,11 +117,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         .splash {
-          padding: 27vw 0 22vw;
-          background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: center 96%;
-          background-size: 32px 32px;
+          padding: 27vw 0 11vw;
+        }
+
+        .splash img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: calc(11vw - 32px);
+          height: 32px;
+          width: 32px;
+          cursor: pointer;
         }
 
         .project > span.licenses {
@@ -148,6 +153,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="splash">
         <h1 itemprop="title">code.nasa.gov</h1>
         <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
+        <img alt="down arrow" src="images/down-arrow.svg" on-click="_scrollDown">
       </div>
 
       <p class="meta">
@@ -418,6 +424,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return this.licenses[license]['License Long Name'];
       },
       
+      _scrollDown: function(e, detail) {
+        const shadowRoot = Polymer.dom(this.root);
+        const firstProject = shadowRoot.querySelector('.project');
+        firstProject.scrollIntoView( { behavior: 'smooth' } );
+      }
     });
 
     var pager = document.querySelector("page-er");
