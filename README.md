@@ -10,6 +10,8 @@ Most of code projects listed in code.json have real open-source licenses. Some h
 
 ## Setup
 
+test
+
 ### Prerequisites
 
 Install bower and [polymer-cli](https://github.com/Polymer/polymer-cli):
