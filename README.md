@@ -14,6 +14,8 @@ The projects page on code.nasa.gov is built from a JSON that contains informatio
 
 We use a script to convert the code.json, which is formated according to standards that allow it to be harvested into code.gov, into a <b><a href="https://raw.githubusercontent.com/nasa/code-nasa-gov/master/data/catalog.json">category.json</a></b> file that is formatted in such a way to make it easy to work with by the code.nasa.gov code.
 
+Additionally, at this time, only category.json has the A.I.-generated keyword tags in addition to the human-generated tags. This may change in the future. 
+
 Most of code projects listed in code.json have real open-source licenses. Some have licenses that constrain use to other US government agencies. The license type for each code project is flagged in the json. 
 
 ## Running The Code In This Repository
