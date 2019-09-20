@@ -5,13 +5,14 @@
 Catalog of Open Source Software from NASA. Built using [Polymer](https://www.polymer-project.org).
 
 ## Do You have a Open-Source Code Project For This Site?
+
+#### Instructions
 Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>
 
-The projects page on code.nasa.gov is built from a JSON that contains information on NASA's open-source code projects. 
+#### Code.json vs Category.json
+The projects page on code.nasa.gov is built from a JSON that contains information on NASA's open-source code projects. You can add your project to that JSON, called <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
 
-You can add your project to that JSON, called code.json, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
-
-We use a script to convert the code.json, which is formated according to standards that allow it to be harvested into code.gov, into a category.json file that is formatted in such a way to make it easy to work with by the code.nasa.gov code.
+We use a script to convert the code.json, which is formated according to standards that allow it to be harvested into code.gov, into a <b><a href="https://raw.githubusercontent.com/nasa/code-nasa-gov/master/data/catalog.json">category.json</a></b> file that is formatted in such a way to make it easy to work with by the code.nasa.gov code.
 
 Most of code projects listed in code.json have real open-source licenses. Some have licenses that constrain use to other US government agencies. The license type for each code project is flagged in the json. 
 
