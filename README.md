@@ -10,13 +10,22 @@ Catalog of Open Source Software from NASA. Built using [Polymer](https://www.pol
 Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>
 
 #### Code.json vs Category.json
-The projects page on code.nasa.gov is built from a JSON that contains information on NASA's open-source code projects. You can add your project to that JSON, called <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
+The projects page on code.nasa.gov is built from a JSON that contains information on NASA's open-source code projects. 
 
-We use a script to convert the code.json, which is formated according to standards that allow it to be harvested into code.gov, into a <b><a href="https://raw.githubusercontent.com/nasa/code-nasa-gov/master/data/catalog.json">category.json</a></b> file that is formatted in such a way to make it easy to work with by the code.nasa.gov code.
+The JSON that the page is built from is called category.json. Category.json is generated via a script from code.json. 
+
+New projects are added to code.json. 
+
+All federal agencies are mandated to have a code.json that is then harvested by the General Services Adminstration (GSA) and aggregated into code.gov. 
+
+Code.json is reformatted by a script run by NASA's open-innovation team into <a href="https://raw.githubusercontent.com/nasa/code-nasa-gov/master/data/catalog.json">category.json</a>. Category.json has some attributes not in code.json and is used to build the project page on code.nasa.gov.
+
+You can add your approved open-source NASA project to <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
 
 Additionally, at this time, only category.json has the A.I.-generated keyword tags in addition to the human-generated tags. This may change in the future. 
 
-Most of code projects listed in code.json have real open-source licenses. Some have licenses that constrain use to other US government agencies. The license type for each code project is flagged in the json. 
+#### Why code.json is bigger then category.json
+Some of the code projects in code.json have open-source liceneses. Other projects in code.json have government-source only licenses, meaning sharing is constrainted to government agencies. All of the code projects listed in category.json have open-source licenses. 
 
 ## Running The Code In This Repository
 
