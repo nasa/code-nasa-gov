@@ -21,6 +21,12 @@ Additionally, at this time, only category.json has the A.I.-generated keyword ta
 #### Why code.json is bigger then category.json
 Some of the code projects in code.json have open-source liceneses. Other projects in code.json have government-source only licenses, meaning sharing is constrainted to government agencies. All of the code projects listed in category.json have open-source licenses. 
 
+### Making your own data visualization with the JSONs that drive code.nasa.gov:
+- https://observablehq.com/@justingosses/finding-recent-additions-to-code-nasa-gov
+- https://observablehq.com/@briantoliveira/untitled
+
+If you make your own visualization, please put add it as an issue. We're love to see it!
+
 ## Running The Code In This Repository
 
 ### Setup
