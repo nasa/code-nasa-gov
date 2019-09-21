@@ -10,11 +10,7 @@ Catalog of Open Source Software from NASA. Built using [Polymer](https://www.pol
 Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>
 
 #### Code.json vs Category.json
-The projects page on code.nasa.gov is built from a JSON that contains information on NASA's open-source code projects. 
-
-The JSON that the page is built from is called category.json. Category.json is generated via a script from code.json. 
-
-New projects are added to code.json. 
+Newly approved code projects for release are added to code.json. 
 
 All federal agencies are mandated to have a code.json that is then harvested by the General Services Adminstration (GSA) and aggregated into code.gov. 
 
