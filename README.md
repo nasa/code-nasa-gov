@@ -10,13 +10,11 @@ Catalog of Open Source Software from NASA. Built using [Polymer](https://www.pol
 Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>
 
 #### Code.json vs Category.json
-Newly approved code projects for release are added to code.json. 
+Newly approved code projects for release are added to code.json. You can add your approved open-source NASA project to <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
 
 All federal agencies are mandated to have a code.json that is then harvested by the General Services Adminstration (GSA) and aggregated into code.gov. 
 
 Code.json is reformatted by a script run by NASA's open-innovation team into <a href="https://raw.githubusercontent.com/nasa/code-nasa-gov/master/data/catalog.json">category.json</a>. Category.json has some attributes not in code.json and is used to build the project page on code.nasa.gov.
-
-You can add your approved open-source NASA project to <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
 
 Additionally, at this time, only category.json has the A.I.-generated keyword tags in addition to the human-generated tags. This may change in the future. 
 
