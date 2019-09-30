@@ -4,11 +4,32 @@
 
 Catalog of Open Source Software from NASA. Built using [Polymer](https://www.polymer-project.org).
 
-The code.json file feeds the <a href="https://code.nasa.gov">code.nasa.gov</a> website and is reflected in the NASA projects available on <a href="https://code.gov">code.gov</a>
+## Do You have a Open-Source Code Project For This Site?
 
-Most of code projects listed in code.json have real open-source licenses. Some have licenses that constrain use to other US government agencies. The license type for each code project is flagged in the json. 
+#### Instructions
+Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>
 
-## Setup
+#### Code.json vs Category.json
+Newly approved code projects for release are added to code.json. You can add your approved open-source NASA project to <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
+
+All federal agencies are mandated to have a code.json that is then harvested by the General Services Adminstration (GSA) and aggregated into code.gov. 
+
+Code.json is reformatted by a script run by NASA's open-innovation team into <a href="https://raw.githubusercontent.com/nasa/code-nasa-gov/master/data/catalog.json">category.json</a>. Category.json has some attributes not in code.json and is used to build the project page on code.nasa.gov.
+
+Additionally, at this time, only category.json has the A.I.-generated keyword tags in addition to the human-generated tags. This may change in the future. 
+
+#### Why code.json is bigger then category.json
+Some of the code projects in code.json have open-source liceneses. Other projects in code.json have government-source only licenses, meaning sharing is constrainted to government agencies. All of the code projects listed in category.json have open-source licenses. 
+
+### Making your own data visualization with the JSONs that drive code.nasa.gov:
+- https://observablehq.com/@justingosses/finding-recent-additions-to-code-nasa-gov
+- https://observablehq.com/@briantoliveira/untitled
+
+If you make your own visualization, please put add it as an issue. We're love to see it!
+
+## Running The Code In This Repository
+
+### Setup
 
 test
 
