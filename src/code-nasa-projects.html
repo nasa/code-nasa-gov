@@ -353,8 +353,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       created: function() {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', this._loadProjects.bind(this));
-        // xhr.open('GET', '/data/catalog.json');
-        xhr.open('GET', 'https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/catalog.json');
+        xhr.open('GET', '/data/catalog.json');
         xhr.send();
       },
 
