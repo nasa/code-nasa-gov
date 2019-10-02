@@ -1,0 +1,26 @@
+Arguments: 
+  /usr/local/bin/node /Users/etyates/.yarn/bin/yarn.js add bower polymer-cli
+
+PATH: 
+  /Users/etyates/.yarn/bin:/Users/etyates/.config/yarn/global/node_modules/.bin:/Users/etyates/anaconda3/bin:/Users/etyates/anaconda3/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/etyates/me/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Users/etyates/Library/Python/2.7/bin:/Users/etyates/bin:/Users/etyates/.npm-global/bin
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  10.16.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Users/etyates/src/github/code-nasa-gov/node_modules/clean-css/node_modules/source-map'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
