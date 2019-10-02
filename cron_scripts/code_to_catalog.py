@@ -1,4 +1,4 @@
-# IMPORTANT: A daily cronjob runs this script 
+# IMPORTANT: A daily cronjob on tiprod runs this script 
 
 import json
 import requests
@@ -8,11 +8,11 @@ from subprocess import Popen, PIPE
 # User-set constants
 CODE_URL = 'https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json'
 CATALOG_OUT_LOCATION = '/var/www/docs/code/data/catalog.json'
-CATALOG_BACKUP_DIR = '/var/www/docs/code/data/catalog_backups'
+CATALOG_BACKUP_DIR = '/var/www/docs/code/catalog_backups'
 CURRENT_CATALOG_FILE = '/var/www/docs/code/data/catalog.json'
 
 # Computed constants
-CATALOG_BACKUP_FILE = '/catalog.json.' + datetime.today().strftime('%m-%Y')
+CATALOG_BACKUP_FILE = '/catalog.json.' + datetime.today().strftime('%m-%d-%Y')
 CATALOG_BACKUP_FULL_PATH = CATALOG_BACKUP_DIR + CATALOG_BACKUP_FILE
 
 # Helper to extract all contributor data from code.json format to catalog.json 
