@@ -1,0 +1,126 @@
+{
+   "ALv2": {
+    "License Long Name": "Apache License 2.0",
+    "License Link": "https://www.apache.org/licenses/LICENSE-2.0"
+   },
+   "Apache-2.0": {
+    "License Long Name": "Apache License 2.0",
+    "License Link": "https://www.apache.org/licenses/LICENSE-2.0"
+   },
+   "ASL": {
+    "License Long Name": "Apache Software License",
+    "License Link": "https://www.apache.org/licenses/"
+   },
+   "BSD-3-Clause": {
+    "License Long Name": "BSD 3-Clause 'New' or 'Revised' license",
+    "License Link": "http://opensource.org/licenses/BSD-3-Clause"
+   },
+   "BSDv3": {
+    "License Long Name": "BSD 3-Clause 'New' or 'Revised' license",
+    "License Link": "http://opensource.org/licenses/BSD-3-Clause"
+   },
+   "BSDv2": {
+    "License Long Name": "BSD 2-Clause 'Simplified' or 'FreeBSD' license",
+    "License Link": "http://opensource.org/licenses/BSD-2-Clause"
+   },
+   "FreeBSD": {
+    "License Long Name": "BSD 2-Clause 'Simplified' or 'FreeBSD' license",
+    "License Link": "http://opensource.org/licenses/BSD-2-Clause"
+   },
+   "BSD": {
+    "License Long Name": "Berkeley Source Distribution",
+    "License Link": "http://en.wikipedia.org/wiki/BSD_licenses"
+   },
+   "CC0": {
+    "License Long Name": "Creative Commons Public Domain Dedication",
+    "License Link": "https://creativecommons.org/publicdomain/zero/1.0/"
+   },
+   "CPL": {
+    "License Long Name": "Common Public License",
+    "License Link": "http://opensource.org/licenses/cpl1.0.php"
+   },
+   "CDDL": {
+    "License Long Name": "Common Development and Distribution License",
+    "License Link": "http://en.wikipedia.org/wiki/Common_Development_and_Distribution_License"
+   },
+   "CMUCS": {
+    "License Long Name": "Carnegie Mellon University Software Licensing",
+    "License Link": "http://www.cs.cmu.edu/~helpext/software_licensing/index.html"
+   },
+   "COTS": {
+    "License Long Name": "Commercial off-the-shelf",
+    "License Link": "http://en.wikipedia.org/wiki/Commercial_off-the-shelf"
+   },
+   "EPL": {
+    "License Long Name": "Eclipse Public License",
+    "License Link": "http://www.eclipse.org/legal/epl-v10.html"
+   },
+   "GPR": {
+    "License Long Name": "Government Purpose Rights",
+    "License Link": "http://www.acq.osd.mil/dpap/dars/dfars/html/current/227_71.htm"
+   },
+   "GPLv3": {
+    "License Long Name": "GNU General Public License (GPL) version 3",
+    "License Link": "http://www.gnu.org/licenses/gpl.html"
+   },
+   "GPL": {
+    "License Long Name": "GNU General Public License (GPL) version 3",
+    "License Link": "http://www.gnu.org/licenses/gpl.html"
+   },
+   "GPLv2": {
+    "License Long Name": "GNU General Public License (GPL) version 2",
+    "License Link": "http://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
+   },
+   "HTK": {
+    "License Long Name": "University of Cambridge HTK License",
+    "License Link": "http://llvm.org/releases/2.8/LICENSE.TXT"
+   },
+   "LGPL": {
+    "License Long Name": "GNU Library or 'Lesser' General Public License (LGPL)",
+    "License Link": "http://www.gnu.org/licenses/lgpl.html"
+   },
+   "LLVM": {
+    "License Long Name": "LLVM Release License",
+    "License Link": "http://llvm.org/releases/2.8/LICENSE.TXT"
+   },
+   "MIT": {
+    "License Long Name": "MIT License",
+    "License Link": "http://en.wikipedia.org/wiki/MIT_License"
+   },
+   "MPLv2": {
+    "License Long Name": "Mozilla Public License 2.0",
+    "License Link": "http://www.mozilla.org/MPL/2.0/"
+   },
+   "NASA Open Source": {
+    "License Long Name": "NASA Open Source 3.0",
+    "License Link": "http://opensource.org/licenses/NASA-1.3"
+   },
+   "NCSA": {
+    "License Long Name": "NCSA/University of Illinois Open Source License",
+    "License Link": "http://directory.fsf.org/wiki/License:IllinoisNCSA"
+   },
+   "NCSLA": {
+    "License Long Name": "Non-Commercial Software License Agreement (CU14012)",
+    "License Link": "https://secure.nouvant.com/columbia/technology/cu14012/license/258"
+   },
+   "Pending Release": {
+    "License Long Name": "Pending Release",
+    "License Link": "http://opensource.org/licenses/NASA-1.3"
+   },
+   "Public Domain": {
+    "License Long Name": "Public Domain",
+    "License Link": "http://directory.fsf.org/wiki/License:PublicDomain"
+   },
+   "SPL": {
+    "License Long Name": "Sun Public License",
+    "License Link": "http://en.wikipedia.org/wiki/Sun_Public_License"
+   },
+   "SUN": {
+    "License Long Name": "Sun Public License",
+    "License Link": "http://en.wikipedia.org/wiki/Sun_Public_License"
+   },
+   "UGPR": {
+    "License Long Name": "Unlimited Government Purpose Rights",
+    "License Link": "http://www.acq.osd.mil/dpap/dars/dfars/html/current/227_71.htm"
+   }
+}
