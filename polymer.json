@@ -9,6 +9,7 @@
   ],
   "sourceGlobs": [
    "data/**/*",
+   "cron_scripts/**/*",
    "fonts/**/*",
    "images/**/*",
    "src/**/*",
