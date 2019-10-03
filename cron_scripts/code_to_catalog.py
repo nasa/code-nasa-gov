@@ -71,14 +71,17 @@ for p in code_projs:
 				new_proj['External Link'] = ""
 		
 		cat_projs += [new_proj]
-		
-# Move old catalog.json to backup dir
-process = Popen(['cp', CURRENT_CATALOG_FILE, CATALOG_BACKUP_FULL_PATH], stdout=PIPE, stderr=PIPE)
-stdout, stderr = process.communicate()
-print (stderr)
 
-# Write out new catalog.json
-f = open(CURRENT_CATALOG_FILE, 'w+')
-f.write(json.dumps(cat_projs, indent=4))
-f.close()
+# Check if new catalog items successfuly generated
+if len(cat_projs) > 500:
+	
+	# Move old catalog.json to backup dir
+	process = Popen(['cp', CURRENT_CATALOG_FILE, CATALOG_BACKUP_FULL_PATH], stdout=PIPE, stderr=PIPE)
+	stdout, stderr = process.communicate()
+	print (stderr)
+
+	# Write out new catalog.json
+	f = open(CURRENT_CATALOG_FILE, 'w+')
+	f.write(json.dumps(cat_projs, indent=4))
+	f.close()
 
