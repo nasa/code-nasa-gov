@@ -57,7 +57,7 @@ for p in code_projs:
 		new_proj['Contributors'] = getContribs(p['contributors'])
 		new_proj['Labor_Hours'] = p['laborHours']
 		new_proj['Categories'] = p['tags']
-		new_proj['Categories_NLP'] = []
+		new_proj['Categories_NLP'] = p['sti_keywords_passed_thresholds']
 		new_proj['Languages'] = []
 		new_proj['Software'] = p['name']
 		new_proj['License'] = [ l['name'] for l in p['permissions']['licenses'] ] 
