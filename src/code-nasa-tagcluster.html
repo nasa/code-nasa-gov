@@ -248,14 +248,17 @@
     <script>
     console.log("test test")
     </script>
-    <script>
+    <!-- <script>
 
   
-    </script>
+    </script> -->
     <script type="module">
-      import notebook from "https://api.observablehq.com/@briantoliveira/nasas-open-source-code-projects-nlp-generated-tags-cluster.js?v=2";
-      import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@2.0.0/dist/notebook-runtime.js?module";
-      console.log("notebook","test")
+      console.log("notebook 1","test 1")
+      import notebook from "https://api.observablehq.com/@justingosses/nasas-open-source-code-projects-nlp-generated-tags-cluster.js?v=3";
+      // import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@2.0.0/dist/notebook-runtime.js?module";
+      import {Inspector, Runtime} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js?module";
+      import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+      console.log("notebook","test");
 
       ready:
       setTimeout(function(){ 
@@ -320,7 +323,7 @@
       }
       // Document.onLoad = loadObs
   
-      </script>
+    </script>
     
   </dom-module>
   
