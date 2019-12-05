@@ -1,0 +1,61 @@
+<!-- include A-Frame -->
+<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+<!-- include D3 for 2D visualization-->
+<script src="https://d3js.org/d3.v5.js"></script>
+<link rel="stylesheet" href="css/stylesheet.css">
+<body style='margin : 0px; overflow: hidden;'>
+    <div id="dataD3" style="display:none !important;"></div>
+    <!-- Import the notebook where the 2D Visualization is-->
+    <script type="module">
+        import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+        import define from "https://api.observablehq.com/d/c3d18938993cb1d3.js?v=3";
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.getElementById("dataD3")));
+    </script>
+    <script src = "js/notebook.js"></script>
+    <header>
+        <div title = "NASA logo" class = "logo">
+            <a href = "https://nasa.gov"><img src="favicon-192.png" alt="NASA logo but image did not load" style= "max-width: 100%;"></a>
+        </div>
+        <div class = "title">
+            <a href = "https://code.nasa.gov">NASA OCIO AR Demo</a>
+        </div>
+        <button class = "submenuButton" onclick = "new function(){buttonToggle();}"> ... </button>
+        <!-- Div that appears when you click the menu button. Change the cluster being visualized-->
+        <div class = "dropdown">
+            <div id = "clusterList">
+                <strong>Select a Cluster to Visualize:</strong>
+            </div>
+            <div id = "clusterLinks">
+                <strong>Project Links:</strong>
+            </div>
+        </div>
+    </header>
+    <main>
+        <a-scene embedded arjs id = "wholeScene">
+            <a-marker preset="hiro" id = "aScene">
+            </a-marker>
+            <a-entity camera>
+                <a-entity cursor 
+                raycaster="objects: .clickable" ><img src="crosshair.png" class="mobileCH"></a-entity>
+            </a-entity>
+        </a-scene>
+    </main>
+    <script src = "js/setup.js"></script>
+    <footer>
+        <div id = "sliders">
+        </div>
+        <!-- Div that displays when a Cluster is selected-->
+        <div id = "footerDiv">
+            <strong>Tag Name:</strong>
+            <p id = "Tag Name">???</p> 
+            <strong>Count:</strong>
+            <p id = "Count">???</p> 
+            <strong>Projects:</strong>
+            <p id = "Projects">???</p> 
+            <button id = "buttonSlider" onclick='resumeAR()'>Select Another Data Cluster</button>
+        </div>
+    </footer>
+</body>
