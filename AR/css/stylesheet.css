@@ -1,0 +1,462 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+main{
+    cursor: none !important;
+}
+
+p{
+    font-size: 12px;
+    overflow:auto;
+}
+
+a:-webkit-any-link {
+    color: #9bdaf1;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:link {
+    color: #9bdaf1;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+select{
+    overflow-x: auto;
+    max-width: 100%;
+    max-height: 39%;
+}
+section{
+    max-width: 100%;
+    max-height: 45%;
+}
+
+header{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 10000;
+    background: #323a45;
+    color: #9bdaf1;
+    padding: 1%;
+}
+footer{
+    position: fixed; 
+    left: 0; 
+    right: 0;
+    bottom: 0; 
+    width: 100%; 
+    height: 8%; 
+    background: #323a45;
+    color: white;
+    padding: 1rem;
+}
+#footerDiv{
+    position: fixed;
+    right: 0;
+    bottom: 8%;
+    width: 100%;
+    height: 48%;
+    background: #323a45;
+    color: white;
+    padding: 1rem;
+    border: .2rem solid white;
+    z-index: 9000;
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    transform: translate(0, 117%);
+}
+
+#footerDiv.visible{
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    transform: translate(0, 0%);
+}
+main{
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    transform: translate(0, 0%);
+}
+
+main.visible{
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    transform: translate(0, -26%);
+}
+
+.submenuButton{
+    background: white;
+    float: right;
+    margin: .5rem;
+    font-size: 29px;
+    height: 77%;
+    width: 9%;
+}
+
+.logo{
+    max-width: 10%;
+    float: left;
+}
+.title{
+    float: left;
+    margin-top: .5rem;
+    font-size: 50px;
+}
+.mobileCH{
+    display: block;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    width: 1rem;
+}
+
+.dropdown{
+    position: fixed;
+    right: 0;
+    top: 10%;
+    width: 100%;
+    height: 82%;
+    color: white;
+    padding: 1rem;
+    border: .2rem solid white;
+    z-index: -1;
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    transform: translate(100%, 0);
+}
+.dropdown:after{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    opacity: .7;
+    z-index: -1;
+    background: #323a45;
+}
+.dropdown.visible{
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    transform: translate(0, 0);
+}
+
+#buttonSlider{
+    position: absolute;
+    bottom: .5rem;
+    right: 0;
+}
+
+.textDesc{
+    display: block;
+}
+
+#Projects{
+    height: 41%;
+}
+
+/*IPhone X landscape*/
+@media screen and (min-width: 811px) and (max-height: 566px){
+    footer{
+        padding: .5rem;
+    }
+    .logo{
+        max-width: 5%;
+    }
+    .title{
+        font-size: 16px;
+        margin-top: 3px;
+    }
+    #footerDiv{
+        width: 40%;
+        height: 82%;
+    }
+    main.visible{
+        transform: translate(-19%, 0);
+    }
+    .textDesc{
+        display: none;
+    }
+    .sliderBottom{
+        position: absolute;
+        left: 40%;
+        top: .5rem;
+    }
+    #sliders div{
+        float: none !important;
+    }
+    .submenuButton{
+        margin: .2rem;
+        font-size: 10px;
+        height: 77%;
+    }
+}
+
+/*IPhone 7 plus landscape*/
+@media screen and (min-width: 735px) and (max-width: 810px) and (max-height: 566px){
+    footer{
+        padding: .5rem;
+    }
+    .logo{
+        max-width: 5%;
+    }
+    .title{
+        font-size: 16px;
+        margin-top: 5px;
+    }
+    #footerDiv{
+        width: 40%;
+        height: 82%;
+    }
+    #Projects{
+        height: 46%;
+    }
+
+    main.visible{
+        transform: translate(-19%, 0);
+    }
+    .textDesc{
+        display: none;
+    }
+    .sliderBottom{
+        position: absolute;
+        left: 40%;
+        top: .5rem;
+    }
+    #sliders div{
+        float: none !important;
+    }
+    .submenuButton{
+        margin: .2rem;
+        font-size: 10px;
+        height: 77%;
+    }
+}
+
+/*IPhone 7 landscape*/
+@media screen and (min-width: 666px) and (max-width: 734px) and (max-height: 566px){
+    footer{
+        padding: .5rem;
+    }
+    .logo{
+        max-width: 5%;
+    }
+    .title{
+        font-size: 16px;
+        margin-top: 4px;
+    }
+    #footerDiv{
+        width: 40%;
+        height: 82%;
+    }
+    main.visible{
+        transform: translate(-19%, 0);
+    }
+    .textDesc{
+        display: none;
+    }
+    .sliderBottom{
+        position: absolute;
+        left: 40%;
+        top: .5rem;
+    }
+    #sliders div{
+        float: none !important;
+    }
+    .submenuButton{
+        margin: .2rem;
+        font-size: 10px;
+        height: 77%;
+    }
+}
+
+/*IPhone 5 landscape*/
+@media screen and (min-width: 567px) and (max-width: 665px) and (max-height: 566px){
+    footer{
+        padding: .5rem;
+    }
+    .logo{
+        max-width: 5%;
+    }
+    .title{
+        font-size: 16px;        
+        margin-top: 2px;
+    }
+    #footerDiv{
+        width: 40%;
+        height: 82%;
+    }
+    #Projects{
+        height: 29%;
+    }
+    main.visible{
+        transform: translate(-19%, 0);
+    }
+    .textDesc{
+        display: none;
+    }
+    .sliderBottom{
+        position: absolute;
+        left: 40%;
+        top: .5rem;
+    }
+    #sliders div{
+        float: none !important;
+    }
+    .submenuButton{
+        margin: .2rem;
+        font-size: 10px;
+        height: 77%;
+    }
+}
+
+/*IPhone X portrait*/
+@media screen and (min-height: 811px) and (max-width: 566px){
+    .logo{
+        max-width: 21%;
+    }
+    .title{
+        font-size: 23px;
+    }
+    footer{
+        height: 14%;
+    }
+    #footerDiv{
+        bottom: 14%;
+        transform: translate(0, 129%);
+    }
+    #Projects{
+        height: 53%;
+    }
+    main.visible{
+        transform: translate(0, -26%);
+    }
+    .submenuButton{
+        margin: .9rem;
+        font-size: 22px;
+        height: 58%;
+    }
+    .dropdown{
+        height: 76%;
+    }
+}
+
+/*IPhone 7 plus portrait*/
+@media screen and (min-height: 735px) and (max-height: 810px) and (max-width: 566px){
+    .logo{
+        max-width: 17%;
+    }
+    .title{
+        font-size: 23px;
+    }
+    footer{
+        height: 15%;
+    }
+    #footerDiv{
+        bottom: 15%;
+        transform: translate(0, 132%);
+    }
+    #Projects{
+        height: 48%;
+    }
+    main.visible{
+        transform: translate(0, -28%);
+    }
+    .submenuButton{
+        margin: .8rem;
+        font-size: 22px;
+        height: 58%;
+    }
+    .dropdown{
+        height: 75%;
+    }
+}
+
+/*IPhone 7 portrait*/
+@media screen and (min-height: 666px) and (max-height: 734px) and (max-width: 566px){
+    .logo{
+        max-width: 17%;
+    }    
+    .title{
+        font-size: 23px;
+    }
+    footer{
+        height: 17%;
+    }
+    #footerDiv{
+        bottom: 17%;
+        transform: translate(0, 136%);
+    }
+    #Projects{
+        height: 43%;
+    }
+    main.visible{
+        transform: translate(0, -28%);
+    }
+    .submenuButton{
+        margin: .7rem;
+        font-size: 20px;
+        height: 58%;
+    }
+    .dropdown{
+        height: 73%;
+    }
+}
+
+/*IPhone 5 portrait*/
+@media screen and (min-height: 567px) and (max-height: 665px) and (max-width: 566px){
+    .logo{
+        max-width: 17%;
+    }
+    .title{
+        font-size: 20px;
+    }
+    footer{
+        height: 18%;
+        padding: .5rem;
+    }
+    #footerDiv{
+        bottom: 18%;
+        transform: translate(0, 138%);
+    }
+    #Projects{
+        height: 32%;
+    }
+    main.visible{
+        transform: translate(0, -27%);
+    }
+    .submenuButton{
+        margin: .9rem;
+        font-size: 15px;
+        height: 58%;
+    }
+    .dropdown{
+        height: 72%;
+    }
+}
