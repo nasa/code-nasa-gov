@@ -83,7 +83,7 @@ function reloadAR(){
     newNode.setAttribute("color", d3.select(nodes[x].children[0]).attr("fill"));
     newNode.setAttribute("colorBU", d3.select(nodes[x].children[0]).attr("fill"));
     // These attributes store the information for the pop up menu
-    newNode.setAttribute("projects", d3.select(nodes[x]).datum().data.projects);
+    newNode.setAttribute("projects", d3.select(nodes[x]).datum().data.projects.split(" ").map(function(project){if(project !== ','){return `<p>`+project.replace(/,/g, '')+`</p>`}else{return `<p>`+project.replace(/,/g, '')`</p>`}}));
     newNode.setAttribute("name", d3.select(nodes[x]).datum().data.name.split(":")[1]);
     newNode.setAttribute("count", d3.select(nodes[x]).datum().data.value);
     // "Clickable" is so the raycaster can touch the sphere
@@ -95,7 +95,7 @@ function reloadAR(){
       videoFeed.setAttribute("paused", "");
       document.getElementById("Tag Name").innerHTML = this.getAttribute("name");
       document.getElementById("Count").innerHTML = this.getAttribute("count");
-      document.getElementById("Projects").innerHTML = this.getAttribute("projects");
+      document.getElementById("Projects").innerHTML = this.getAttribute("projects").join(",").replace(/,/g,'');
       document.getElementById("footerDiv").classList.add("visible");
       document.getElementsByClassName("mobileCH")[0].classList.add("visible");
       document.getElementsByTagName("main")[0].classList.add("visible");
