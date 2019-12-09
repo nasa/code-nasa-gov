@@ -96,10 +96,17 @@ function reloadAR(){
       var tempAName = document.createElement("a");
       tempAName.setAttribute("href", "https://code.nasa.gov/?q=" + this.getAttribute("name"));
       tempAName.innerHTML = this.getAttribute("name");
-      document.getElementById("TagName").append(tempAName);
+      var tagName = document.getElementById("TagName");
+      while (tagName.firstChild) {
+        tagName.removeChild(tagName.firstChild);
+      }
+      tagName.append(tempAName);
       document.getElementById("Count").innerHTML = this.getAttribute("count");
       var projects = this.getAttribute("projects").split(',');
       var container = document.getElementById("Projects");
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
       for(var x = 0; x < projects.length; x++){
         var tempA = document.createElement("a");
         if (x != projects.length - 1){
