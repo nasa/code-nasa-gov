@@ -187,6 +187,12 @@ main.visible{
 #Projects a:-webkit-any-link {
     color: white !important;
 }
+#TagName a:link{
+    color: white !important;
+}
+#TagName a:-webkit-any-link {
+    color: white !important;
+}
 
 /*IPhone X landscape*/
 @media screen and (min-width: 811px) and (max-height: 566px){

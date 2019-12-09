@@ -93,7 +93,10 @@ function reloadAR(){
       var videoFeed = document.getElementById("aScene");
       videoFeed.pause();
       videoFeed.setAttribute("paused", "");
-      document.getElementById("Tag Name").innerHTML = this.getAttribute("name");
+      var tempAName = document.createElement("a");
+      tempAName.setAttribute("href", "https://code.nasa.gov/?q=" + this.getAttribute("name"));
+      tempAName.innerHTML = this.getAttribute("name");
+      document.getElementById("TagName").append(tempAName);
       document.getElementById("Count").innerHTML = this.getAttribute("count");
       var projects = this.getAttribute("projects").split(',');
       var container = document.getElementById("Projects");
