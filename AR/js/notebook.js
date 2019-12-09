@@ -1,6 +1,6 @@
 //Async function that waits for the notebook to load completely before loading the AR /components
 function checkforD3Load(){
-  if (document.getElementsByTagName("form").length > 2){
+  if (document.getElementsByTagName("section").length > 0){
     loadAR();
   }
   else{
@@ -95,7 +95,19 @@ function reloadAR(){
       videoFeed.setAttribute("paused", "");
       document.getElementById("Tag Name").innerHTML = this.getAttribute("name");
       document.getElementById("Count").innerHTML = this.getAttribute("count");
-      document.getElementById("Projects").innerHTML = this.getAttribute("projects");
+      var projects = this.getAttribute("projects").split(',');
+      var container = document.getElementById("Projects");
+      for(var x = 0; x < projects.length; x++){
+        var tempA = document.createElement("a");
+        if (x != projects.length - 1){
+          tempA.innerHTML = projects[x] + ", ";
+        }
+        else{
+          tempA.innerHTML = projects[x];
+        }
+        tempA.setAttribute("href", "https://code.nasa.gov/?q=" + projects[x].split('(')[0]);
+        container.append(tempA);
+      }
       document.getElementById("footerDiv").classList.add("visible");
       document.getElementsByClassName("mobileCH")[0].classList.add("visible");
       document.getElementsByTagName("main")[0].classList.add("visible");

@@ -6,6 +6,7 @@
 
 main{
     cursor: none !important;
+    overflow:  hidden !important;
 }
 
 p{
@@ -179,6 +180,12 @@ main.visible{
 
 #Projects{
     height: 41%;
+}
+#Projects a:link{
+    color: white !important;
+}
+#Projects a:-webkit-any-link {
+    color: white !important;
 }
 
 /*IPhone X landscape*/
