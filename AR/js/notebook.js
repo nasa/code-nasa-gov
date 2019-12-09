@@ -95,7 +95,7 @@ function reloadAR(){
       videoFeed.setAttribute("paused", "");
       document.getElementById("Tag Name").innerHTML = this.getAttribute("name");
       document.getElementById("Count").innerHTML = this.getAttribute("count");
-      document.getElementById("Projects").innerHTML = this.getAttribute("projects").join(",").replace(/,/g,'');
+      document.getElementById("Projects").innerHTML = this.getAttribute("projects");
       document.getElementById("footerDiv").classList.add("visible");
       document.getElementsByClassName("mobileCH")[0].classList.add("visible");
       document.getElementsByTagName("main")[0].classList.add("visible");
