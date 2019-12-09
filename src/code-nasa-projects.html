@@ -261,9 +261,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _addSearchContent: function(projects) {
         for (var i = 0; i < projects.length; ++i) {
           var p = projects[i];
+          console.log(p)
+          console.log(p.Categories_NLP)
+          console.log(p.Categories_NLP.join)
           p._search = [
             p.Categories.join('*'),
-            p.Categories_NLP.join('*'),
+            // p.Categories_NLP.join('*'),
             p.Contributors.join('*'),
             p.Description,
             p['External Link'],
