@@ -83,7 +83,7 @@ function reloadAR(){
     newNode.setAttribute("color", d3.select(nodes[x].children[0]).attr("fill"));
     newNode.setAttribute("colorBU", d3.select(nodes[x].children[0]).attr("fill"));
     // These attributes store the information for the pop up menu
-    newNode.setAttribute("projects", d3.select(nodes[x]).datum().data.projects.map(function(project){if(project !== ','){return `<p>`+project.replace(/,/g, '')+`</p>`}else{return `<p>`+project.replace(/,/g, '')`</p>`}}));
+    newNode.setAttribute("projects", d3.select(nodes[x]).datum().data.projects);
     newNode.setAttribute("name", d3.select(nodes[x]).datum().data.name.split(":")[1]);
     newNode.setAttribute("count", d3.select(nodes[x]).datum().data.value);
     // "Clickable" is so the raycaster can touch the sphere
@@ -100,7 +100,7 @@ function reloadAR(){
       for(var x = 0; x < projects.length; x++){
         var tempA = document.createElement("a");
         if (x != projects.length - 1){
-          tempA.innerHTML = projects[x] + ", ";
+          tempA.innerHTML = projects[x] + ", <br>";
         }
         else{
           tempA.innerHTML = projects[x];
