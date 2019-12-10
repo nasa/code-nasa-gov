@@ -23,5 +23,4 @@ function buttonToggle(){
     videoFeed.setAttribute("paused", "");
     dropdown.classList.add("visible");
   }
-
 }

@@ -1,7 +1,8 @@
 //Async function that waits for the notebook to load completely before loading the AR /components
 function checkforD3Load(){
-  if (document.getElementsByTagName("section").length > 0){
-    loadAR();
+  if (document.getElementsByTagName("video").length > 0){
+    console.log("Load finishing...");
+    setTimeout(loadAR, 100);
   }
   else{
     console.log("loading...");
@@ -14,6 +15,7 @@ function checkforD3Load(){
 function loadAR(){
   document.getElementById("arjsDebugUIContainer").style.display = "none";
   document.getElementById("dataD3").style.display = "none";
+  document.getElementById("arjs-video").style.overflow = "hidden";
   //function definition at line 47
   reloadAR();
   var formArray = document.getElementsByTagName("form");
