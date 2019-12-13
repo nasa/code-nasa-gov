@@ -1,6 +1,6 @@
 //Async function that waits for the notebook to load completely before loading the AR /components
 function checkforD3Load(){
-  if (document.getElementsByTagName("video").length > 0){
+  if (document.getElementsByTagName("video").length > 0 && document.getElementsByTagName("select").length > 0){
     console.log("Load finishing...");
     setTimeout(loadAR, 100);
   }
@@ -47,6 +47,9 @@ function loadAR(){
   document.getElementsByTagName("section")[0].style.background = "white";
   document.getElementsByTagName("section")[0].style.padding = 0;
   document.getElementById("clusterLinks").append(document.getElementsByTagName("section")[0]);
+  document.getElementById("tutorial").classList.add("instructions");
+  setTimeout(function(){document.getElementById("tutorial").innerHTML = "Click or Tap to Select a Tag";}, 1000);
+  setTimeout(tutorialPrev, 3500);
 }
 
 function reloadAR(){
@@ -136,6 +139,10 @@ function reloadAR(){
     newNode.appendChild(nodeText);
     aScene.appendChild(newNode);
   }
+}
+
+function tutorialPrev(){
+  document.getElementById("tutorial").classList.add("visible");
 }
 
 //Sets the AR load into motion

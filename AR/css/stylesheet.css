@@ -58,6 +58,42 @@ footer{
     color: white;
     padding: 1rem;
 }
+
+#tutorial{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 37%;
+    font-size: 20px;
+    background: white;
+    z-index: 1000;
+    -webkit-transition: 2s ease;
+    -moz-transition: 2s ease;
+    -ms-transition: 2s ease;
+    -o-transition: 2s ease;
+    transition: 2s ease;
+    opacity: 1;
+}
+#tutorial.instructions{
+    -webkit-transition: 2s ease;
+    -moz-transition: 2s ease;
+    -ms-transition: 2s ease;
+    -o-transition: 2s ease;
+    transition: 2s ease;
+    opacity: .5;
+}
+#tutorial.instructions.visible{
+    -webkit-transition: 2s ease;
+    -moz-transition: 2s ease;
+    -ms-transition: 2s ease;
+    -o-transition: 2s ease;
+    transition: 2s ease;
+    transform: translate(0, 100%);
+}
+
 #footerDiv{
     position: fixed;
     right: 0;
@@ -127,7 +163,6 @@ main.visible{
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 10000;
     width: 1rem;
 }
 
