@@ -1,4 +1,3 @@
-            "nlp:query language",
 [
     {
         "Update_Date": "2014-04-15",
@@ -201,7 +200,7 @@
             "Open Source",
             "Data and Image Processing"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Libibvpp",
         "License": [
@@ -2329,7 +2328,7 @@
             "Open Source",
             "Vehicle Management (Space/Air/Ground)"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Core Flight System (CFS) Limit Checker (LC) Application Version 2",
         "License": [
@@ -2660,7 +2659,7 @@
             "Open Source",
             "Data and Image Processing"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Lossless Hyper-/Multi-Spectral Data Compression Software",
         "License": [
@@ -3673,7 +3672,7 @@
             "Open Source",
             "Data Servers Processing and Handling"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Fortran Unit Testing Framework (fUnit v1.0)",
         "License": [
@@ -4072,7 +4071,7 @@
             "framework",
             "urban infrastructure management"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA WorldWind Research: CitySmart",
         "License": [
@@ -4091,7 +4090,7 @@
             "NASA",
             "WorldWind"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA WorldWind Research: WxOps-WorldWind",
         "License": [
@@ -4143,7 +4142,7 @@
             "georef",
             "GeoCam"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "georef_geocamutilweb",
         "License": [
@@ -4164,7 +4163,7 @@
             "georef",
             "GeoCam"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "georef",
         "License": [
@@ -4185,7 +4184,7 @@
             "georef",
             "GeoCam"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "georef_deploy",
         "License": [
@@ -4206,7 +4205,7 @@
             "georef",
             "GeoCam"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "georef_geocamtiepoint",
         "License": [
@@ -4261,7 +4260,7 @@
             "MCT",
             "demo"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Open Mission Control Demo (OpenMCT)",
         "License": [
@@ -4351,7 +4350,7 @@
             "MCT",
             "tutorial"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Open Mission Control Tutorial (OpenMCT)",
         "License": [
@@ -4370,7 +4369,7 @@
             "NASA",
             "Kepler"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "kepler-pipeline",
         "License": [
@@ -4455,7 +4454,7 @@
             "LaRC",
             "PVS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "pvslib",
         "License": [
@@ -4476,7 +4475,7 @@
             "flight software",
             "framework"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "fprime",
         "License": [
@@ -4527,7 +4526,7 @@
             "jquery",
             "ECHO Forms"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "edsc-echoforms",
         "License": [
@@ -4547,7 +4546,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "cfs_lib",
         "License": [
@@ -4567,7 +4566,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "SCH",
         "License": [
@@ -4618,7 +4617,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "SC",
         "License": [
@@ -4638,7 +4637,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "MD",
         "License": [
@@ -4658,7 +4657,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "HK",
         "License": [
@@ -4678,7 +4677,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "HS",
         "License": [
@@ -4698,7 +4697,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "LC",
         "License": [
@@ -4718,7 +4717,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "DS",
         "License": [
@@ -4738,7 +4737,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "CS",
         "License": [
@@ -4758,7 +4757,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "CF",
         "License": [
@@ -4776,7 +4775,7 @@
         "Categories": [
             "NASA"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "refine",
         "License": [
@@ -4796,7 +4795,7 @@
             "CFE",
             "CFS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "FM",
         "License": [
@@ -5842,7 +5841,7 @@
             "Reliability Analysis",
             "Fault Tolerance"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Windows Semi-Markov Range Evaluator (WinSURE)",
         "License": [
@@ -6963,7 +6962,7 @@
             "repository",
             "models"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA-3D-Resources",
         "License": [
@@ -8367,7 +8366,7 @@
             "Framework",
             "Toolkit"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Podaacpy",
         "License": [
@@ -8444,7 +8443,7 @@
             "earthquake-events",
             "usgs"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA WorldWind Research: Quake-Hunter",
         "License": [
@@ -8522,7 +8521,7 @@
             "worldwind",
             "geospatial data"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA WorldWind Research: WorldWindExplorer",
         "License": [
@@ -8727,7 +8726,7 @@
             "API",
             "client"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "pyCMR",
         "License": [
@@ -8751,7 +8750,7 @@
             "NASA",
             "CMR"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Metadata Management Tool (MMT)",
         "License": [
@@ -8809,7 +8808,7 @@
             "Visualization",
             "Toolkit"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "MAV",
         "License": [
@@ -8868,7 +8867,7 @@
             "visualization",
             "python"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Visualization of CALIPSO (VOCAL)",
         "License": [
@@ -9115,7 +9114,7 @@
             "WorldWind",
             "web application"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "WebWorldWind",
         "License": [
@@ -9142,7 +9141,7 @@
             "satellite",
             "WorldWind"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASAWorldWind.github.io",
         "License": [
@@ -9172,7 +9171,7 @@
             "satellite",
             "WorldWind"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "WorldWindAndroid",
         "License": [
@@ -9255,7 +9254,7 @@
             "maps",
             "opengl"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "WorldWindJava",
         "License": [
@@ -9471,7 +9470,7 @@
             "HLA",
             "Level"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "DON-Federate-HLA2MPC",
         "License": [
@@ -9643,7 +9642,7 @@
         "Categories": [
             "Kepler"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "ketu",
         "License": [
@@ -9665,7 +9664,7 @@
         "Categories": [
             "Kepler"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "k2ps",
         "License": [
@@ -9750,7 +9749,7 @@
         "Categories": [
             "Kepler"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "kadenza",
         "License": [
@@ -9770,7 +9769,7 @@
         "Categories": [
             "Kepler"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "K2ephem",
         "License": [
@@ -9884,7 +9883,7 @@
             "earth sciences",
             "landslides"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OJO Bot",
         "License": [
@@ -9906,7 +9905,7 @@
             "temporal interfaces",
             "component methods"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "PSYCO: A Predicate-based Symbolic Compositional Reasoning environment",
         "License": [
@@ -10330,7 +10329,7 @@
             "onearth",
             "Tiled WMS"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Open Layers 3",
         "License": [
@@ -10750,7 +10749,7 @@
             "Linear Programming",
             "Optimization"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "utm-apis",
         "License": [
@@ -11038,7 +11037,7 @@
             "spacelfight",
             "mission"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "mct",
         "License": [
@@ -11097,7 +11096,7 @@
             "developer",
             "digital strategy"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Digital-Strategy",
         "License": [
@@ -11186,7 +11185,7 @@
             "Cassini",
             "security"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "cash",
         "License": [
@@ -11209,7 +11208,7 @@
             "application",
             "automation"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "autodoc",
         "License": [
@@ -11455,7 +11454,7 @@
             "Google",
             "Android"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA-Space-Weather-Media-Viewer",
         "License": [
@@ -12481,7 +12480,7 @@
             "wrapper",
             "libibverbs"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Libibvpp",
         "License": [
@@ -12543,7 +12542,7 @@
             "regression",
             "hyperparameters"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Mariana",
         "License": [
@@ -13088,7 +13087,7 @@
             "XML",
             "ODL"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "ODL to XML Converter",
         "License": [
@@ -13248,7 +13247,7 @@
             "converter",
             "data conversion"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "XML to ODL Converter",
         "License": [
@@ -13489,7 +13488,7 @@
             "flexible image transport system",
             "java"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "nom-tam-fits",
         "License": [
@@ -13736,7 +13735,7 @@
             "python",
             "binary"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "PyFITS",
         "License": [
@@ -14084,7 +14083,7 @@
             "ACCESS",
             "earth science data"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "CEOP Satellite Data Server",
         "License": [
@@ -14305,7 +14304,7 @@
             "GVS",
             "GPM"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Global Precipitation Radar (GPM) Space and Ground Radar Comparison",
         "License": [
@@ -14329,7 +14328,7 @@
             "EOSDIS",
             "data file manipulator"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "HDF-EOS Metadata Updater",
         "License": [
@@ -14423,7 +14422,7 @@
             "EOSDIS",
             "data validation"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "HDFEOS XML DTD and Schemas",
         "License": [
@@ -14526,7 +14525,7 @@
             "sea-ice",
             "physical-oceanography"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "PO.DAAC Tools and Services",
         "License": [
@@ -14551,7 +14550,7 @@
             "unit testing",
             "MPI"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: testflo",
         "License": [
@@ -14631,7 +14630,7 @@
             "benchmark",
             "regression"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: benchmark",
         "License": [
@@ -14655,7 +14654,7 @@
             "benchmark",
             "regression"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: Cadre",
         "License": [
@@ -14680,7 +14679,7 @@
             "NREL",
             "training"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: NRELTraining",
         "License": [
@@ -14707,7 +14706,7 @@
             "NAS",
             "supercomputer"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: MBI",
         "License": [
@@ -14734,7 +14733,7 @@
             "openmdao",
             "flops"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: flops_wrapper",
         "License": [
@@ -14813,7 +14812,7 @@
             "procedures",
             "maintainers"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: OpenMDAO-Procedures",
         "License": [
@@ -14839,7 +14838,7 @@
             "airline",
             "allocation"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: OpenMDAO-airline-allocation",
         "License": [
@@ -14865,7 +14864,7 @@
             "application",
             "testing"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: openmdao_testapp",
         "License": [
@@ -14890,7 +14889,7 @@
             "aeronautics",
             "aircraft"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: marathon-aircraft",
         "License": [
@@ -14915,7 +14914,7 @@
             "geometry",
             "viewer"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: pyV3D",
         "License": [
@@ -14940,7 +14939,7 @@
             "gem",
             "wrapper"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: pygem",
         "License": [
@@ -14965,7 +14964,7 @@
             "gem",
             "wrapper"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: GEM",
         "License": [
@@ -14991,7 +14990,7 @@
             "wrapper",
             "aerospace"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: EGADS",
         "License": [
@@ -15015,7 +15014,7 @@
             "gem",
             "geometry"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: SimplePylab",
         "License": [
@@ -15037,7 +15036,7 @@
             "openmdao",
             "mdao"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "OpenMDAO: EngSketchPad",
         "License": [
@@ -15231,7 +15230,7 @@
             "ISS",
             "Photographs"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "ISS Camera Geolocate",
         "License": [
@@ -15340,8 +15339,8 @@
         "External Link": "http://senssoft.incubator.apache.org/"
     },
     {
-        "Update_Date": "2018-03-13",
-        "Description": "Apache SensSoft is a user activity logging and analytics system that enables developers to instrument and extract design and user insights from their applications. SensSoft incorporates a number of components that work together to provide user-experience researchers, project managers and software developers insights about how web applications are used. UserALE.js is an open source tool to quickly and efficiently instrument a JavaScript frontend application.",
+        "Update_Date": "2019-12-09",
+        "Description": "SWEET is a highly modular ontology suite with ~6000 concepts in ~200 separate ontologies covering Earth system science. SWEET is a mid-level ontology and consists of nine top-level concepts that can be used as a foundation for domain-specific ontologies that extend these top-level SWEET components. SWEET\u2019s own domain-specific ontologies, which extend the upper level ontologies, can provide users interested in further developing a particular domain with a solid set of concepts to get started. SWEET ontologies are written in W3C Turtle; the Terse RDF Triple Language and are publicly available under the Apache License v2.0.",
         "Public Code Repo": "https://github.com/ESIPFed/sweet",
         "NASA Center": "JPL",
         "Contributors": [
@@ -15350,7 +15349,9 @@
         "Labor_Hours": 96,
         "Categories": [
             "Ontology",
-            "Earth System Science"
+            "Earth System Science",
+            "ESIPFed",
+            "Semantic"
         ],
         "Categories_NLP": [
             "nlp:evaluation",
@@ -15448,7 +15449,7 @@
         "Categories": [
             "Data & Image Processing"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "SET",
         "License": [
@@ -15495,7 +15496,7 @@
         "Categories": [
             "Data & Image Processing"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "WRIT",
         "License": [
@@ -15706,7 +15707,7 @@
         "Categories": [
             "Extract information"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "T-ENTacle",
         "License": [
@@ -15730,7 +15731,7 @@
             "Semantic",
             "Search Engine"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "ASSESS",
         "License": [
@@ -15827,7 +15828,7 @@
             "systems engineering",
             "engineering"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Ontology Public",
         "License": [
@@ -15888,7 +15889,7 @@
             "Ontological Modeling Language",
             "OML"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Ontological Modeling Language (OML) Platform & Core Features",
         "License": [
@@ -15910,7 +15911,7 @@
             "Ontological Modeling Framework (OMF)",
             "OML"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Normalized Database Schema Tables for JPL's Ontological Modeling Language (OML)",
         "License": [
@@ -16106,7 +16107,7 @@
             "serialization",
             "ontological models"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Symbol table resolver for the JSON serialization of JPL's Ontological Modeling Framework Schema.",
         "License": [
@@ -16128,7 +16129,7 @@
             "OML",
             "document"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "JPL's Ontological Modeling Language Specification Document",
         "License": [
@@ -16154,7 +16155,7 @@
             "ontology",
             "workflow"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Configuration for setting up a Fuseki server for the IMCE ontology workflows",
         "License": [
@@ -16176,7 +16177,7 @@
             "library",
             "libraries"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "IMCE Third-Party Other Scala Libraries",
         "License": [
@@ -16297,7 +16298,7 @@
         "Categories": [
             "ontologies"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "gov.nasa.jpl.imce.ontologies.loadprod",
         "License": [
@@ -16321,7 +16322,7 @@
             "plugin",
             "MagicDraw"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "IMCE Dynamic Scripts plugin for MagicDraw 18",
         "License": [
@@ -16525,7 +16526,7 @@
             "ontology",
             "processing"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Ontology Processor",
         "License": [
@@ -16590,7 +16591,7 @@
             "Modeling",
             "Language"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Ontological Modeling Language core build (Xcore, Xtext, Xtend)",
         "License": [
@@ -16618,7 +16619,7 @@
             "Modeling",
             "Framework"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "A MagicDraw DynamicScript application for executing the IMCE profile generator from OMF bundles",
         "License": [
@@ -16791,7 +16792,7 @@
             "checker",
             "MagicDraw"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Project Usage Integrity Checker for MagicDraw 18",
         "License": [
@@ -16813,7 +16814,7 @@
             "analysis",
             "open-source"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Configuration for Semmle Analysis of JPL's open-source projects",
         "License": [
@@ -16837,7 +16838,7 @@
             "schema",
             "tabular"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Prototyping SPARK-based analysis of IMCE OMF Schema data",
         "License": [
@@ -16860,7 +16861,7 @@
             "generator",
             "SysML"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Profile Generator - Profile Model",
         "License": [
@@ -16883,7 +16884,7 @@
             "bundles",
             "profile"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Profile Generator - Bundle Model",
         "License": [
@@ -17098,7 +17099,7 @@
             "notification",
             "wrapper"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Perl 6 epoll",
         "License": [
@@ -17280,7 +17281,7 @@
             "Autonomous Systems",
             "Navigation"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "AprilNav",
         "License": [
@@ -17451,7 +17452,7 @@
             "nasa",
             "acronym"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "NASA Acronyms",
         "License": [
@@ -17511,7 +17512,7 @@
             "python",
             "uncertainty"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Multi-Level Monte Carlo",
         "License": [
@@ -17533,7 +17534,7 @@
             "parameter estimation",
             "model calibration"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "Sequential Monte Carlo Sampling with Python",
         "License": [
@@ -17664,7 +17665,7 @@
             "analysis",
             "awareness"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "LHASA",
         "License": [
@@ -17757,7 +17758,7 @@
             "Navigation",
             "Open Source"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "PX4 Autopilot Simulink Interface",
         "License": [
@@ -18103,7 +18104,7 @@
             "reader",
             "geotiff"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "PO.DAAC GeoTIFF Reader",
         "License": [
@@ -18126,7 +18127,7 @@
             "reader",
             "netcdf"
         ],
-        "Categories_NLP": "",
+        "Categories_NLP": [],
         "Languages": [],
         "Software": "PO.DAAC NetCDF Writer",
         "License": [
@@ -18171,26 +18172,119 @@
         "External Link": "https://doi.org/10.5281/zenodo.2617379"
     },
     {
-        "Update_Date": "2019-10-03",
-        "Description": "dsafdasfsadf",
-        "Public Code Repo": "www.google.com",
-        "NASA Center": "AFRC",
+        "Update_Date": "2019-11-29",
+        "Description": "The Periodic Table of Life (PeTaL, pronounced petal) is intended to be a design tool to enable a deeper understanding of natural systems and to enable the creation or improvement of nature-inspired systems. The tool includes an unstructured database, data analytics tools and a web-based user interface. Three levels of information are expected to be captured: morphology that would aid designers by providing context-specific physical design rules, function-morphology relationships to provide nature-inspired solution strategies, and system-level relationships that involve the interaction of several biological models including flow of resources and energy. In its current form, PeTaL is structured as a large NoSQL database that will be accessible to researchers and citizen scientists. It includes entomological and paleontological data from the Cleveland Museum of Natural History (CMNH) in Cleveland, OH, the Cincinnati Museum Center in Cincinnati, OH and the Smithsonian. PeTaL can display relationships between biological models, geography, and environment through maps and plots. These may be used to glean patterns or design rules. Data can also be downloaded for further analysis. A more systematic design process is under development that will allow multiple models to be used for the various stages of design.",
+        "Public Code Repo": "https://github.com/nasa/PeTaL",
+        "NASA Center": "GRC",
         "Contributors": [
-            "a",
-            "N/A",
-            "N/A"
+            "Herb Schilling",
+            "hschilling@nasa.gov",
+            "hschilling"
         ],
-        "Labor_Hours": 1234,
+        "Labor_Hours": 1000,
         "Categories": [
-            "a",
-            "b",
-            "c"
+            "biomimicry",
+            "design",
+            "tool",
+            "webapp",
+            "nature-inspired"
         ],
         "Categories_NLP": [],
         "Languages": [],
-        "Software": "Test Name",
+        "Software": "PeTaL",
         "License": [
-            "Apache-2.0"
+            "NASA Open Source"
+        ],
+        "External Link": "https://github.com/nasa/PeTaL"
+    },
+    {
+        "Update_Date": "YYYY-MM-DD",
+        "Description": "WebGS is a web-based ground station for Unmanned Aircraft Systems (UAS) flight visualization and simulation",
+        "Public Code Repo": "https://github.com/nasa/webgs",
+        "NASA Center": "NASA Langley Research Center",
+        "Contributors": [
+            "Andrew Peters",
+            "andrew.peters@nianet.org",
+            "Swee Balachandran",
+            "swee.balachandran@nianet.org",
+            "Brendan Duffy",
+            "brendan.duffy@nianet.org",
+            "Paolo Masci",
+            "paolo.masci@nianet.org",
+            "Cesar Munoz",
+            "cesar.a.munoz@nasa.gov"
+        ],
+        "Labor_Hours": 0,
+        "Categories": [
+            "Ground Control Station",
+            "MavLINK",
+            "ICAROUS"
+        ],
+        "Categories_NLP": [],
+        "Languages": [],
+        "Software": "WebGS",
+        "License": [
+            "NASA Open Source Agreement"
+        ],
+        "External Link": ""
+    },
+    {
+        "Update_Date": "2019-06-26",
+        "Description": "VSCode-PVS is a modern integrated development environment for the Prototype Verification System (PVS). This new environment integrates the editing and proof management functionalities of PVS in Visual Studio Code, a popular code editor widely used by software developers. VSCode-PVS provides functionalities that developers expect to find in modern verification tools, but are not available in the standard Emacs front-end of PVS, such as auto-completion, point-and-click navigation of definitions, live diagnostics for errors, and literate programming.",
+        "Public Code Repo": "https://github.com/nasa/vscode-pvs",
+        "NASA Center": "NASA Langley Research Center",
+        "Contributors": [
+            "Paolo Masci",
+            "paolo.masci@nianet.org",
+            "Cesar Munoz",
+            "cesar.a.munoz@nasa.gov",
+            "cesaramh"
+        ],
+        "Labor_Hours": 0,
+        "Categories": [
+            "PVS",
+            "InteractiveTheoremProving",
+            "IDE",
+            "VSCode",
+            "VisualStudioCode",
+            "VSCodePVS"
+        ],
+        "Categories_NLP": [],
+        "Languages": [],
+        "Software": "VSCode-PVS",
+        "License": [
+            "NASA Open Source Agreement"
+        ],
+        "External Link": ""
+    },
+    {
+        "Update_Date": "YYYY-MM-DD",
+        "Description": "CPR* is a formally verified implemenation in C of ADS-B's Compact Position Reporting (CPR) algorithm",
+        "Public Code Repo": "https://github.com/nasa/cpr",
+        "NASA Center": "NASA Langley Research Center",
+        "Contributors": [
+            "Aaron Dutle",
+            "aaron.m.dutle@nasa.gov",
+            "Mariano Moscato",
+            "mariano.moscato@nianet.org",
+            "Laura Titolo",
+            "latura.titolo@nianet.org",
+            "Cesar Munoz",
+            "cesar.a.munoz@nasa.gov"
+        ],
+        "Labor_Hours": 0,
+        "Categories": [
+            "Automatic Dependent Surveillance-Broadcast (ADS-B)",
+            "Compact Position Reporting (CPR)",
+            "Floating-point arithmetic",
+            "Fixed-point arithmetic",
+            "Prototype Verification System (PVS)"
+        ],
+        "Categories_NLP": [],
+        "Languages": [],
+        "Software": "CPR*",
+        "License": [
+            "NASA Open Source Agreement"
         ],
         "External Link": ""
     }
