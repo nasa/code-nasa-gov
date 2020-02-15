@@ -35,7 +35,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         left: 0;
         right: 0;
         z-index: 11;
-        background: linear-gradient(to bottom, rgba(33,33,33,1) 50%,rgba(33,33,33,0) 100%);
+        background: linear-gradient(to bottom, rgba(33, 33, 33, 1) 50%, rgba(33, 33, 33, 0) 100%);
       }
 
       app-header::before {
@@ -69,16 +69,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 16px;
       }
 
-      .logo > img {
+      .logo>img {
         width: 44px;
         height: 44px;
       }
-      
+
       .tabs {
         display: none;
       }
 
-      iron-pages > * {
+      iron-pages>* {
         min-height: 100vh;
       }
 
@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background: url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) no-repeat;
       }
 
-      .drawer-links > a {
+      .drawer-links>a {
         display: block;
         margin: 14px 28px 28px;
         font-family: 'ArcaMajora3-Bold', sans-serif;
@@ -107,12 +107,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: normal;
         letter-spacing: 6px;
       }
-      
-      .drawer-links > a:hover {
+
+      .drawer-links>a:hover {
         text-decoration: none;
       }
 
-      .drawer-links > a.iron-selected {
+      .drawer-links>a.iron-selected {
         color: #999;
       }
 
@@ -124,9 +124,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         .tabs {
           display: block;
           text-align: center;
+
         }
 
-        .tabs > a {
+        .tabs>a {
           position: relative;
           display: inline-block;
           padding: 14px 0;
@@ -136,26 +137,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           text-transform: uppercase;
           font-weight: normal;
           letter-spacing: 6px;
+
         }
 
-        .tabs > a::after {
+        .tabs>a::after {
           position: absolute;
           top: 0;
           bottom: 0;
           left: 0;
           right: 5px;
           content: '';
+
         }
-        
-        .tabs > a:hover {
+
+        .tabs>a:hover {
           text-decoration: none;
         }
 
-        .tabs > a:hover::after {
-          border-bottom: 1px solid var(--app-accent-color);
-        }
-
-        .tabs > a.iron-selected::after {
+        .tabs>a.iron-selected::after {
           border-bottom: 1px solid #FFF;
         }
 
@@ -163,6 +162,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         app-drawer {
           display: none;
         }
+
+        .gradientBorder {
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .gradientBorder {
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .gradientBorder::before {
+          position: absolute;
+          z-index: -1;
+          content: "";
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(to top right, #f2f2ff, #fff);
+          transition: transform .3s ease-in-out;
+          transform: translateX(-101%);
+        }
+
+        .gradientBorderProjects::before {
+          position: absolute;
+          z-index: -1;
+          content: "";
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          transition: transform .3s ease-in-out;
+          transform: translateX(-101%);
+        }
+
+        .gradientBorder:hover::before {
+          transform: translateX(0);
+        }
+
       }
     </style>
 
@@ -176,28 +215,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <img src="/images/logos/nasa-144.png" alt="NASA Logo">
         </a>
         <iron-selector class="tabs" selected="[[page]]" attr-for-selected="name">
-          <a href="/#/" name="projects">Projects</a>
-          <a href="/#/guide" name="guide">Guide</a>
+          <a class="gradientBorder" href="/#/" name="projects">Projects</a>
+          <a class="gradientBorder" href="/#/guide" name="guide">Guide</a>
           <!-- <a href="/#/share" name="share">Share</a> -->
-          <a href="/#/related" name="related">Related</a>
-          <a href="/#/experiments" name="experiments">Experiments</a>
+          <a class="gradientBorder" href="/#/related" name="related">Related</a>
+          <a class="gradientBorder" href="/#/experiments" name="experiments">Experiments</a>
           <!-- <a href="/#/tagcluster" name="tagcluster">tagcluster</a> -->
         </iron-selector>
       </div>
     </app-header>
 
-    <iron-pages
-        selected="[[page]]"
-        attr-for-selected="name"
-        fallback-selection="invalid"
-        role="main">
+    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="invalid" role="main">
       <code-nasa-projects name="projects" query-params="{{queryParams}}"></code-nasa-projects>
       <code-nasa-guide name="guide"></code-nasa-guide>
       <code-nasa-share name="share"></code-nasa-share>
       <code-nasa-related name="related"></code-nasa-related>
       <code-nasa-experiments name="experiments"></code-nasa-experiments>
       <code-nasa-tagcluster name="tagcluster"></code-nasa-tagcluster>
-      
+
       <code-nasa-invalid name="invalid"></code-nasa-invalid>
     </iron-pages>
 
@@ -232,7 +267,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         down: '_down'
       },
 
-      _routePageChanged: function(page) {
+      _routePageChanged: function (page) {
         Polymer.AppLayout.scroll({ top: 0 });
 
         // https://code.nasa.gov/#/SRA is a permalink that should show the guide page.
@@ -243,27 +278,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.page = page || 'projects';
       },
 
-      _pageChanged: function(page) {
+      _pageChanged: function (page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('code-nasa-' + this.page + '.html');
         this.importHref(resolvedPageUrl, null, this._handleInvalidPage, true);
       },
 
-      _handleInvalidPage: function() {
+      _handleInvalidPage: function () {
         this.page = 'invalid';
       },
 
-      _toggleDrawer: function() {
+      _toggleDrawer: function () {
         this.$.drawer.toggle();
       },
 
-      _down: function() {
+      _down: function () {
         // HACK(keanulee): Need to add some gesture listener so clicks work correctly on touch devices.
         // See Polymer/polymer#4128.
       }
     });
 
-    
+
   </script>
-  
+
 </dom-module>

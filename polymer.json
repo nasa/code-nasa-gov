@@ -7,33 +7,44 @@
     "src/code-nasa-share.html",
     "src/code-nasa-invalid.html"
   ],
-  "sourceGlobs": [
-   "data/**/*",
-   "cron_scripts/**/*",
-   "fonts/**/*",
-   "images/**/*",
-   "src/**/*",
-   "app.yaml",
-   "bower.json"
+  "sources": [
+    "data/**/*",
+    "cron_scripts/**/*",
+    "fonts/**/*",
+    "images/**/*",
+    "src/**/*",
+    "app.yaml",
+    "bower.json"
   ],
-  "includeDependencies": [
+  "extraDependencie": [
     "manifest.json",
     "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ],
   "builds": [
-  {
-    "name": "bundled",
-    "bundle": true,
-    "js": {"minify": true},
-    "css": {"minify": true},
-    "html": {"minify": true}
-  },
-  {
-    "name": "unbundled",
-    "js": {"minify": true},
-    "css": {"minify": true},
-    "html": {"minify": true}
-  }
-]
+    {
+      "name": "bundled",
+      "bundle": true,
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      }
+    },
+    {
+      "name": "unbundled",
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      }
+    }
+  ]
 }
-
