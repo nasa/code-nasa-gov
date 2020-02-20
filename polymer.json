@@ -7,7 +7,7 @@
     "src/code-nasa-share.html",
     "src/code-nasa-invalid.html"
   ],
-  "sourceGlobs": [
+  "sources": [
    "data/**/*",
    "cron_scripts/**/*",
    "fonts/**/*",
@@ -16,7 +16,7 @@
    "app.yaml",
    "bower.json"
   ],
-  "includeDependencies": [
+  "extraDependencies": [
     "manifest.json",
     "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ],
