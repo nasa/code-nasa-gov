@@ -12,7 +12,7 @@ CATALOG_BACKUP_DIR = '/var/www/docs/code/catalog_backups'
 CURRENT_CATALOG_FILE = '/var/www/docs/code/data/catalog.json'
 
 # Computed constants
-CATALOG_BACKUP_FILE = '/catalog.json.' + datetime.today().strftime('%m-%d-%Y')
+CATALOG_BACKUP_FILE = '/catalog.json.' + datetime.today().strftime('%Y-%m-%d')
 CATALOG_BACKUP_FULL_PATH = CATALOG_BACKUP_DIR + CATALOG_BACKUP_FILE
 
 # Helper to extract all contributor data from code.json format to catalog.json 
@@ -57,11 +57,16 @@ for p in code_projs:
 		new_proj['Contributors'] = getContribs(p['contributors'])
 		new_proj['Labor_Hours'] = p['laborHours']
 		new_proj['Categories'] = p['tags']
-		new_proj['Categories_NLP'] = p['sti_keywords_passed_thresholds']
 		new_proj['Languages'] = []
 		new_proj['Software'] = p['name']
 		new_proj['License'] = [ l['name'] for l in p['permissions']['licenses'] ] 
 		
+		try:
+			new_proj['Categories_NLP'] = p['sti_keywords_passed_thresholds']
+
+		except:
+			new_proj['Categories_NLP'] = []
+
 		try:
 			new_proj['External Link'] = p['homepageURL']
 		except:
