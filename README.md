@@ -7,7 +7,7 @@ Catalog of Open Source Software from NASA. Built using [Polymer](https://www.pol
 ## Do You have a Open-Source Code Project For This Site?
 
 #### Instructions
-Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>
+Instructions for releasing a NASA open-source project can be found on <a href="https://code.nasa.gov/#/guide">https://code.nasa.gov/#/guide</a>.
 
 #### Code.json vs Category.json
 Newly approved code projects for release are added to code.json. You can add your approved open-source NASA project to <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json"><b>code.json</b></a>, <a href="https://github.com/nasa/Open-Source-Catalog">here</a>.
@@ -25,7 +25,7 @@ Some of the code projects in code.json have open-source liceneses. Other project
 - https://observablehq.com/@justingosses/finding-recent-additions-to-code-nasa-gov
 - https://observablehq.com/@briantoliveira/untitled
 
-If you make your own visualization, please put add it as an issue. We're love to see it!
+If you make your own visualization, please add it as an issue. We would love to see it!
 
 ## Running The Code In This Repository
 
@@ -58,7 +58,7 @@ routing for the app:
 ### Build
 
 This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates a service-worker.js file with code to pre-cache the
+dependencies and generates a service-worker.js file with code to pre-cache the
 dependencies based on the entrypoint and fragments specified in `polymer.json`.
 The minified files are output to the `build/unbundled` folder, and are suitable
 for serving from a HTTP/2+Push compatible server.
