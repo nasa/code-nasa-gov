@@ -18,8 +18,8 @@ Code.json is reformatted by a script run by NASA's open-innovation team into <a 
 
 Additionally, at this time, only category.json has the A.I.-generated keyword tags in addition to the human-generated tags. This may change in the future. 
 
-#### Why code.json is bigger then category.json
-Some of the code projects in code.json have open-source liceneses. Other projects in code.json have government-source only licenses, meaning sharing is constrainted to government agencies. All of the code projects listed in category.json have open-source licenses. 
+#### Why code.json is bigger than category.json
+Some of the code projects in code.json have open-source licenses. Other projects in code.json have government-source only licenses, meaning sharing is constrainted to government agencies. All of the code projects listed in category.json have open-source licenses. 
 
 ### Making your own data visualization with the JSONs that drive code.nasa.gov:
 - https://observablehq.com/@justingosses/finding-recent-additions-to-code-nasa-gov
