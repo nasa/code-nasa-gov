@@ -148,13 +148,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
 
       <p class="meta">
-        [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]]
-        <template is="dom-if" if="[[queryParams.q]]">
+        [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]] match query
+        <!-- <template is="dom-if" if="[[queryParams.q]]">
           matching "[[queryParams.q]]"
         </template>
         <template is="dom-if" if="[[queryParams.tag]]">
           tagged with #[[queryParams.tag]]
-        </template>
+        </template> -->
         <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]">
           <a href="/#/"> Show all projects</a>
         </template>
