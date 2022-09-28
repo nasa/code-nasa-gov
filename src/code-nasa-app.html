@@ -163,6 +163,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         app-drawer {
           display: none;
         }
+
+        /* The Close Button */
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        /* The alert message box */
+        .alert {
+          padding: 20px;
+          background-color: #ff9800; /* Orange */
+          color: black;
+          margin-bottom: 15px;
+          font-size: 18px;
+        }
+
+        /* The close button */
+        .closebtn {
+          margin-left: 15px;
+          color: black;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
       }
     </style>
 
@@ -170,6 +207,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-route route="[[route]]" pattern="/:page" data="{{routeData}}"></app-route>
 
     <app-header reveals threshold="1" effects="fade-background">
+
+      <section class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>IMPORTANT:</strong> The metadata requirement standards will be upgraded TUES 10/18/22 6PM CT / 7PM ET. Please confirm your application API calls still work for your dataset for your application.
+         If you have any issues, please email <a href="mailto:nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a> or <a href="mailto:socrata-support@tylertech.com">socrata-support@tylertech.com.</a>
+      </section>
+
       <div sticky>
         <button class="menu-button" on-click="_toggleDrawer"></button>
         <a href="/#/" class="logo">
