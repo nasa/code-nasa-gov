@@ -1,348 +1,476 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
+<html><head></head><body><div hidden="" by-polymer-bundler=""><script>(function(){'use strict';/**
+     * Chrome uses an older version of DOM Level 3 Keyboard Events
+     *
+     * Most keys are labeled as text, but some are Unicode codepoints.
+     * Values taken from: http://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/keyset.html#KeySet-Set
+     */var KEY_IDENTIFIER={"U+0008":"backspace","U+0009":"tab","U+001B":"esc","U+0020":"space","U+007F":"del"},KEY_CODE={8:"backspace",9:"tab",13:"enter",27:"esc",33:"pageup",34:"pagedown",35:"end",36:"home",32:"space",37:"left",38:"up",39:"right",40:"down",46:"del",106:"*"},MODIFIER_KEYS={shift:"shiftKey",ctrl:"ctrlKey",alt:"altKey",meta:"metaKey"},KEY_CHAR=/[a-z0-9*]/,IDENT_CHAR=/U\+/,ARROW_KEY=/^arrow/,SPACE_KEY=/^space(bar)?/,ESC_KEY=/^escape$/;/**
+     * Special table for KeyboardEvent.keyCode.
+     * KeyboardEvent.keyIdentifier is better, and KeyBoardEvent.key is even better
+     * than that.
+     *
+     * Values from: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.keyCode#Value_of_keyCode
+     */ /**
+     * Transforms the key.
+     * @param {string} key The KeyBoardEvent.key
+     * @param {Boolean} [noSpecialChars] Limits the transformation to
+     * alpha-numeric characters.
+     */function transformKey(key,noSpecialChars){var validKey="";if(key){var lKey=key.toLowerCase();if(" "===lKey||SPACE_KEY.test(lKey)){validKey="space"}else if(ESC_KEY.test(lKey)){validKey="esc"}else if(1==lKey.length){if(!noSpecialChars||KEY_CHAR.test(lKey)){validKey=lKey}}else if(ARROW_KEY.test(lKey)){validKey=lKey.replace("arrow","")}else if("multiply"==lKey){// numpad '*' can map to Multiply on IE/Windows
+validKey="*"}else{validKey=lKey}}return validKey}function transformKeyIdentifier(keyIdent){var validKey="";if(keyIdent){if(keyIdent in KEY_IDENTIFIER){validKey=KEY_IDENTIFIER[keyIdent]}else if(IDENT_CHAR.test(keyIdent)){keyIdent=parseInt(keyIdent.replace("U+","0x"),16);validKey=String.fromCharCode(keyIdent).toLowerCase()}else{validKey=keyIdent.toLowerCase()}}return validKey}function transformKeyCode(keyCode){var validKey="";if(+keyCode){if(65<=keyCode&&90>=keyCode){// ascii a-z
+// lowercase is 32 offset from uppercase
+validKey=String.fromCharCode(32+keyCode)}else if(112<=keyCode&&123>=keyCode){// function keys f1-f12
+validKey="f"+(keyCode-112)}else if(48<=keyCode&&57>=keyCode){// top 0-9 keys
+validKey=keyCode-48+""}else if(96<=keyCode&&105>=keyCode){// num pad 0-9
+validKey=keyCode-96+""}else{validKey=KEY_CODE[keyCode]}}return validKey}/**
+      * Calculates the normalized key for a KeyboardEvent.
+      * @param {KeyboardEvent} keyEvent
+      * @param {Boolean} [noSpecialChars] Set to true to limit keyEvent.key
+      * transformation to alpha-numeric chars. This is useful with key
+      * combinations like shift + 2, which on FF for MacOS produces
+      * keyEvent.key = @
+      * To get 2 returned, set noSpecialChars = true
+      * To get @ returned, set noSpecialChars = false
+     */function normalizedKeyForEvent(keyEvent,noSpecialChars){// Fall back from .key, to .detail.key for artifical keyboard events,
+// and then to deprecated .keyIdentifier and .keyCode.
+if(keyEvent.key){return transformKey(keyEvent.key,noSpecialChars)}if(keyEvent.detail&&keyEvent.detail.key){return transformKey(keyEvent.detail.key,noSpecialChars)}return transformKeyIdentifier(keyEvent.keyIdentifier)||transformKeyCode(keyEvent.keyCode)||""}function keyComboMatchesEvent(keyCombo,event){// For combos with modifiers we support only alpha-numeric keys
+var keyEvent=normalizedKeyForEvent(event,keyCombo.hasModifiers);return keyEvent===keyCombo.key&&(!keyCombo.hasModifiers||!!event.shiftKey===!!keyCombo.shiftKey&&!!event.ctrlKey===!!keyCombo.ctrlKey&&!!event.altKey===!!keyCombo.altKey&&!!event.metaKey===!!keyCombo.metaKey)}function parseKeyComboString(keyComboString){if(1===keyComboString.length){return{combo:keyComboString,key:keyComboString,event:"keydown"}}return keyComboString.split("+").reduce(function(parsedKeyCombo,keyComboPart){var eventParts=keyComboPart.split(":"),keyName=eventParts[0],event=eventParts[1];if(keyName in MODIFIER_KEYS){parsedKeyCombo[MODIFIER_KEYS[keyName]]=!0;parsedKeyCombo.hasModifiers=!0}else{parsedKeyCombo.key=keyName;parsedKeyCombo.event=event||"keydown"}return parsedKeyCombo},{combo:keyComboString.split(":").shift()})}function parseEventString(eventString){return eventString.trim().split(" ").map(function(keyComboString){return parseKeyComboString(keyComboString)})}/**
+     * `Polymer.IronA11yKeysBehavior` provides a normalized interface for processing
+     * keyboard commands that pertain to [WAI-ARIA best practices](http://www.w3.org/TR/wai-aria-practices/#kbd_general_binding).
+     * The element takes care of browser differences with respect to Keyboard events
+     * and uses an expressive syntax to filter key presses.
+     *
+     * Use the `keyBindings` prototype property to express what combination of keys
+     * will trigger the callback. A key binding has the format
+     * `"KEY+MODIFIER:EVENT": "callback"` (`"KEY": "callback"` or
+     * `"KEY:EVENT": "callback"` are valid as well). Some examples:
+     *
+     *      keyBindings: {
+     *        'space': '_onKeydown', // same as 'space:keydown'
+     *        'shift+tab': '_onKeydown',
+     *        'enter:keypress': '_onKeypress',
+     *        'esc:keyup': '_onKeyup'
+     *      }
+     *
+     * The callback will receive with an event containing the following information in `event.detail`:
+     *
+     *      _onKeydown: function(event) {
+     *        console.log(event.detail.combo); // KEY+MODIFIER, e.g. "shift+tab"
+     *        console.log(event.detail.key); // KEY only, e.g. "tab"
+     *        console.log(event.detail.event); // EVENT, e.g. "keydown"
+     *        console.log(event.detail.keyboardEvent); // the original KeyboardEvent
+     *      }
+     *
+     * Use the `keyEventTarget` attribute to set up event handlers on a specific
+     * node.
+     *
+     * See the [demo source code](https://github.com/PolymerElements/iron-a11y-keys-behavior/blob/master/demo/x-key-aware.html)
+     * for an example.
+     *
+     * @demo demo/index.html
+     * @polymerBehavior
+     */Polymer.IronA11yKeysBehavior={properties:{/**
+         * The EventTarget that will be firing relevant KeyboardEvents. Set it to
+         * `null` to disable the listeners.
+         * @type {?EventTarget}
+         */keyEventTarget:{type:Object,value:function(){return this}},/**
+         * If true, this property will cause the implementing element to
+         * automatically stop propagation on any handled KeyboardEvents.
+         */stopKeyboardEventPropagation:{type:Boolean,value:!1},_boundKeyHandlers:{type:Array,value:function(){return[]}},// We use this due to a limitation in IE10 where instances will have
+// own properties of everything on the "prototype".
+_imperativeKeyBindings:{type:Object,value:function(){return{}}}},observers:["_resetKeyEventListeners(keyEventTarget, _boundKeyHandlers)"],/**
+       * To be used to express what combination of keys  will trigger the relative
+       * callback. e.g. `keyBindings: { 'esc': '_onEscPressed'}`
+       * @type {!Object}
+       */keyBindings:{},registered:function(){this._prepKeyBindings()},attached:function(){this._listenKeyEventListeners()},detached:function(){this._unlistenKeyEventListeners()},/**
+       * Can be used to imperatively add a key binding to the implementing
+       * element. This is the imperative equivalent of declaring a keybinding
+       * in the `keyBindings` prototype property.
+       */addOwnKeyBinding:function(eventString,handlerName){this._imperativeKeyBindings[eventString]=handlerName;this._prepKeyBindings();this._resetKeyEventListeners()},/**
+       * When called, will remove all imperatively-added key bindings.
+       */removeOwnKeyBindings:function(){this._imperativeKeyBindings={};this._prepKeyBindings();this._resetKeyEventListeners()},/**
+       * Returns true if a keyboard event matches `eventString`.
+       *
+       * @param {KeyboardEvent} event
+       * @param {string} eventString
+       * @return {boolean}
+       */keyboardEventMatchesKeys:function(event,eventString){for(var keyCombos=parseEventString(eventString),i=0;i<keyCombos.length;++i){if(keyComboMatchesEvent(keyCombos[i],event)){return!0}}return!1},_collectKeyBindings:function(){var keyBindings=this.behaviors.map(function(behavior){return behavior.keyBindings});if(-1===keyBindings.indexOf(this.keyBindings)){keyBindings.push(this.keyBindings)}return keyBindings},_prepKeyBindings:function(){this._keyBindings={};this._collectKeyBindings().forEach(function(keyBindings){for(var eventString in keyBindings){this._addKeyBinding(eventString,keyBindings[eventString])}},this);for(var eventString in this._imperativeKeyBindings){this._addKeyBinding(eventString,this._imperativeKeyBindings[eventString])}// Give precedence to combos with modifiers to be checked first.
+for(var eventName in this._keyBindings){this._keyBindings[eventName].sort(function(kb1,kb2){var b1=kb1[0].hasModifiers,b2=kb2[0].hasModifiers;return b1===b2?0:b1?-1:1})}},_addKeyBinding:function(eventString,handlerName){parseEventString(eventString).forEach(function(keyCombo){this._keyBindings[keyCombo.event]=this._keyBindings[keyCombo.event]||[];this._keyBindings[keyCombo.event].push([keyCombo,handlerName])},this)},_resetKeyEventListeners:function(){this._unlistenKeyEventListeners();if(this.isAttached){this._listenKeyEventListeners()}},_listenKeyEventListeners:function(){if(!this.keyEventTarget){return}Object.keys(this._keyBindings).forEach(function(eventName){var keyBindings=this._keyBindings[eventName],boundKeyHandler=this._onKeyBindingEvent.bind(this,keyBindings);this._boundKeyHandlers.push([this.keyEventTarget,eventName,boundKeyHandler]);this.keyEventTarget.addEventListener(eventName,boundKeyHandler)},this)},_unlistenKeyEventListeners:function(){var keyHandlerTuple,keyEventTarget,eventName,boundKeyHandler;while(this._boundKeyHandlers.length){// My kingdom for block-scope binding and destructuring assignment..
+keyHandlerTuple=this._boundKeyHandlers.pop();keyEventTarget=keyHandlerTuple[0];eventName=keyHandlerTuple[1];boundKeyHandler=keyHandlerTuple[2];keyEventTarget.removeEventListener(eventName,boundKeyHandler)}},_onKeyBindingEvent:function(keyBindings,event){if(this.stopKeyboardEventPropagation){event.stopPropagation()}// if event has been already prevented, don't do anything
+if(event.defaultPrevented){return}for(var i=0;i<keyBindings.length;i++){var keyCombo=keyBindings[i][0],handlerName=keyBindings[i][1];if(keyComboMatchesEvent(keyCombo,event)){this._triggerKeyHandler(keyCombo,handlerName,event);// exit the loop if eventDefault was prevented
+if(event.defaultPrevented){return}}}},_triggerKeyHandler:function(keyCombo,handlerName,keyboardEvent){var detail=Object.create(keyCombo);detail.keyboardEvent=keyboardEvent;var event=new CustomEvent(keyCombo.event,{detail:detail,cancelable:!0});this[handlerName].call(this,event);if(event.defaultPrevented){keyboardEvent.preventDefault()}}}})();</script><dom-module id="iron-list" assetpath="../bower_components/iron-list/"><template><style>:host{display:block;}@media only screen and (-webkit-max-device-pixel-ratio: 1){:host{will-change:transform;}}#items{@apply (--iron-list-items-container);position:relative;}:host(:not([grid])) #items > ::content > *{width:100%;}#items > ::content > *{box-sizing:border-box;margin:0;position:absolute;top:0;will-change:transform;}</style><array-selector id="selector" items="{{items}}" selected="{{selectedItems}}" selected-item="{{selectedItem}}"></array-selector><div id="items"><content></content></div></template></dom-module><script>(function(){var IOS=navigator.userAgent.match(/iP(?:hone|ad;(?: U;)? CPU) OS (\d+)/),IOS_TOUCH_SCROLLING=IOS&&8<=IOS[1],DEFAULT_PHYSICAL_COUNT=3,HIDDEN_Y="-10000px",ITEM_WIDTH=0,ITEM_HEIGHT=1,SECRET_TABINDEX=-100;Polymer({is:"iron-list",properties:{/**
+       * An array containing items determining how many instances of the template
+       * to stamp and that that each template instance should bind to.
+       */items:{type:Array},/**
+       * The max count of physical items the pool can extend to.
+       */maxPhysicalCount:{type:Number,value:500},/**
+       * The name of the variable to add to the binding scope for the array
+       * element associated with a given template instance.
+       */as:{type:String,value:"item"},/**
+       * The name of the variable to add to the binding scope with the index
+       * for the row.
+       */indexAs:{type:String,value:"index"},/**
+       * The name of the variable to add to the binding scope to indicate
+       * if the row is selected.
+       */selectedAs:{type:String,value:"selected"},/**
+       * When true, the list is rendered as a grid. Grid items must have
+       * fixed width and height set via CSS. e.g.
+       *
+       * ```html
+       * <iron-list grid>
+       *   <template>
+       *      <div style="width: 100px; height: 100px;"> 100x100 </div>
+       *   </template>
+       * </iron-list>
+       * ```
+       */grid:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * When true, tapping a row will select the item, placing its data model
+       * in the set of selected items retrievable via the selection property.
+       *
+       * Note that tapping focusable elements within the list item will not
+       * result in selection, since they are presumed to have their * own action.
+       */selectionEnabled:{type:Boolean,value:!1},/**
+       * When `multiSelection` is false, this is the currently selected item, or `null`
+       * if no item is selected.
+       */selectedItem:{type:Object,notify:!0},/**
+       * When `multiSelection` is true, this is an array that contains the selected items.
+       */selectedItems:{type:Object,notify:!0},/**
+       * When `true`, multiple items may be selected at once (in this case,
+       * `selected` is an array of currently selected items).  When `false`,
+       * only one item may be selected at a time.
+       */multiSelection:{type:Boolean,value:!1},/**
+       * The offset top from the scrolling element to the iron-list element.
+       * This value can be computed using the position returned by `getBoundingClientRect()`
+       * although it's preferred to use a constant value when possible.
+       *
+       * This property is useful when an external scrolling element is used and there's
+       * some offset between the scrolling element and the list.
+       * For example: a header is placed above the list.
+       */scrollOffset:{type:Number,value:0}},observers:["_itemsChanged(items.*)","_selectionEnabledChanged(selectionEnabled)","_multiSelectionChanged(multiSelection)","_setOverflow(scrollTarget, scrollOffset)"],behaviors:[Polymer.Templatizer,Polymer.IronResizableBehavior,Polymer.IronA11yKeysBehavior,Polymer.IronScrollTargetBehavior],keyBindings:{up:"_didMoveUp",down:"_didMoveDown",enter:"_didEnter"},/**
+     * The ratio of hidden tiles that should remain in the scroll direction.
+     * Recommended value ~0.5, so it will distribute tiles evely in both directions.
+     */_ratio:.5,/**
+     * The padding-top value for the list.
+     */_scrollerPaddingTop:0,/**
+     * This value is the same as `scrollTop`.
+     */_scrollPosition:0,/**
+     * The sum of the heights of all the tiles in the DOM.
+     */_physicalSize:0,/**
+     * The average `offsetHeight` of the tiles observed till now.
+     */_physicalAverage:0,/**
+     * The number of tiles which `offsetHeight` > 0 observed until now.
+     */_physicalAverageCount:0,/**
+     * The Y position of the item rendered in the `_physicalStart`
+     * tile relative to the scrolling list.
+     */_physicalTop:0,/**
+     * The number of items in the list.
+     */_virtualCount:0,/**
+     * A map between an item key and its physical item index
+     */_physicalIndexForKey:null,/**
+     * The estimated scroll height based on `_physicalAverage`
+     */_estScrollHeight:0,/**
+     * The scroll height of the dom node
+     */_scrollHeight:0,/**
+     * The height of the list. This is referred as the viewport in the context of list.
+     */_viewportHeight:0,/**
+     * The width of the list. This is referred as the viewport in the context of list.
+     */_viewportWidth:0,/**
+     * An array of DOM nodes that are currently in the tree
+     * @type {?Array<!TemplatizerNode>}
+     */_physicalItems:null,/**
+     * An array of heights for each item in `_physicalItems`
+     * @type {?Array<number>}
+     */_physicalSizes:null,/**
+     * A cached value for the first visible index.
+     * See `firstVisibleIndex`
+     * @type {?number}
+     */_firstVisibleIndexVal:null,/**
+     * A cached value for the last visible index.
+     * See `lastVisibleIndex`
+     * @type {?number}
+     */_lastVisibleIndexVal:null,/**
+     * A Polymer collection for the items.
+     * @type {?Polymer.Collection}
+     */_collection:null,/**
+     * The max number of pages to render. One page is equivalent to the height of the list.
+     */_maxPages:2,/**
+     * The currently focused physical item.
+     */_focusedItem:null,/**
+     * The index of the `_focusedItem`.
+     */_focusedIndex:-1,/**
+     * The the item that is focused if it is moved offscreen.
+     * @private {?TemplatizerNode}
+     */_offscreenFocusedItem:null,/**
+     * The item that backfills the `_offscreenFocusedItem` in the physical items
+     * list when that item is moved offscreen.
+     */_focusBackfillItem:null,/**
+     * The maximum items per row
+     */_itemsPerRow:1,/**
+     * The width of each grid item
+     */_itemWidth:0,/**
+     * The height of the row in grid layout.
+     */_rowHeight:0,/**
+     * The cost of stamping a template in ms.
+     */_templateCost:0,/**
+     * The bottom of the physical content.
+     */get _physicalBottom(){return this._physicalTop+this._physicalSize},/**
+     * The bottom of the scroll.
+     */get _scrollBottom(){return this._scrollPosition+this._viewportHeight},/**
+     * The n-th item rendered in the last physical item.
+     */get _virtualEnd(){return this._virtualStart+this._physicalCount-1},/**
+     * The height of the physical content that isn't on the screen.
+     */get _hiddenContentSize(){var size=this.grid?this._physicalRows*this._rowHeight:this._physicalSize;return size-this._viewportHeight},/**
+     * The parent node for the _userTemplate.
+     */get _itemsParent(){return Polymer.dom(Polymer.dom(this._userTemplate).parentNode)},/**
+     * The maximum scroll top value.
+     */get _maxScrollTop(){return this._estScrollHeight-this._viewportHeight+this._scrollOffset},/**
+     * The lowest n-th value for an item such that it can be rendered in `_physicalStart`.
+     */_minVirtualStart:0,/**
+     * The largest n-th value for an item such that it can be rendered in `_physicalStart`.
+     */get _maxVirtualStart(){return Math.max(0,this._virtualCount-this._physicalCount)},/**
+     * The n-th item rendered in the `_physicalStart` tile.
+     */_virtualStartVal:0,set _virtualStart(val){val=Math.min(this._maxVirtualStart,Math.max(this._minVirtualStart,val));if(this.grid){val=val-val%this._itemsPerRow}this._virtualStartVal=val},get _virtualStart(){return this._virtualStartVal||0},/**
+     * The k-th tile that is at the top of the scrolling list.
+     */_physicalStartVal:0,set _physicalStart(val){val=val%this._physicalCount;if(0>val){val=this._physicalCount+val}if(this.grid){val=val-val%this._itemsPerRow}this._physicalStartVal=val;this._physicalEnd=(this._physicalStart+this._physicalCount-1)%this._physicalCount},get _physicalStart(){return this._physicalStartVal||0},/**
+     * The number of tiles in the DOM.
+     */_physicalCountVal:0,set _physicalCount(val){this._physicalCountVal=val;this._physicalEnd=(this._physicalStart+this._physicalCount-1)%this._physicalCount},get _physicalCount(){return this._physicalCountVal},/**
+     * The k-th tile that is at the bottom of the scrolling list.
+     */_physicalEnd:0,/**
+     * An optimal physical size such that we will have enough physical items
+     * to fill up the viewport and recycle when the user scrolls.
+     *
+     * This default value assumes that we will at least have the equivalent
+     * to a viewport of physical items above and below the user's viewport.
+     */get _optPhysicalSize(){if(this.grid){return this._estRowsInView*this._rowHeight*this._maxPages}return 0===this._viewportHeight?1/0:this._viewportHeight*this._maxPages},/**
+    * True if the current list is visible.
+    */get _isVisible(){return!!(this.offsetWidth||this.offsetHeight)},/**
+     * Gets the index of the first visible item in the viewport.
+     *
+     * @type {number}
+     */get firstVisibleIndex(){var idx=this._firstVisibleIndexVal;if(null==idx){var physicalOffset=this._physicalTop+this._scrollOffset;idx=this._iterateItems(function(pidx,vidx){physicalOffset+=this._getPhysicalSizeIncrement(pidx);if(physicalOffset>this._scrollPosition){return this.grid?vidx-vidx%this._itemsPerRow:vidx}// Handle a partially rendered final row in grid mode
+if(this.grid&&this._virtualCount-1===vidx){return vidx-vidx%this._itemsPerRow}})||0;this._firstVisibleIndexVal=idx}return idx},/**
+     * Gets the index of the last visible item in the viewport.
+     *
+     * @type {number}
+     */get lastVisibleIndex(){var idx=this._lastVisibleIndexVal;if(null==idx){if(this.grid){idx=Math.min(this._virtualCount,this.firstVisibleIndex+this._estRowsInView*this._itemsPerRow-1)}else{var physicalOffset=this._physicalTop+this._scrollOffset;this._iterateItems(function(pidx,vidx){if(physicalOffset<this._scrollBottom){idx=vidx}physicalOffset+=this._getPhysicalSizeIncrement(pidx)})}this._lastVisibleIndexVal=idx}return idx},get _defaultScrollTarget(){return this},get _virtualRowCount(){return Math.ceil(this._virtualCount/this._itemsPerRow)},get _estRowsInView(){return Math.ceil(this._viewportHeight/this._rowHeight)},get _physicalRows(){return Math.ceil(this._physicalCount/this._itemsPerRow)},get _scrollOffset(){return this._scrollerPaddingTop+this.scrollOffset},ready:function(){this.addEventListener("focus",this._didFocus.bind(this),!0)},attached:function(){if(0===this._physicalCount){this._debounceTemplate(this._render)}// `iron-resize` is fired when the list is attached if the event is added
+// before attached causing unnecessary work.
+this.listen(this,"iron-resize","_resizeHandler")},detached:function(){this.unlisten(this,"iron-resize","_resizeHandler")},/**
+     * Set the overflow property if this element has its own scrolling region
+     */_setOverflow:function(scrollTarget){this.style.webkitOverflowScrolling=scrollTarget===this?"touch":"";this.style.overflow=scrollTarget===this?"auto":"";// Clear cache.
+this._lastVisibleIndexVal=null;this._firstVisibleIndexVal=null;this._debounceTemplate(this._render)},/**
+     * Invoke this method if you dynamically update the viewport's
+     * size or CSS padding.
+     *
+     * @method updateViewportBoundaries
+     */updateViewportBoundaries:function(){var styles=window.getComputedStyle(this);this._scrollerPaddingTop=this.scrollTarget===this?0:parseInt(styles["padding-top"],10);this._isRTL=!!("rtl"===styles.direction);this._viewportWidth=this.$.items.offsetWidth;this._viewportHeight=this._scrollTargetHeight;this.grid&&this._updateGridMetrics()},/**
+     * Recycles the physical items when needed.
+     */_scrollHandler:function(){var scrollTop=Math.max(0,Math.min(this._maxScrollTop,this._scrollTop)),delta=scrollTop-this._scrollPosition,isScrollingDown=0<=delta;// Track the current scroll position.
+this._scrollPosition=scrollTop;// Clear indexes.
+this._firstVisibleIndexVal=null;this._lastVisibleIndexVal=null;// Random access.
+if(Math.abs(delta)>this._physicalSize&&0<this._physicalSize){delta=delta-this._scrollOffset;var idxAdjustment=Math.round(delta/this._physicalAverage)*this._itemsPerRow;this._virtualStart=this._virtualStart+idxAdjustment;this._physicalStart=this._physicalStart+idxAdjustment;// Estimate new physical offset.
+this._physicalTop=Math.floor(this._virtualStart/this._itemsPerRow)*this._physicalAverage;this._update()}else{var reusables=this._getReusables(isScrollingDown);if(isScrollingDown){this._physicalTop=reusables.physicalTop;this._virtualStart=this._virtualStart+reusables.indexes.length;this._physicalStart=this._physicalStart+reusables.indexes.length}else{this._virtualStart=this._virtualStart-reusables.indexes.length;this._physicalStart=this._physicalStart-reusables.indexes.length}if(0===reusables.indexes.length){this._increasePoolIfNeeded()}else{this._update(reusables.indexes,isScrollingDown?null:reusables.indexes)}}},/**
+     * Returns an object that contains the indexes of the physical items
+     * that might be reused and the physicalTop.
+     *
+     * @param {boolean} fromTop If the potential reusable items are above the scrolling region.
+     */_getReusables:function(fromTop){var ith,lastIth,offsetContent,physicalItemHeight,idxs=[],protectedOffsetContent=this._hiddenContentSize*this._ratio,virtualStart=this._virtualStart,virtualEnd=this._virtualEnd,physicalCount=this._physicalCount,top=this._physicalTop+this._scrollOffset,bottom=this._physicalBottom+this._scrollOffset,scrollTop=this._scrollTop,scrollBottom=this._scrollBottom;if(fromTop){ith=this._physicalStart;lastIth=this._physicalEnd;offsetContent=scrollTop-top}else{ith=this._physicalEnd;lastIth=this._physicalStart;offsetContent=bottom-scrollBottom}while(!0){physicalItemHeight=this._getPhysicalSizeIncrement(ith);offsetContent=offsetContent-physicalItemHeight;if(idxs.length>=physicalCount||offsetContent<=protectedOffsetContent){break}if(fromTop){// Check that index is within the valid range.
+if(virtualEnd+idxs.length+1>=this._virtualCount){break}// Check that the index is not visible.
+if(top+physicalItemHeight>=scrollTop-this._scrollOffset){break}idxs.push(ith);top=top+physicalItemHeight;ith=(ith+1)%physicalCount}else{// Check that index is within the valid range.
+if(0>=virtualStart-idxs.length){break}// Check that the index is not visible.
+if(top+this._physicalSize-physicalItemHeight<=scrollBottom){break}idxs.push(ith);top=top-physicalItemHeight;ith=0===ith?physicalCount-1:ith-1}}return{indexes:idxs,physicalTop:top-this._scrollOffset}},/**
+     * Update the list of items, starting from the `_virtualStart` item.
+     * @param {!Array<number>=} itemSet
+     * @param {!Array<number>=} movingUp
+     */_update:function(itemSet,movingUp){if(itemSet&&0===itemSet.length){return}this._manageFocus();this._assignModels(itemSet);this._updateMetrics(itemSet);// Adjust offset after measuring.
+if(movingUp){while(movingUp.length){var idx=movingUp.pop();this._physicalTop-=this._getPhysicalSizeIncrement(idx)}}this._positionItems();this._updateScrollerSize();this._increasePoolIfNeeded()},/**
+     * Creates a pool of DOM elements and attaches them to the local dom.
+     *
+     * @param {number} size Size of the pool
+     */_createPool:function(size){var physicalItems=Array(size);this._ensureTemplatized();for(var i=0,inst;i<size;i++){inst=this.stamp(null);// First element child is item; Safari doesn't support children[0]
+// on a doc fragment.
+physicalItems[i]=inst.root.querySelector("*");this._itemsParent.appendChild(inst.root)}return physicalItems},/**
+     * Increases the pool of physical items only if needed.
+     *
+     * @return {boolean} True if the pool was increased.
+     */_increasePoolIfNeeded:function(){var self=this,isClientFull=this._physicalBottom+this._scrollOffset>=this._scrollBottom&&this._physicalTop-this._scrollOffset<=this._scrollPosition;// Base case 1: if the physical size is optimal and the list's client height is full
+// with physical items, don't increase the pool.
+if(this._physicalSize>=this._optPhysicalSize&&isClientFull){return!1}var maxPoolSize=Math.round(.5*this._physicalCount);// Increase the pool synchronously until the client is filled.
+if(!isClientFull){this._debounceTemplate(this._increasePool.bind(this,maxPoolSize));return!0}this._yield(function(){self._increasePool(Math.min(maxPoolSize,Math.max(1,Math.round(50/self._templateCost))))});return!0},_yield:function(cb){var g=window,handle=g.requestIdleCallback?g.requestIdleCallback(cb):g.setTimeout(cb,16);// Polymer/issues/3895
+Polymer.dom.addDebouncer(/** @type {!Polymer.Debouncer} */{complete:function(){g.cancelIdleCallback?g.cancelIdleCallback(handle):g.clearTimeout(handle);cb()}})},/**
+     * Increases the pool size.
+     */_increasePool:function(missingItems){var nextPhysicalCount=Math.min(this._physicalCount+missingItems,this._virtualCount-this._virtualStart,Math.max(this.maxPhysicalCount,DEFAULT_PHYSICAL_COUNT)),prevPhysicalCount=this._physicalCount,delta=nextPhysicalCount-prevPhysicalCount,ts=window.performance.now();if(0>=delta){return}// Concat arrays in place.
+[].push.apply(this._physicalItems,this._createPool(delta));[].push.apply(this._physicalSizes,Array(delta));this._physicalCount=prevPhysicalCount+delta;// Update the physical start if it needs to preserve the model of the focused item.
+// In this situation, the focused item is currently rendered and its model would
+// have changed after increasing the pool if the physical start remained unchanged.
+if(this._physicalStart>this._physicalEnd&&this._isIndexRendered(this._focusedIndex)&&this._getPhysicalIndex(this._focusedIndex)<this._physicalEnd){this._physicalStart=this._physicalStart+delta}this._update();this._templateCost=(window.performance.now()-ts)/delta},/**
+     * Renders the a new list.
+     */_render:function(){if(this.isAttached&&this._isVisible){if(0===this._physicalCount){this.updateViewportBoundaries();this._increasePool(DEFAULT_PHYSICAL_COUNT)}else{// Try to recycle nodes
+var reusables=this._getReusables(!0);this._physicalTop=reusables.physicalTop;this._virtualStart=this._virtualStart+reusables.indexes.length;this._physicalStart=this._physicalStart+reusables.indexes.length;this._update(reusables.indexes);this._update()}}},/**
+     * Templetizes the user template.
+     */_ensureTemplatized:function(){if(!this.ctor){// Template instance props that should be excluded from forwarding
+var props={__key__:!0};props[this.as]=!0;props[this.indexAs]=!0;props[this.selectedAs]=!0;props.tabIndex=!0;this._instanceProps=props;this._userTemplate=this.queryEffectiveChildren("template");if(this._userTemplate){this.templatize(this._userTemplate)}else{console.warn("iron-list requires a template to be provided in light-dom")}}},/**
+     * Implements extension point from Templatizer mixin.
+     */_getStampedChildren:function(){return this._physicalItems},/**
+     * Implements extension point from Templatizer
+     * Called as a side effect of a template instance path change, responsible
+     * for notifying items.<key-for-instance>.<path> change up to host.
+     */_forwardInstancePath:function(inst,path,value){if(0===path.indexOf(this.as+".")){this.notifyPath("items."+inst.__key__+"."+path.slice(this.as.length+1),value)}},/**
+     * Implements extension point from Templatizer mixin
+     * Called as side-effect of a host property change, responsible for
+     * notifying parent path change on each row.
+     */_forwardParentProp:function(prop,value){(this._physicalItems||[]).concat([this._offscreenFocusedItem,this._focusBackfillItem]).forEach(function(item){if(item){item._templateInstance[prop]=value}})},/**
+     * Implements extension point from Templatizer
+     * Called as side-effect of a host path change, responsible for
+     * notifying parent.<path> path change on each row.
+     */_forwardParentPath:function(path,value){(this._physicalItems||[]).concat([this._offscreenFocusedItem,this._focusBackfillItem]).forEach(function(item){if(item){item._templateInstance.notifyPath(path,value,!0)}})},/**
+     * Called as a side effect of a host items.<key>.<path> path change,
+     * responsible for notifying item.<path> changes.
+     */_forwardItemPath:function(path,value){if(!this._physicalIndexForKey){return}var dot=path.indexOf("."),key=path.substring(0,0>dot?path.length:dot),idx=this._physicalIndexForKey[key],offscreenItem=this._offscreenFocusedItem,el=offscreenItem&&offscreenItem._templateInstance.__key__===key?offscreenItem:this._physicalItems[idx];if(!el||el._templateInstance.__key__!==key){return}if(0<=dot){path=this.as+"."+path.substring(dot+1);el._templateInstance.notifyPath(path,value,!0)}else{// Update selection if needed
+var currentItem=el._templateInstance[this.as];if(Array.isArray(this.selectedItems)){for(var i=0;i<this.selectedItems.length;i++){if(this.selectedItems[i]===currentItem){this.set("selectedItems."+i,value);break}}}else if(this.selectedItem===currentItem){this.set("selectedItem",value)}el._templateInstance[this.as]=value}},/**
+     * Called when the items have changed. That is, ressignments
+     * to `items`, splices or updates to a single item.
+     */_itemsChanged:function(change){if("items"===change.path){this._virtualStart=0;this._physicalTop=0;this._virtualCount=this.items?this.items.length:0;this._collection=this.items?Polymer.Collection.get(this.items):null;this._physicalIndexForKey={};this._firstVisibleIndexVal=null;this._lastVisibleIndexVal=null;this._physicalCount=this._physicalCount||0;this._physicalItems=this._physicalItems||[];this._physicalSizes=this._physicalSizes||[];this._physicalStart=0;if(this._scrollTop>this._scrollOffset){this._resetScrollPosition(0)}this._removeFocusedItem();this._debounceTemplate(this._render)}else if("items.splices"===change.path){this._adjustVirtualIndex(change.value.indexSplices);this._virtualCount=this.items?this.items.length:0;this._debounceTemplate(this._render)}else{this._forwardItemPath(change.path.split(".").slice(1).join("."),change.value)}},/**
+     * @param {!Array<!PolymerSplice>} splices
+     */_adjustVirtualIndex:function(splices){splices.forEach(function(splice){// deselect removed items
+splice.removed.forEach(this._removeItem,this);// We only need to care about changes happening above the current position
+if(splice.index<this._virtualStart){var delta=Math.max(splice.addedCount-splice.removed.length,splice.index-this._virtualStart);this._virtualStart=this._virtualStart+delta;if(0<=this._focusedIndex){this._focusedIndex=this._focusedIndex+delta}}},this)},_removeItem:function(item){this.$.selector.deselect(item);// remove the current focused item
+if(this._focusedItem&&this._focusedItem._templateInstance[this.as]===item){this._removeFocusedItem()}},/**
+     * Executes a provided function per every physical index in `itemSet`
+     * `itemSet` default value is equivalent to the entire set of physical indexes.
+     *
+     * @param {!function(number, number)} fn
+     * @param {!Array<number>=} itemSet
+     */_iterateItems:function(fn,itemSet){var pidx,vidx,rtn,i;if(2===arguments.length&&itemSet){for(i=0;i<itemSet.length;i++){pidx=itemSet[i];vidx=this._computeVidx(pidx);if(null!=(rtn=fn.call(this,pidx,vidx))){return rtn}}}else{pidx=this._physicalStart;vidx=this._virtualStart;for(;pidx<this._physicalCount;pidx++,vidx++){if(null!=(rtn=fn.call(this,pidx,vidx))){return rtn}}for(pidx=0;pidx<this._physicalStart;pidx++,vidx++){if(null!=(rtn=fn.call(this,pidx,vidx))){return rtn}}}},/**
+     * Returns the virtual index for a given physical index
+     *
+     * @param {number} pidx Physical index
+     * @return {number}
+     */_computeVidx:function(pidx){if(pidx>=this._physicalStart){return this._virtualStart+(pidx-this._physicalStart)}return this._virtualStart+(this._physicalCount-this._physicalStart)+pidx},/**
+     * Assigns the data models to a given set of items.
+     * @param {!Array<number>=} itemSet
+     */_assignModels:function(itemSet){this._iterateItems(function(pidx,vidx){var el=this._physicalItems[pidx],inst=el._templateInstance,item=this.items&&this.items[vidx];if(null!=item){inst[this.as]=item;inst.__key__=this._collection.getKey(item);inst[this.selectedAs]=/** @type {!ArraySelectorElement} */this.$.selector.isSelected(item);inst[this.indexAs]=vidx;inst.tabIndex=this._focusedIndex===vidx?0:-1;this._physicalIndexForKey[inst.__key__]=pidx;el.removeAttribute("hidden")}else{inst.__key__=null;el.setAttribute("hidden","")}},itemSet)},/**
+     * Updates the height for a given set of items.
+     *
+     * @param {!Array<number>=} itemSet
+     */_updateMetrics:function(itemSet){// Make sure we distributed all the physical items
+// so we can measure them.
+Polymer.dom.flush();var newPhysicalSize=0,oldPhysicalSize=0,prevAvgCount=this._physicalAverageCount,prevPhysicalAvg=this._physicalAverage;this._iterateItems(function(pidx,vidx){oldPhysicalSize+=this._physicalSizes[pidx]||0;this._physicalSizes[pidx]=this._physicalItems[pidx].offsetHeight;newPhysicalSize+=this._physicalSizes[pidx];this._physicalAverageCount+=this._physicalSizes[pidx]?1:0},itemSet);if(this.grid){this._updateGridMetrics();this._physicalSize=Math.ceil(this._physicalCount/this._itemsPerRow)*this._rowHeight}else{this._physicalSize=this._physicalSize+newPhysicalSize-oldPhysicalSize}// Update the average if it measured something.
+if(this._physicalAverageCount!==prevAvgCount){this._physicalAverage=Math.round((prevPhysicalAvg*prevAvgCount+newPhysicalSize)/this._physicalAverageCount)}},_updateGridMetrics:function(){this._itemWidth=0<this._physicalCount?this._physicalItems[0].getBoundingClientRect().width:200;this._rowHeight=0<this._physicalCount?this._physicalItems[0].offsetHeight:200;this._itemsPerRow=this._itemWidth?Math.floor(this._viewportWidth/this._itemWidth):this._itemsPerRow},/**
+     * Updates the position of the physical items.
+     */_positionItems:function(){this._adjustScrollPosition();var y=this._physicalTop;if(this.grid){var totalItemWidth=this._itemsPerRow*this._itemWidth,rowOffset=(this._viewportWidth-totalItemWidth)/2;this._iterateItems(function(pidx,vidx){var modulus=vidx%this._itemsPerRow,x=Math.floor(modulus*this._itemWidth+rowOffset);if(this._isRTL){x=-1*x}this.translate3d(x+"px",y+"px",0,this._physicalItems[pidx]);if(this._shouldRenderNextRow(vidx)){y+=this._rowHeight}})}else{this._iterateItems(function(pidx,vidx){this.translate3d(0,y+"px",0,this._physicalItems[pidx]);y+=this._physicalSizes[pidx]})}},_getPhysicalSizeIncrement:function(pidx){if(!this.grid){return this._physicalSizes[pidx]}if(this._computeVidx(pidx)%this._itemsPerRow!==this._itemsPerRow-1){return 0}return this._rowHeight},/**
+     * Returns, based on the current index,
+     * whether or not the next index will need
+     * to be rendered on a new row.
+     *
+     * @param {number} vidx Virtual index
+     * @return {boolean}
+     */_shouldRenderNextRow:function(vidx){return vidx%this._itemsPerRow===this._itemsPerRow-1},/**
+     * Adjusts the scroll position when it was overestimated.
+     */_adjustScrollPosition:function(){var deltaHeight=0===this._virtualStart?this._physicalTop:Math.min(this._scrollPosition+this._physicalTop,0);// Note: the delta can be positive or negative.
+if(0!==deltaHeight){this._physicalTop=this._physicalTop-deltaHeight;var scrollTop=this._scrollTop;// juking scroll position during interial scrolling on iOS is no bueno
+if(!IOS_TOUCH_SCROLLING&&0<scrollTop){this._resetScrollPosition(scrollTop-deltaHeight)}}},/**
+     * Sets the position of the scroll.
+     */_resetScrollPosition:function(pos){if(this.scrollTarget&&0<=pos){this._scrollTop=pos;this._scrollPosition=this._scrollTop}},/**
+     * Sets the scroll height, that's the height of the content,
+     *
+     * @param {boolean=} forceUpdate If true, updates the height no matter what.
+     */_updateScrollerSize:function(forceUpdate){if(this.grid){this._estScrollHeight=this._virtualRowCount*this._rowHeight}else{this._estScrollHeight=this._physicalBottom+Math.max(this._virtualCount-this._physicalCount-this._virtualStart,0)*this._physicalAverage}forceUpdate=forceUpdate||0===this._scrollHeight;forceUpdate=forceUpdate||this._scrollPosition>=this._estScrollHeight-this._physicalSize;forceUpdate=forceUpdate||this.grid&&this.$.items.style.height<this._estScrollHeight;// Amortize height adjustment, so it won't trigger large repaints too often.
+if(forceUpdate||Math.abs(this._estScrollHeight-this._scrollHeight)>=this._optPhysicalSize){this.$.items.style.height=this._estScrollHeight+"px";this._scrollHeight=this._estScrollHeight}},/**
+     * Scroll to a specific item in the virtual list regardless
+     * of the physical items in the DOM tree.
+     *
+     * @method scrollToItem
+     * @param {(Object)} item The item to be scrolled to
+     */scrollToItem:function(item){return this.scrollToIndex(this.items.indexOf(item))},/**
+     * Scroll to a specific index in the virtual list regardless
+     * of the physical items in the DOM tree.
+     *
+     * @method scrollToIndex
+     * @param {number} idx The index of the item
+     */scrollToIndex:function(idx){if("number"!==typeof idx||0>idx||idx>this.items.length-1){return}Polymer.dom.flush();// Items should have been rendered prior scrolling to an index.
+if(0===this._physicalCount){return}idx=Math.min(Math.max(idx,0),this._virtualCount-1);// Update the virtual start only when needed.
+if(!this._isIndexRendered(idx)||idx>=this._maxVirtualStart){this._virtualStart=this.grid?idx-2*this._itemsPerRow:idx-1}this._manageFocus();this._assignModels();this._updateMetrics();// Estimate new physical offset.
+this._physicalTop=Math.floor(this._virtualStart/this._itemsPerRow)*this._physicalAverage;var currentTopItem=this._physicalStart,currentVirtualItem=this._virtualStart,targetOffsetTop=0,hiddenContentSize=this._hiddenContentSize;// scroll to the item as much as we can.
+while(currentVirtualItem<idx&&targetOffsetTop<=hiddenContentSize){targetOffsetTop=targetOffsetTop+this._getPhysicalSizeIncrement(currentTopItem);currentTopItem=(currentTopItem+1)%this._physicalCount;currentVirtualItem++}this._updateScrollerSize(!0);this._positionItems();this._resetScrollPosition(this._physicalTop+this._scrollOffset+targetOffsetTop);this._increasePoolIfNeeded();// clear cached visible index.
+this._firstVisibleIndexVal=null;this._lastVisibleIndexVal=null},/**
+     * Reset the physical average and the average count.
+     */_resetAverage:function(){this._physicalAverage=0;this._physicalAverageCount=0},/**
+     * A handler for the `iron-resize` event triggered by `IronResizableBehavior`
+     * when the element is resized.
+     */_resizeHandler:function(){this._debounceTemplate(function(){// Skip the resize event on touch devices when the address bar slides up.
+var delta=Math.abs(this._viewportHeight-this._scrollTargetHeight);this.updateViewportBoundaries();if(("ontouchstart"in window||0<navigator.maxTouchPoints)&&0<delta&&100>delta){return}if(this._isVisible){// Reinstall the scroll event listener.
+this.toggleScrollListener(!0);this._resetAverage();this._render()}else{// Uninstall the scroll event listener.
+this.toggleScrollListener(!1)}}.bind(this))},_getModelFromItem:function(item){var key=this._collection.getKey(item),pidx=this._physicalIndexForKey[key];if(null!=pidx){return this._physicalItems[pidx]._templateInstance}return null},/**
+     * Gets a valid item instance from its index or the object value.
+     *
+     * @param {(Object|number)} item The item object or its index
+     */_getNormalizedItem:function(item){if(this._collection.getKey(item)===void 0){if("number"===typeof item){item=this.items[item];if(!item){throw new RangeError("<item> not found")}return item}throw new TypeError("<item> should be a valid item")}return item},/**
+     * Select the list item at the given index.
+     *
+     * @method selectItem
+     * @param {(Object|number)} item The item object or its index
+     */selectItem:function(item){item=this._getNormalizedItem(item);var model=this._getModelFromItem(item);if(!this.multiSelection&&this.selectedItem){this.deselectItem(this.selectedItem)}if(model){model[this.selectedAs]=!0}this.$.selector.select(item);this.updateSizeForItem(item)},/**
+     * Deselects the given item list if it is already selected.
+     *
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-list/iron-list.html">
-<link rel="import" href="shared-styles.html">
-
-<dom-module id="code-nasa-projects">
-  <template>
-    <style include="shared-styles">
-      :host {
-        display: block;
-        background-color: #0a121d;
-        background-image: url('/images/backgrounds/projects.jpg'),
+     * @method deselect
+     * @param {(Object|number)} item The item object or its index
+     */deselectItem:function(item){item=this._getNormalizedItem(item);var model=this._getModelFromItem(item);if(model){model[this.selectedAs]=!1}this.$.selector.deselect(item);this.updateSizeForItem(item)},/**
+     * Select or deselect a given item depending on whether the item
+     * has already been selected.
+     *
+     * @method toggleSelectionForItem
+     * @param {(Object|number)} item The item object or its index
+     */toggleSelectionForItem:function(item){item=this._getNormalizedItem(item);if(/** @type {!ArraySelectorElement} */this.$.selector.isSelected(item)){this.deselectItem(item)}else{this.selectItem(item)}},/**
+     * Clears the current selection state of the list.
+     *
+     * @method clearSelection
+     */clearSelection:function(){function unselect(item){var model=this._getModelFromItem(item);if(model){model[this.selectedAs]=!1}}if(Array.isArray(this.selectedItems)){this.selectedItems.forEach(unselect,this)}else if(this.selectedItem){unselect.call(this,this.selectedItem)}/** @type {!ArraySelectorElement} */this.$.selector.clearSelection()},/**
+     * Add an event listener to `tap` if `selectionEnabled` is true,
+     * it will remove the listener otherwise.
+     */_selectionEnabledChanged:function(selectionEnabled){var handler=selectionEnabled?this.listen:this.unlisten;handler.call(this,this,"tap","_selectionHandler")},/**
+     * Select an item from an event object.
+     */_selectionHandler:function(e){var model=this.modelForElement(e.target);if(!model){return}var modelTabIndex,activeElTabIndex,target=Polymer.dom(e).path[0],itemsHost=this._itemsParent.node.domHost,activeEl=Polymer.dom(itemsHost?itemsHost.root:document).activeElement,physicalItem=this._physicalItems[this._getPhysicalIndex(model[this.indexAs])];// Safari does not focus certain form controls via mouse
+// https://bugs.webkit.org/show_bug.cgi?id=118043
+if("input"===target.localName||"button"===target.localName||"select"===target.localName){return}// Set a temporary tabindex
+modelTabIndex=model.tabIndex;model.tabIndex=SECRET_TABINDEX;activeElTabIndex=activeEl?activeEl.tabIndex:-1;model.tabIndex=modelTabIndex;// Only select the item if the tap wasn't on a focusable child
+// or the element bound to `tabIndex`
+if(activeEl&&physicalItem!==activeEl&&physicalItem.contains(activeEl)&&activeElTabIndex!==SECRET_TABINDEX){return}this.toggleSelectionForItem(model[this.as])},_multiSelectionChanged:function(multiSelection){this.clearSelection();this.$.selector.multi=multiSelection},/**
+     * Updates the size of an item.
+     *
+     * @method updateSizeForItem
+     * @param {(Object|number)} item The item object or its index
+     */updateSizeForItem:function(item){item=this._getNormalizedItem(item);var key=this._collection.getKey(item),pidx=this._physicalIndexForKey[key];if(null!=pidx){this._updateMetrics([pidx]);this._positionItems()}},/**
+     * Creates a temporary backfill item in the rendered pool of physical items
+     * to replace the main focused item. The focused item has tabIndex = 0
+     * and might be currently focused by the user.
+     *
+     * This dynamic replacement helps to preserve the focus state.
+     */_manageFocus:function(){var fidx=this._focusedIndex;if(0<=fidx&&fidx<this._virtualCount){// if it's a valid index, check if that index is rendered
+// in a physical item.
+if(this._isIndexRendered(fidx)){this._restoreFocusedItem()}else{this._createFocusBackfillItem()}}else if(0<this._virtualCount&&0<this._physicalCount){// otherwise, assign the initial focused index.
+this._focusedIndex=this._virtualStart;this._focusedItem=this._physicalItems[this._physicalStart]}},_isIndexRendered:function(idx){return idx>=this._virtualStart&&idx<=this._virtualEnd},_isIndexVisible:function(idx){return idx>=this.firstVisibleIndex&&idx<=this.lastVisibleIndex},_getPhysicalIndex:function(idx){return this._physicalIndexForKey[this._collection.getKey(this._getNormalizedItem(idx))]},_focusPhysicalItem:function(idx){if(0>idx||idx>=this._virtualCount){return}this._restoreFocusedItem();// scroll to index to make sure it's rendered
+if(!this._isIndexRendered(idx)){this.scrollToIndex(idx)}var physicalItem=this._physicalItems[this._getPhysicalIndex(idx)],model=physicalItem._templateInstance,focusable;// set a secret tab index
+model.tabIndex=SECRET_TABINDEX;// check if focusable element is the physical item
+if(physicalItem.tabIndex===SECRET_TABINDEX){focusable=physicalItem}// search for the element which tabindex is bound to the secret tab index
+if(!focusable){focusable=Polymer.dom(physicalItem).querySelector("[tabindex=\""+SECRET_TABINDEX+"\"]")}// restore the tab index
+model.tabIndex=0;// focus the focusable element
+this._focusedIndex=idx;focusable&&focusable.focus()},_removeFocusedItem:function(){if(this._offscreenFocusedItem){this._itemsParent.removeChild(this._offscreenFocusedItem)}this._offscreenFocusedItem=null;this._focusBackfillItem=null;this._focusedItem=null;this._focusedIndex=-1},_createFocusBackfillItem:function(){var fidx=this._focusedIndex,pidx=this._getPhysicalIndex(fidx);if(this._offscreenFocusedItem||null==pidx||0>fidx){return}if(!this._focusBackfillItem){// Create a physical item.
+var stampedTemplate=this.stamp(null);this._focusBackfillItem=stampedTemplate.root.querySelector("*");this._itemsParent.appendChild(stampedTemplate.root)}// Set the offcreen focused physical item.
+this._offscreenFocusedItem=this._physicalItems[pidx];this._offscreenFocusedItem._templateInstance.tabIndex=0;this._physicalItems[pidx]=this._focusBackfillItem;// Hide the focused physical.
+this.translate3d(0,HIDDEN_Y,0,this._offscreenFocusedItem)},_restoreFocusedItem:function(){var pidx,fidx=this._focusedIndex;if(!this._offscreenFocusedItem||0>this._focusedIndex){return}// Assign models to the focused index.
+this._assignModels();// Get the new physical index for the focused index.
+pidx=this._getPhysicalIndex(fidx);var onScreenItem=this._physicalItems[pidx];if(!onScreenItem){return}var onScreenInstance=onScreenItem._templateInstance,offScreenInstance=this._offscreenFocusedItem._templateInstance;// Restores the physical item only when it has the same model
+// as the offscreen one. Use key for comparison since users can set
+// a new item via set('items.idx').
+if(onScreenInstance.__key__===offScreenInstance.__key__){// Flip the focus backfill.
+this._focusBackfillItem=onScreenItem;onScreenInstance.tabIndex=-1;// Restore the focused physical item.
+this._physicalItems[pidx]=this._offscreenFocusedItem;// Hide the physical item that backfills.
+this.translate3d(0,HIDDEN_Y,0,this._focusBackfillItem)}else{this._removeFocusedItem();this._focusBackfillItem=null}this._offscreenFocusedItem=null},_didFocus:function(e){var targetModel=this.modelForElement(e.target),focusedModel=this._focusedItem?this._focusedItem._templateInstance:null,hasOffscreenFocusedItem=null!==this._offscreenFocusedItem,fidx=this._focusedIndex;if(!targetModel||!focusedModel){return}if(focusedModel===targetModel){// if the user focused the same item, then bring it into view if it's not visible
+if(!this._isIndexVisible(fidx)){this.scrollToIndex(fidx)}}else{this._restoreFocusedItem();// restore tabIndex for the currently focused item
+focusedModel.tabIndex=-1;// set the tabIndex for the next focused item
+targetModel.tabIndex=0;fidx=targetModel[this.indexAs];this._focusedIndex=fidx;this._focusedItem=this._physicalItems[this._getPhysicalIndex(fidx)];if(hasOffscreenFocusedItem&&!this._offscreenFocusedItem){this._update()}}},_didMoveUp:function(){this._focusPhysicalItem(this._focusedIndex-1)},_didMoveDown:function(e){// disable scroll when pressing the down key
+e.detail.keyboardEvent.preventDefault();this._focusPhysicalItem(this._focusedIndex+1)},_didEnter:function(e){this._focusPhysicalItem(this._focusedIndex);this._selectionHandler(e.detail.keyboardEvent)}})})();</script></div><dom-module id="code-nasa-projects"><template><style include="shared-styles">:host{display:block;background-color:#0a121d;background-image:url('/images/backgrounds/projects.jpg'),
                           url('/images/backgrounds/projects-bottom.jpg'),
-                          linear-gradient(0deg, #323D44, transparent 1300px);
-        background-repeat: no-repeat;
-        background-position: center top, center 212vw, center bottom;
-        background-size: 250%;
-        font-size: 14px;
-        line-height: 20px;
-      }
-
-      a {
-        font-size: 12px;
-      }
-
-      .splash {
-        padding-bottom: 60px;
-      }
-
-      #query {
-        margin-top: 50vw;
-        width: 400px;
-        max-width: 100%;
-        box-sizing: border-box;
-        padding: 6px 0 6px 30px;
-        background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: left center;
-        background-size: 24px 24px;
-        border: none;
-        border-bottom: 1px solid #FFF;
-        border-radius: 0;
-        font-size: 16px;
-        color: #FFF;
-      }
-
-      .splash,
-      .meta {
-        /* HACK(keanulee): Create stacking context so it is above iron-list and clickable. */
-        position: relative;
-        z-index: 1;
-      }
-
-      .meta {
-        margin: 0;
-        padding-bottom: 24px;
-        border-bottom: 1px solid var(--app-accent-color);
-        color: var(--app-accent-color);
-        font-style: italic;
-      }
-
-      .meta.explain {
-        margin-top:1.5em;
-      }
-
-      .project {
-        position: relative;
-        padding: 12px 0;
-        border-bottom: 1px solid var(--app-accent-color);
-      }
-
-      .project > h2 {
-        font-family: 'ArcaMajora3-Heavy', sans-serif;
-        letter-spacing: 2px;
-      }
-
-      .project > p.link {
-        /*width: 100%;*/
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .project > h2 > a {
-        display: inline-block;
-        border: 1px solid var(--app-accent-color);
-        padding: 12px;
-        color: inherit;
-        font-size: 18px;
-      }
-
-      .project > p.tags > a {
-        margin-right: 0.5em;
-      }
-
-      @media (min-width: 768px) {
-        :host {
-          background-position: center top, center 106vw, center bottom;
-          background-size: 100%;
-        }
-
-        .splash {
-          padding: 27vw 0 11vw;
-        }
-
-        .splash img {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          margin-top: calc(11vw - 32px);
-          height: 32px;
-          width: 32px;
-          cursor: pointer;
-        }
-
-        .project > span.licenses {
-          float: right;
-          margin-left: 24px;
-        }
-
-        #query {
-          margin-top: 0;
-        }
-
-        page-er::shadow .pagination li.active button {
-        background: #E91E63;
-        }
-
-        page-er::shadow .pagination li.disabled button {
-          background: #B1B9E1;
-        }
-      }
-    </style>
-
-    <div class="container" itemscope itemtype="https://code.nasa.gov/">
-      <div class="splash">
-        <h1 itemprop="title">code.nasa.gov</h1>
-        <input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects">
-        <img alt="down arrow" src="images/down-arrow.svg" on-click="_scrollDown">
-      </div>
-
-      <p class="meta">
-        [[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]] match query
-        <!-- <template is="dom-if" if="[[queryParams.q]]">
-          matching "[[queryParams.q]]"
-        </template>
-        <template is="dom-if" if="[[queryParams.tag]]">
-          tagged with #[[queryParams.tag]]
-        </template> -->
-        <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]">
-          <a href="/#/"> Show all projects</a>
-        </template>
-      </p>
-      <p class="meta explain">
-        <!-- <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"> -->
-          This is a catalog of Open Source NASA code that has received <a href="/#/guide">SRA approval</a>
-       <!--  </template> -->
-      </p>
-      <p class="meta explain">
-        <!-- <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"> -->
-          A.I. generated tags are predicted using a natural language processing model applied to project descriptons. Tags come from  <a href="https://www.sti.nasa.gov/nasa-thesaurus/#.XKttRUN7lZI">8000 NASA concepts</a> tracked in 3.5 million published reports and papers by <a href="https://www.sti.nasa.gov/">NASA's Scientific and Technical Information Program</a>. Accuracy is not guaranteed. Click on a tag to see all projects with that tag.
-       <!--  </template> -->
-      </p>
-      <p class="meta explain">
-        <!-- <template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"> -->
-          The human-generated tag "usg-artificial-intelligence" is established by the <a href="https://code.gov/assets/data/ai_inventory-guidance.pdf">US Office of Management and Budget (OMB)</a> to help the public find A.I. code for reuse across all federal agencies.
-       <!--  </template> -->
-      </p>
-
-      <iron-list items="[[matchedProjects]]">
-        <template>
-          <div itemscope>
-            <div class="project">
-              <h2 itemprop="name">
-                <a href$="[[_getProperty(item, 'External Link')]]" target="_blank">
-                  [[_getProperty(item, 'Software')]]
-                </a>
-              </h2>
-              <span class="licenses" itemprop="licenses">
-                <template is="dom-repeat" items="[[item.License]]" as="license">
-                  <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
-                </template>
-              </span>
-              <p class="link" itemprop="project link">
-                <a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">
-                  [[_getProperty(item, 'Public Code Repo')]]
-                </a>
-              </p>
-              
-              
-
-              <p itemprop="description">[[item.Description]]</p>
-              <!-- <span class="licenses">
-                <template is="dom-repeat" items="[[item.License]]" as="license">
-                  <a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a>
-                </template>
-              </span> -->
-              
-              
-              <p itemprop="tags" class="tags">A.I. generated tags:&nbsp
-                <template is="dom-repeat" items="[[item.Categories_NLP]]" as="tag">
-                  <a href$="/?tag=[[tag]]">#[[tag]]</a>
-                </template>
-              </p>
-              <p itemprop="tags" class="tags">Human generated tags:&nbsp
-                <template is="dom-repeat" items="[[item.Categories]]" as="tag">
-                  <a href$="/?tag=[[tag]]">#[[tag]]</a>
-                </template>
-              </p>
-            </div>
-          </div>
-         
-        </template>
-      </page-er>
-      </iron-list>
-      <script async language="javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA" id="_fed_an_ua_tag"></script>
-
-    </div>
-  </template>
-  
-  <script>
-
-    // Synchronously grabs license mappings from data directory
-    function getLicenseData() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/data/license_mappings.json', false);
-        xhr.send();
-        return JSON.parse(xhr.response);
-    };
-
-    Polymer({
-      is: 'code-nasa-projects',
-
-      properties: {
-        projects: Object,
-
-        matchedProjects: Object,
-
-        queryParams: Object,
-
-        licenses: {
-          type: Object,
-          value: getLicenseData()
-        }
-      },
-
-      observers: [
-        '_setMatchedProjects(queryParams.*)',
-      ],
-
-      created: function() {
-        var xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', this._loadProjects.bind(this));
-        xhr.open('GET', '/data/catalog.json');
-        xhr.send();
-      },
-
-      _loadProjects: function(e) {
-        this.projects = this._addSearchContent(JSON.parse(e.target.responseText));
-        this._setMatchedProjects();
-      },
-
-      _addSearchContent: function(projects) {
-        for (var i = 0; i < projects.length; ++i) {
-          var p = projects[i];
-          console.log(p)
-          console.log(p.Categories_NLP)
-          console.log(p.Categories_NLP.join)
-          p._search = [
-            p.Categories.join('*'),
-            // p.Categories_NLP.join('*'),
-            p.Contributors.join('*'),
-            p.Description,
-            p['External Link'],
-            p.License.join('*'),
-            p['NASA Center'],
-            p['Public Code Repo'],
-            p.Software,
-            p.Update_Date].join('*');
-        }
-        return projects;
-      },
-
-      _getProperty: function(item, prop) {
-        return item[prop];
-      },
-
-      _setMatchedProjects: function() {
-        if (this.projects) {
-          if (this.queryParams) {
-            var q = this.queryParams.q || '';
-            var tag = this.queryParams.tag || '';
-            var regex = new RegExp(q, 'i');
-            this.matchedProjects = this.projects.filter(function(p) {
-              return (!q || regex.exec(p._search)) && (!tag || p.Categories.indexOf(tag) !== -1 || p.Categories_NLP.indexOf(tag) !== -1);
-            });
-          } else {
-            this.matchedProjects = this.projects;
-          }
-        }
-      },
-
-      _pluralize: function(word, count) {
-        return count === 1 ? word : word + 's';
-      },
-
-      _hasQueryParams: function() {
-        return this.queryParams.q || this.queryParams.tag;
-      },
-
-      _getLicenseLink: function(license) {
-        return this.licenses[license]['License Link'];
-      },
-
-      _getLicenseName: function(license) {
-        return this.licenses[license]['License Long Name'];
-      },
-      
-      _scrollDown: function(e, detail) {
-        const shadowRoot = Polymer.dom(this.root);
-        const firstProject = shadowRoot.querySelector('.project');
-        firstProject.scrollIntoView( { behavior: 'smooth' } );
-      }
-    });
-
-    var pager = document.querySelector("page-er");
-
-    document.addEventListener('polymer-ready', function() {
-      pager.data = projects.items;
-    });
-    var results = document.querySelector("template");
-      document.addEventListener('pager-data', function(e) {
-      results.projects = { items: e.detail.data };
-    });
-    document.addEventListener('pager-change', function(e) {
-      results.projects = { items: e.detail.data };
-    });
-  </script>
-  
-</dom-module>
+                          linear-gradient(0deg, #323D44, transparent 1300px);background-repeat:no-repeat;background-position:center top, center 212vw, center bottom;background-size:250%;font-size:14px;line-height:20px;}a{font-size:12px;}.splash{padding-bottom:60px;}#query{margin-top:50vw;width:400px;max-width:100%;box-sizing:border-box;padding:6px 0 6px 30px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg%3E%3Cpath d=%22M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z%22 fill=%22%23FFFFFF%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left center;background-size:24px 24px;border:none;border-bottom:1px solid #FFF;border-radius:0;font-size:16px;color:#FFF;}.splash,
+      .meta{position:relative;z-index:1;}.meta{margin:0;padding-bottom:24px;border-bottom:1px solid var(--app-accent-color);color:var(--app-accent-color);font-style:italic;}.meta.explain{margin-top:1.5em;}.project{position:relative;padding:12px 0;border-bottom:1px solid var(--app-accent-color);}.project > h2{font-family:'ArcaMajora3-Heavy', sans-serif;letter-spacing:2px;}.project > p.link{overflow:hidden;text-overflow:ellipsis;}.project > h2 > a{display:inline-block;border:1px solid var(--app-accent-color);padding:12px;color:inherit;font-size:18px;}.project > p.tags > a{margin-right:0.5em;}@media (min-width: 768px){:host{background-position:center top, center 106vw, center bottom;background-size:100%;}.splash{padding:27vw 0 11vw;}.splash img{display:block;margin-left:auto;margin-right:auto;margin-top:calc(11vw - 32px);height:32px;width:32px;cursor:pointer;}.project > span.licenses{float:right;margin-left:24px;}#query{margin-top:0;}page-er::shadow .pagination li.active button{background:#E91E63;}page-er::shadow .pagination li.disabled button{background:#B1B9E1;}}</style><div class="container" itemscope="" itemtype="https://code.nasa.gov/"><div class="splash"><h1 itemprop="title">code.nasa.gov</h1><input id="query" type="text" value="{{queryParams.q::input}}" title="Search Projects"> <img alt="down arrow" src="images/down-arrow.svg" on-click="_scrollDown"></div><p class="meta">[[matchedProjects.length]] NASA Open Source Software [[_pluralize('Project', matchedProjects.length)]] match query<template is="dom-if" if="[[_hasQueryParams(queryParams.*)]]"><a href="/#/">Show all projects</a></template></p><p class="meta explain">This is a catalog of Open Source NASA code that has received <a href="/#/guide">SRA approval</a></p><p class="meta explain">A.I. generated tags are predicted using a natural language processing model applied to project descriptons. Tags come from <a href="https://www.sti.nasa.gov/nasa-thesaurus/#.XKttRUN7lZI">8000 NASA concepts</a> tracked in 3.5 million published reports and papers by <a href="https://www.sti.nasa.gov/">NASA's Scientific and Technical Information Program</a>. Accuracy is not guaranteed. Click on a tag to see all projects with that tag.</p><p class="meta explain">The human-generated tag "usg-artificial-intelligence" is established by the <a href="https://code.gov/assets/data/ai_inventory-guidance.pdf">US Office of Management and Budget (OMB)</a> to help the public find A.I. code for reuse across all federal agencies.</p><iron-list items="[[matchedProjects]]"><template><div itemscope=""><div class="project"><h2 itemprop="name"><a href$="[[_getProperty(item, 'External Link')]]" target="_blank">[[_getProperty(item, 'Software')]]</a></h2><span class="licenses" itemprop="licenses"><template is="dom-repeat" items="[[item.License]]" as="license"><a href$="[[_getLicenseLink(license)]]" target="_blank">[[_getLicenseName(license)]]</a></template></span><p class="link" itemprop="project link"><a href$="[[_getProperty(item, 'Public Code Repo')]]" target="_blank">[[_getProperty(item, 'Public Code Repo')]]</a></p><p itemprop="description">[[item.Description]]</p><p itemprop="tags" class="tags">A.I. generated tags:&nbsp;<template is="dom-repeat" items="[[item.Categories_NLP]]" as="tag"><a href$="/?tag=[[tag]]">#[[tag]]</a></template></p><p itemprop="tags" class="tags">Human generated tags:&nbsp;<template is="dom-repeat" items="[[item.Categories]]" as="tag"><a href$="/?tag=[[tag]]">#[[tag]]</a></template></p></div></div></template></iron-list><script async="" language="javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA" id="_fed_an_ua_tag"></script></div></template><script>// Synchronously grabs license mappings from data directory
+function getLicenseData(){var xhr=new XMLHttpRequest;xhr.open("GET","/data/license_mappings.json",!1);xhr.send();return JSON.parse(xhr.response)};Polymer({is:"code-nasa-projects",properties:{projects:Object,matchedProjects:Object,queryParams:Object,licenses:{type:Object,value:getLicenseData()}},observers:["_setMatchedProjects(queryParams.*)"],created:function(){var xhr=new XMLHttpRequest;xhr.addEventListener("load",this._loadProjects.bind(this));xhr.open("GET","/data/catalog.json");xhr.send()},_loadProjects:function(e){this.projects=this._addSearchContent(JSON.parse(e.target.responseText));this._setMatchedProjects()},_addSearchContent:function(projects){for(var i=0,p;i<projects.length;++i){p=projects[i];console.log(p);console.log(p.Categories_NLP);console.log(p.Categories_NLP.join);p._search=[p.Categories.join("*"),// p.Categories_NLP.join('*'),
+p.Contributors.join("*"),p.Description,p["External Link"],p.License.join("*"),p["NASA Center"],p["Public Code Repo"],p.Software,p.Update_Date].join("*")}return projects},_getProperty:function(item,prop){return item[prop]},_setMatchedProjects:function(){if(this.projects){if(this.queryParams){var q=this.queryParams.q||"",tag=this.queryParams.tag||"",regex=new RegExp(q,"i");this.matchedProjects=this.projects.filter(function(p){return(!q||regex.exec(p._search))&&(!tag||-1!==p.Categories.indexOf(tag)||-1!==p.Categories_NLP.indexOf(tag))})}else{this.matchedProjects=this.projects}}},_pluralize:function(word,count){return 1===count?word:word+"s"},_hasQueryParams:function(){return this.queryParams.q||this.queryParams.tag},_getLicenseLink:function(license){return this.licenses[license]["License Link"]},_getLicenseName:function(license){return this.licenses[license]["License Long Name"]},_scrollDown:function(e,detail){const shadowRoot=Polymer.dom(this.root),firstProject=shadowRoot.querySelector(".project");firstProject.scrollIntoView({behavior:"smooth"})}});var pager=document.querySelector("page-er");document.addEventListener("polymer-ready",function(){pager.data=projects.items});var results=document.querySelector("template");document.addEventListener("pager-data",function(e){results.projects={items:e.detail.data}});document.addEventListener("pager-change",function(e){results.projects={items:e.detail.data}});</script></dom-module></body></html>
