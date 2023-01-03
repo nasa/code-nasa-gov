@@ -402,7 +402,7 @@ this.toggleScrollListener(!1)}}.bind(this))},_getModelFromItem:function(item){va
      * Gets a valid item instance from its index or the object value.
      *
      * @param {(Object|number)} item The item object or its index
-     */_getNormalizedItem:function(item){if(this._collection.getKey(item)===void 0){if("number"===typeof item){item=this.items[item];if(!item){throw new RangeError("<item> not found")}return item}throw new TypeError("<item> should be a valid item")}return item},/**
+     */_getNormalizedItem:function(item){if(void 0===this._collection.getKey(item)){if("number"===typeof item){item=this.items[item];if(!item){throw new RangeError("<item> not found")}return item}throw new TypeError("<item> should be a valid item")}return item},/**
      * Select the list item at the given index.
      *
      * @method selectItem
