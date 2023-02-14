@@ -1,4 +1,258 @@
-<html><head style="overflow: hidden;"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="HandheldFriendly" content="true"><title>NASA Open Source Software</title><meta name="description" content="Find Open Source Software Projects from NASA."><link rel="icon" href="./images/favicon.ico"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#212121"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="NASA OSS"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="NASA OSS"><link rel="apple-touch-icon" href="./images/logos/nasa-48.png"><link rel="apple-touch-icon" sizes="72x72" href="./images/logos/nasa-72.png"><link rel="apple-touch-icon" sizes="96x96" href="./images/logos/nasa-96.png"><link rel="apple-touch-icon" sizes="144x144" href="./images/logos/nasa-144.png"><link rel="apple-touch-icon" sizes="192x192" href="./images/logos/nasa-192.png"><meta name="msapplication-TileImage" content="./images/logos/nasa-144.png"><meta name="msapplication-TileColor" content="#212121"><meta name="msapplication-tap-highlight" content="no"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><meta charset="UTF-8"><link rel="import" href="code-nasa-app.html"></head><body><dom-module id="code-nasa-tagcluster"><template strip-whitespace=""><style include="shared-styles">:host{display:block;background-color:#000;background-image:url('/images/backgrounds/share.jpg');background-repeat:no-repeat;background-position:center top;background-size:250%;font-size:16px;line-height:24px;}span.desktop-only{display:none;}.section{text-align:center;margin-top:4em;}.section::before{display:block;margin:0 auto;content:'';width:100px;border-top:1px solid var(--app-accent-color);}@media (min-width: 768px){:host{background-size:100%;}.container{max-width:980px;}span.desktop-only{display:inline;}.section{display:inline-block;box-sizing:border-box;vertical-align:top;width:100%;text-align:left;border-left:1px solid var(--app-accent-color);padding-left:40px;padding-bottom:48px;}.section.first{margin-right:19%;}.section > h2{margin-top:0;}.section > p{margin-bottom:0;}.section::before{content:none;}}.fullwidth{width:44vw;position:relative;left:918px;right:50%;margin-left:-50vw;margin-right:-50vw;}h1, h2, h3, h4, h5, h6{font-family:"Roboto", "Helvetica", "Arial", sans-serif;font-weight:600;line-height:1.15;margin-top:0;margin-bottom:.25em;font-weight:300;line-height:1.5em;}p{font-size:16.5px;}.last{left:1291px;}.col2{margin-bottom:17px;padding-top:10px;margin-left:206px;}.card-header{padding-top:7em;}</style><div class="container" style="background-color:rgba(36, 12, 1,0.7);"><div class="main main-raised"><div class="container"><div class="card card-header"><h1 class="title"><b>NASA's Open-Source Code Projects:<br>Explore Using NLP Generated Tags</b></h1><p id="tag"></p></div><div style="margin-top: 1px; margin-bottom: 10px; padding-top: 10px;"><p class="description"><i><strong>This notebook was created as an alternative way to interact with the data on<br>code.nasa.gov. It is an experiment!</strong></i></p><button id="btn" class="btn btn-primary"><a href="https://observablehq.com/@briantoliveira/untitled" target="_blank"></a><i class="material-icons">This link</i> will take you to the original Observable Notebook which is forkable, live, and editable.</button><p class="description">Each of the code project's descriptions was run through a natural language processing model and higher-order concept tags predicted. Training data for this machine-learning model came from <a href="https://www.sti.nasa.gov/">NASA's Science Technology and Information program database of published abstracts</a>.</p><p class="description">This page explores how we might use those tags to quickly explore what code projects NASA has released to the public, without having to read through 500+ project descriptions.</p></div><hr><div><p class="example">Tag circles are scaled by number of times that concept tag was predicted by natural langauge processing (NLP) model as representative for a code project. Only tags found in the code project clusters highlighted below are shown in the tag bubbles.</p></div><div><div id="display"></div></div><div><p>Limit tags by frequency</p><p id="max_tag_counts"></p><p id="min_tag_counts"></p><div><div style="height: 100%; padding: 6px 0.25rem; left: -50vw; width: 50vw;"></div></div><p id="clusters_selected"></p><p class="description2">Each line above represents a cluster of code projects that was tagged with similar concept tags. The tags on each line are the tags found to be most representative of each code project cluster. Select a cluster of code projects and both the bubble chart of tags above and list of code project names below will only reflect selected code projects.</p></div><div class="col3"><p id="nameDisplay" style="overflow: auto;background-color:rgba(248, 174, 190, 0.7);height:300px;padding-left:1em;"></p><p><strong class="description2">Scroll to see all the Projects within selected cluster(s), click to learn more about a project:</strong></p></div><div style="padding: 6px 0.25rem; left: -50vw; width: 50vw; margin-top: 41px; overflow: auto;"></div></div></div></div></template><script>Polymer({is:"code-nasa-tagcluster"});</script><script>console.log("test test");</script><script type="module">
+<html>
+    <head style="overflow: hidden;">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="HandheldFriendly" content="true">
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"> -->
+    
+        <title>NASA Open Source Software</title>
+        <meta name="description" content="Find Open Source Software Projects from NASA.">
+    
+        <link rel="icon" href="./images/favicon.ico">
+    
+        <!-- See https://goo.gl/OOhYW5 -->
+        <link rel="manifest" href="/manifest.json">
+    
+        <!-- See https://goo.gl/qRE0vM -->
+        <meta name="theme-color" content="#212121">
+    
+        <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="NASA OSS">
+    
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="NASA OSS">
+    
+        <!-- Homescreen icons -->
+        <link rel="apple-touch-icon" href="./images/logos/nasa-48.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="./images/logos/nasa-72.png">
+        <link rel="apple-touch-icon" sizes="96x96" href="./images/logos/nasa-96.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="./images/logos/nasa-144.png">
+        <link rel="apple-touch-icon" sizes="192x192" href="./images/logos/nasa-192.png">
+    
+        <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="./images/logos/nasa-144.png">
+        <meta name="msapplication-TileColor" content="#212121">
+        <meta name="msapplication-tap-highlight" content="no">
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <link rel="import" href="code-nasa-app.html">
+  <dom-module id="code-nasa-tagcluster">
+    <template strip-whitespace="">
+        <style include="shared-styles">
+            :host {
+              display: block;
+              background-color: #000;
+              background-image: url('/images/backgrounds/share.jpg');
+              background-repeat: no-repeat;
+              background-position: center top;
+              background-size: 250%;
+              font-size: 16px;
+              line-height: 24px;
+            }
+      
+            span.desktop-only {
+              display: none;
+            }
+      
+            .section {
+              text-align: center;
+              margin-top:4em;
+            }
+      
+            .section::before {
+              display: block;
+              margin: 0 auto;
+              content: '';
+              width: 100px;
+              border-top: 1px solid var(--app-accent-color);
+            }
+      
+            @media (min-width: 768px) {
+              :host {
+                background-size: 100%;
+              }
+      
+              .container {
+                max-width: 980px;
+              }
+      
+              span.desktop-only {
+                display: inline;
+              }
+      
+              .section {
+                display: inline-block;
+                box-sizing: border-box;
+                vertical-align: top;
+                /* width: 40.5%; */
+                width:100%;
+                text-align: left;
+                border-left: 1px solid var(--app-accent-color);
+                padding-left: 40px;
+                padding-bottom:48px;
+              }
+      
+              .section.first {
+                margin-right: 19%;
+              }
+      
+              .section > h2 {
+                margin-top: 0;
+              }
+      
+              .section > p {
+                margin-bottom: 0;
+              }
+      
+              .section::before {
+                content: none;
+              }
+            }
+
+            .fullwidth {
+              width: 44vw;
+              position: relative;
+              left: 918px;
+              right: 50%;
+              margin-left: -50vw;
+              margin-right: -50vw;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+              /* color: #333; */
+              font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+              font-weight: 600;
+              line-height: 1.15;
+              margin-top: 0;
+              margin-bottom: .25em;
+              font-weight: 300;
+              line-height: 1.5em;
+            }
+            p {
+              font-size: 16.5px;
+            }
+
+            .last {
+              left: 1291px;
+            }
+
+            .col2 {
+              margin-bottom: 17px; 
+              padding-top: 10px; 
+              margin-left: 206px;
+            }
+
+            /* #min_tag_counts {
+              margin-left: 206px;
+              width: 1574px;
+            }
+            #max_tag_counts {
+              margin-left: 206px;
+              width: 1574px;
+            } */
+
+            .card-header{
+              padding-top:7em;
+            
+            }
+          </style>
+      </head>  
+      <body>
+      <div class="container" style="background-color:rgba(36, 12, 1,0.7);"> 
+          <div class="main main-raised">
+              <div class="container">
+                <!-- <div class="section"> -->
+                <!-- <div class="absolute h-100"></div> -->
+                <!-- <div class="container">
+                    <div class="splash"> -->
+                  <div class="card card-header">
+                     
+                    <h1 class="title"><b>NASA's Open-Source Code Projects: <br> Explore Using NLP Generated Tags</b></h1>
+                    <p id="tag"></p> 
+                  </div>
+                  <div style="margin-top: 1px; margin-bottom: 10px; padding-top: 10px;">
+                      
+                      <p class="description"><i><strong>This notebook was created as an alternative way to interact with the data on <br> code.nasa.gov. It is an experiment!</strong></i></p>
+                      <button id="btn" class="btn btn-primary"><a href="https://observablehq.com/@briantoliveira/untitled" target="_blank"></a><i class="material-icons">This link</i> </a>will take you to the original Observable Notebook which is forkable, live, and editable.</button>
+                      <p class="description"> Each of the code project's descriptions was run through a natural language processing model and higher-order concept tags predicted. Training data for this machine-learning model came from <a href="https://www.sti.nasa.gov/">NASA's Science Technology and Information program database of published abstracts</a>. </p>
+                        <p class="description">  This page explores how we might use those tags to quickly explore what code projects NASA has released to the public, without having to read through 500+ project descriptions.</p>
+                    </div>
+                    <!-- <div class="col2"> -->
+                      <hr/>
+                    <!-- <div>
+                        <ul>This page consists of several reactive user interfaces:
+                          <li>
+                            Tag circles are scaled by number of times that term was tagged by natural langauge processing (NLP) model. Only tags for the code project clusters highlighted below are shown in the tag bubbles.
+                          </li>
+                          <li>Slides that control whether very common or uncommon tags are shown in the tag bubble.</li>
+                          <li>A box of clickable rows, which row representing a cluster of code projects with similar tags. When you select one or more projects both the tag bubble chart and the project list are repopulatd with only the projects in that cluster(s).</li>
+                          <li>A box of clickable rows, which row representing a cluster of code projects with similar tags.</li>
+                        </ul>  
+                    </div> -->
+                    <div>
+                      <p class="example">
+                          Tag circles are scaled by number of times that concept tag was predicted by natural langauge processing (NLP) model as representative for a code project. Only tags found in the code project clusters highlighted below are shown in the tag bubbles.
+                      </p>
+
+                    </div>
+                <!-- <div class="fullwidth">  
+                </div>     -->
+                <div>
+                  <div id="display"></div>
+                </div>
+                  
+                  <div>
+                    <p>Limit tags by frequency</p>
+                      <p id="max_tag_counts"></p>
+                    <p id="min_tag_counts"></p>
+                    
+                    <div>
+                    <div style="height: 100%; padding: 6px 0.25rem; left: -50vw; width: 50vw;"></div>
+                    </div>
+                    
+                    <!-- Each line represents the 5 most represented tags, once tag is selected it creates a cluster representation of projects with similar tags.</p> -->
+                    <p id="clusters_selected"></p>
+                    <p class="description2">Each line above represents a cluster of code projects that was tagged with similar concept tags. The tags on each line are the tags found to be most representative of each code project cluster. 
+                        Select a cluster of code projects and both the bubble chart of tags above and list of code project names below will only reflect selected code projects. </p>
+                  </div>
+                  <div class="col3">
+                    
+                    <p id="nameDisplay" style="overflow: auto;background-color:rgba(248, 174, 190, 0.7);height:300px;padding-left:1em;"></p>
+                    <p>
+                        <strong class="description2">Scroll to see all the Projects within selected cluster(s), click to learn more about a project:</strong>
+                      </p>
+                  </div>
+                  <div style=" padding: 6px 0.25rem; left: -50vw; width: 50vw; margin-top: 41px; overflow: auto;"></div>
+                  <!-- <div class="info">
+                      <h1><b>Additional Information</b></h1>
+                      <h2><b>Websites that contain NASA Open-Source Code</b></h2>
+                      <p>There are a couple different places you can find lists of NASA open-source code.</p>
+                      <h5><b>The website that attempts to be the larger collection across the whole agency and only lists <br> open-source is <a href="https://code.nasa.gov">Code.NASA.Gov</a></b></h5>
+                      <p>If you work in the federal government or inside NASA and would like to also see <br> some closed or government source only code, you should check out <br> <a href="https://software.nasa.gov/">software.nasa.gov</a> as well.</p>
+                      <h2><b>Where the data we are using in this notebook come from?</b></h2>
+                      <p><b>Code.json</b> is this <a href="https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json">JSON file</a> which is harvested by <a href="https://code.gov">code.gov</a>.
+                         It contains the NASA <br> open-source code projects metadata that you can find on their site. We also harvest <br> this JSON into code.nasa.gov where it is transformed slightly into catalog.json and <br> as raw project data to build <a href="https://code.nasa.gov">code.nasa.gov</a>.</p>
+                  </div> -->
+                </div>
+            </div>
+          </div>
+      </div>
+    </template>
+    <script>Polymer({is:"code-nasa-tagcluster"});</script>
+    <script>
+    console.log("test test")
+    </script>
+    <!-- <script>
+
+  
+    </script> -->
+    <script type="module">
       console.log("notebook 1","test 1")
       import notebook from "https://api.observablehq.com/@justingosses/nasas-open-source-code-projects-nlp-generated-tags-cluster.js?v=3";
       // import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@2.0.0/dist/notebook-runtime.js?module";
@@ -69,4 +323,9 @@
       }
       // Document.onLoad = loadObs
   
-    </script></dom-module></body></html>
+    </script>
+    
+  </dom-module>
+  
+  </body>
+  </html>

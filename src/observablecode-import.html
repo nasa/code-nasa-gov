@@ -1,2 +1,32 @@
-<html><head><script type="module">import notebook from"https://api.observablehq.com/@briantoliveira/nasas-open-source-code-projects-nlp-generated-tags-cluster.js?v=2";const renders={"viewof min_tag_counts":"#min_tag_counts","viewof max_tag_counts":"#max_tag_counts","viewof clusters_selected":"#clusters_selected",chart1:"#display",projectNamesDisplay:"#nameDisplay",tag_holder:"#tag_holder",cluster_desc_and_name_in_array:"#cluster_desc_and_name_in_array",cluster_descriptions_for_selection:"#cluster_descriptions_for_selection",cluster_descriptions:"#cluster_descriptions",cluster_names:"#cluster_names",selected_project_names:"#selected_project_names",project_names_with_links:"#project_names_with_links",catalogjson:"#catalogjson",catalog_clusters_demo_v1:"#catalog_clusters_demo_v1",countNLPTagsWNames:"#countNLPTagsWNames",Tag:"#tag"};import{Inspector,Runtime}from"https://unpkg.com/@observablehq/notebook-runtime@2.0.0/dist/notebook-runtime.js?module";for(let i in renders)renders[i]=document.querySelector(renders[i]);//renders[i] = this.$$(renders[i])
-Runtime.load(notebook,variable=>{if(renders[variable.name])return new Inspector(renders[variable.name])});</script></head><body></body></html>
+        <script type="module">
+            import notebook from "https://api.observablehq.com/@briantoliveira/nasas-open-source-code-projects-nlp-generated-tags-cluster.js?v=2";
+          
+            const renders = {
+              "viewof min_tag_counts": "#min_tag_counts",
+              "viewof max_tag_counts": "#max_tag_counts",
+              "viewof clusters_selected": "#clusters_selected",
+              "chart1": "#display",
+              "projectNamesDisplay": "#nameDisplay",
+              "tag_holder": "#tag_holder",
+              "cluster_desc_and_name_in_array": "#cluster_desc_and_name_in_array",
+              "cluster_descriptions_for_selection": "#cluster_descriptions_for_selection",
+              "cluster_descriptions": "#cluster_descriptions",
+              "cluster_names": "#cluster_names",
+              "selected_project_names": "#selected_project_names",
+              "project_names_with_links": "#project_names_with_links",
+              "catalogjson": "#catalogjson",
+              "catalog_clusters_demo_v1": "#catalog_clusters_demo_v1",
+              "countNLPTagsWNames": "#countNLPTagsWNames",
+              "Tag": "#tag"
+            };
+          
+            import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@2.0.0/dist/notebook-runtime.js?module";
+            for (let i in renders)
+              renders[i] = document.querySelector(renders[i]);
+              //renders[i] = this.$$(renders[i])
+          
+            Runtime.load(notebook, (variable) => {
+              if (renders[variable.name])
+                return new Inspector(renders[variable.name]);
+            });
+          </script>

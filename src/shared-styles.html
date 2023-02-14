@@ -1,1 +1,78 @@
-<html><head><link rel="import" href="../bower_components/polymer/polymer.html"></head><body><dom-module id="shared-styles"><template><style>h2{font-size:1em;}h2, p{margin:18px 0;}a{color:#FFF;font-weight:bold;text-decoration:none;}a:hover{text-decoration:underline;}.container{max-width:778px;margin:0 auto;padding:0 8% 100px;}.splash{padding:69vw 0 60vw;text-align:center;text-transform:uppercase;}.splash > h1{font-family:'ArcaMajora3-Bold', sans-serif;font-size:1.2em;font-weight:normal;letter-spacing:9px;line-height:1.5em;margin:-0.75em 0 24px 9px;color:#FFF;}@media (min-width: 768px){h2, p{margin:20px 0;}.container{padding:0 60px 100px;}.splash{padding:21vw 0 16vw;}.splash > h1{font-size:1.9em;letter-spacing:28px;margin:-0.75em 0 24px 28px;}}</style></template></dom-module></body></html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- shared styles for all views -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+      h2 {
+        font-size: 1em;
+      }
+
+      h2, p {
+        margin: 18px 0;
+      }
+
+      a {
+        color: #FFF;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 778px;
+        margin: 0 auto;
+        padding: 0 8% 100px;
+      }
+
+      .splash {
+        padding: 69vw 0 60vw;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .splash > h1 {
+        font-family: 'ArcaMajora3-Bold', sans-serif;
+        font-size: 1.2em;
+        font-weight: normal;
+        letter-spacing: 9px;
+        line-height: 1.5em;
+        margin: -0.75em 0 24px 9px;
+        color: #FFF;
+      }
+
+      @media (min-width: 768px) {
+        h2, p {
+          margin: 20px 0;
+        }
+
+        .container {
+          padding: 0 60px 100px;
+        }
+
+        .splash {
+          padding: 21vw 0 16vw;
+        }
+
+        .splash > h1 {
+          font-size: 1.9em;
+          letter-spacing: 28px;
+          margin: -0.75em 0 24px 28px;
+        }
+      }
+    </style>
+  </template>
+</dom-module>
