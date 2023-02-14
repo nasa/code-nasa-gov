@@ -1,1 +1,47 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>code-nasa-app</title><script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script><script src="../bower_components/web-component-tester/browser.js"></script><link rel="import" href="../src/code-nasa-app.html"></head><body><test-fixture id="basic"><template><code-nasa-app></code-nasa-app></template></test-fixture><script>suite("code-nasa-app tests",function(){var home;setup(function(){home=fixture("basic")});test("Should have 4 pages in the app",function(){var pages=Polymer.dom(home.root).querySelector("iron-pages");assert.equal(Polymer.dom(pages).children.length,"5")})});</script></body></html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>code-nasa-app</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../src/code-nasa-app.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <code-nasa-app></code-nasa-app>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('code-nasa-app tests', function() {
+        var home;
+
+        setup(function() {
+          home = fixture('basic');
+        });
+
+        test('Should have 4 pages in the app', function() {
+          var pages = Polymer.dom(home.root).querySelector('iron-pages');
+          assert.equal(Polymer.dom(pages).children.length, '5');
+        })
+      });
+    </script>
+  </body>
+</html>
