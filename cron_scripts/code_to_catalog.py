@@ -7,9 +7,9 @@ from subprocess import Popen, PIPE
 
 # User-set constants
 CODE_URL = 'https://raw.githubusercontent.com/nasa/Open-Source-Catalog/master/code.json'
-CATALOG_OUT_LOCATION = '/var/www/docs/code/data/catalog.json'
-CATALOG_BACKUP_DIR = '/var/www/docs/code/catalog_backups'
-CURRENT_CATALOG_FILE = '/var/www/docs/code/data/catalog.json'
+CATALOG_OUT_LOCATION = '/var/www/code/docroot/data/catalog.json'
+CATALOG_BACKUP_DIR = '/var/www/code/docroot/catalog_backups'
+CURRENT_CATALOG_FILE = '/var/www/code/docroot/data/catalog.json'
 
 # Computed constants
 CATALOG_BACKUP_FILE = '/catalog.json.' + datetime.today().strftime('%Y-%m-%d')
