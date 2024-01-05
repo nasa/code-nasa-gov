@@ -116,6 +116,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #999;
       }
 
+
+       
       @media (min-width: 768px) {
         .logo {
           margin: 40px;
@@ -164,13 +166,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           display: none;
         }
 
-        /* The alert message box */
-        .alert {
+       
+
+      }
+
+      /* The alert message box */
+      .alert {
           padding: 20px;
-          background-color: #ff9800; /* Orange */
+          background-color: #aeb0b5; /* Orange */
           color: black;
           margin-bottom: 15px;
           font-size: 18px;
+        }
+
+        .alert a {
+          color: black;
+          text-decoration: underline;
         }
 
         /* The close button */
@@ -185,7 +196,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           transition: 0.3s;
         }
 
-      }
     </style>
 
     <app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path></app-location>
@@ -193,11 +203,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-header reveals threshold="1" effects="fade-background">
 
-      <!-- <section class="alert">
+      <section class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>IMPORTANT:</strong> The metadata requirement standards will be upgraded TUES 10/18/22 6PM CT / 7PM ET. Please confirm your application API calls still work for your dataset for your application.
-         If you have any issues, please email <a href="mailto:nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a> or <a href="mailto:socrata-support@tylertech.com">socrata-support@tylertech.com.</a>
-      </section> -->
+        <strong>📢 IMPORTANT:</strong> We are currently undergoing a website migration (we do not expect any outages during this process), but if you experience any issues, please reach out to the support team <a href="mailto:&#110;&#097;&#115;&#097;&#045;&#100;&#097;&#116;&#097;&#064;&#108;&#105;&#115;&#116;&#115;&#046;&#097;&#114;&#099;&#046;&#110;&#097;&#115;&#097;&#046;&#103;&#111;&#118;">here.</a>
+      </section>
 
       <div sticky>
         <button class="menu-button" on-click="_toggleDrawer" aria-label="Nav Bar Button"></button>
